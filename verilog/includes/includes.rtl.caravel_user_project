@@ -1,5 +1,8 @@
 # Caravel user project includes
 -v $(USER_PROJECT_VERILOG)/rtl/user_project_wrapper.v	     
--v $(USER_PROJECT_VERILOG)/rtl/user_proj_example.v
-
- 
+-v $(USER_PROJECT_VERILOG)/rtl/top_cw.v
+-v $(USER_PROJECT_VERILOG)/rtl/config.v
+-v $(USER_PROJECT_VERILOG)/rtl/reset_sync.v
+-v $(USER_PROJECT_VERILOG)/rtl/upper_core.v
+-v $(USER_PROJECT_VERILOG)/rtl/wb_compressor.v
+-v $(USER_PROJECT_VERILOG)/rtl/wb_cross_clk.v

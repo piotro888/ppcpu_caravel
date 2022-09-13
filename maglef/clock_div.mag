@@ -1,0 +1,75 @@
+magic
+tech sky130B
+magscale 1 2
+timestamp 1662930719
+<< obsli1 >>
+rect 1104 2159 38824 37553
+<< obsm1 >>
+rect 14 2128 38824 37584
+<< metal2 >>
+rect 13542 39200 13598 40000
+rect 30930 39200 30986 40000
+rect 18 0 74 800
+rect 16762 0 16818 800
+rect 34150 0 34206 800
+<< obsm2 >>
+rect 20 39144 13486 39200
+rect 13654 39144 30874 39200
+rect 31042 39144 38162 39200
+rect 20 856 38162 39144
+rect 130 734 16706 856
+rect 16874 734 34094 856
+rect 34262 734 38162 856
+<< metal3 >>
+rect 0 36048 800 36168
+rect 39200 30608 40000 30728
+rect 0 17688 800 17808
+rect 39200 12248 40000 12368
+<< obsm3 >>
+rect 800 36248 39200 37569
+rect 880 35968 39200 36248
+rect 800 30808 39200 35968
+rect 800 30528 39120 30808
+rect 800 17888 39200 30528
+rect 880 17608 39200 17888
+rect 800 12448 39200 17608
+rect 800 12168 39120 12448
+rect 800 2143 39200 12168
+<< metal4 >>
+rect 4208 2128 4528 37584
+rect 19568 2128 19888 37584
+rect 34928 2128 35248 37584
+<< labels >>
+rlabel metal2 s 18 0 74 800 6 clock_sel
+port 1 nsew signal input
+rlabel metal2 s 34150 0 34206 800 6 div[0]
+port 2 nsew signal input
+rlabel metal2 s 30930 39200 30986 40000 6 div[1]
+port 3 nsew signal input
+rlabel metal3 s 39200 30608 40000 30728 6 div[2]
+port 4 nsew signal input
+rlabel metal3 s 0 17688 800 17808 6 div[3]
+port 5 nsew signal input
+rlabel metal2 s 16762 0 16818 800 6 div_we
+port 6 nsew signal input
+rlabel metal3 s 0 36048 800 36168 6 i_clk
+port 7 nsew signal input
+rlabel metal2 s 13542 39200 13598 40000 6 i_rst
+port 8 nsew signal input
+rlabel metal3 s 39200 12248 40000 12368 6 o_clk
+port 9 nsew signal output
+rlabel metal4 s 4208 2128 4528 37584 6 vccd1
+port 10 nsew power bidirectional
+rlabel metal4 s 34928 2128 35248 37584 6 vccd1
+port 10 nsew power bidirectional
+rlabel metal4 s 19568 2128 19888 37584 6 vssd1
+port 11 nsew ground bidirectional
+<< properties >>
+string FIXED_BBOX 0 0 40000 40000
+string LEFclass BLOCK
+string LEFview TRUE
+string GDS_END 1171206
+string GDS_FILE /home/piotro/ppcpu_caravel/openlane/clock_div/runs/22_09_11_23_10/results/signoff/clock_div.magic.gds
+string GDS_START 357802
+<< end >>
+

@@ -1,0 +1,128 @@
+VERSION 5.7 ;
+  NOWIREEXTENSIONATPIN ON ;
+  DIVIDERCHAR "/" ;
+  BUSBITCHARS "[]" ;
+MACRO clock_div
+  CLASS BLOCK ;
+  FOREIGN clock_div ;
+  ORIGIN 0.000 0.000 ;
+  SIZE 200.000 BY 200.000 ;
+  PIN clock_sel
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 0.090 0.000 0.370 4.000 ;
+    END
+  END clock_sel
+  PIN div[0]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 170.750 0.000 171.030 4.000 ;
+    END
+  END div[0]
+  PIN div[1]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 154.650 196.000 154.930 200.000 ;
+    END
+  END div[1]
+  PIN div[2]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 196.000 153.040 200.000 153.640 ;
+    END
+  END div[2]
+  PIN div[3]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 0.000 88.440 4.000 89.040 ;
+    END
+  END div[3]
+  PIN div_we
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 83.810 0.000 84.090 4.000 ;
+    END
+  END div_we
+  PIN i_clk
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 0.000 180.240 4.000 180.840 ;
+    END
+  END i_clk
+  PIN i_rst
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 67.710 196.000 67.990 200.000 ;
+    END
+  END i_rst
+  PIN o_clk
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 196.000 61.240 200.000 61.840 ;
+    END
+  END o_clk
+  PIN vccd1
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER met4 ;
+        RECT 21.040 10.640 22.640 187.920 ;
+    END
+    PORT
+      LAYER met4 ;
+        RECT 174.640 10.640 176.240 187.920 ;
+    END
+  END vccd1
+  PIN vssd1
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER met4 ;
+        RECT 97.840 10.640 99.440 187.920 ;
+    END
+  END vssd1
+  OBS
+      LAYER li1 ;
+        RECT 5.520 10.795 194.120 187.765 ;
+      LAYER met1 ;
+        RECT 0.070 10.640 194.120 187.920 ;
+      LAYER met2 ;
+        RECT 0.100 195.720 67.430 196.000 ;
+        RECT 68.270 195.720 154.370 196.000 ;
+        RECT 155.210 195.720 190.810 196.000 ;
+        RECT 0.100 4.280 190.810 195.720 ;
+        RECT 0.650 3.670 83.530 4.280 ;
+        RECT 84.370 3.670 170.470 4.280 ;
+        RECT 171.310 3.670 190.810 4.280 ;
+      LAYER met3 ;
+        RECT 4.000 181.240 196.000 187.845 ;
+        RECT 4.400 179.840 196.000 181.240 ;
+        RECT 4.000 154.040 196.000 179.840 ;
+        RECT 4.000 152.640 195.600 154.040 ;
+        RECT 4.000 89.440 196.000 152.640 ;
+        RECT 4.400 88.040 196.000 89.440 ;
+        RECT 4.000 62.240 196.000 88.040 ;
+        RECT 4.000 60.840 195.600 62.240 ;
+        RECT 4.000 10.715 196.000 60.840 ;
+  END
+END clock_div
+END LIBRARY
+

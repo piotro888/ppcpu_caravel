@@ -35,18 +35,17 @@ set ::env(DESIGN_NAME) user_project_wrapper
 ## Source Verilog Files
 set ::env(VERILOG_FILES) "\
 	$::env(CARAVEL_ROOT)/verilog/rtl/defines.v \
-	$script_dir/../../verilog/rtl/user_project_wrapper.v"
+	$script_dir/../../verilog/rtl/user_project_wrapper.v \
+	$script_dir/../../verilog/rtl/top_cw.v \
+	$script_dir/../../verilog/rtl/upper_core.v"
 
 ## Clock configurations
 set ::env(CLOCK_PORT) "user_clock2"
-set ::env(CLOCK_NET) "mprj.clk"
+set ::env(CLOCK_NET) "user_clock2 top_cw.i_clk top_cw.cw_clk"
 
 set ::env(CLOCK_PERIOD) "10"
 
 ## Internal Macros
-### Macro PDN Connections
-set ::env(FP_PDN_MACRO_HOOKS) "\
-	mprj vccd1 vssd1 vccd1 vssd1"
 
 ### Macro Placement
 set ::env(MACRO_PLACEMENT_CFG) $script_dir/macro.cfg
@@ -54,23 +53,73 @@ set ::env(MACRO_PLACEMENT_CFG) $script_dir/macro.cfg
 ### Black-box verilog and views
 set ::env(VERILOG_FILES_BLACKBOX) "\
 	$::env(CARAVEL_ROOT)/verilog/rtl/defines.v \
-	$script_dir/../../verilog/rtl/user_proj_example.v"
+	$script_dir/../../verilog/rtl/icache.v \
+	$script_dir/../../verilog/rtl/dcache.v \
+	$script_dir/../../verilog/rtl/clock_div.v \
+	$script_dir/../../verilog/rtl/wb_compressor.v \
+	$script_dir/../../verilog/rtl/wb_cross_clk.v \
+	$script_dir/../../verilog/rtl/wishbone_arbiter.v \
+	$script_dir/../../verilog/rtl/top_cw_logic.v \
+	$script_dir/../../verilog/rtl/upper_core_logic.v \
+	$script_dir/../../verilog/rtl/uprj_w_const.v \
+	$script_dir/../../verilog/rtl/core.v"
+	
 
 set ::env(EXTRA_LEFS) "\
-	$script_dir/../../lef/user_proj_example.lef"
+	$script_dir/../../lef/icache.lef \
+	$script_dir/../../lef/dcache.lef \
+	$script_dir/../../lef/clock_div.lef \
+	$script_dir/../../lef/wb_compressor.lef \
+	$script_dir/../../lef/wb_cross_clk.lef \
+	$script_dir/../../lef/wishbone_arbiter.lef \
+	$script_dir/../../lef/top_cw_logic.lef \
+	$script_dir/../../lef/upper_core_logic.lef \
+	$script_dir/../../lef/uprj_w_const.lef \
+	$script_dir/../../lef/core.lef"
 
 set ::env(EXTRA_GDS_FILES) "\
-	$script_dir/../../gds/user_proj_example.gds"
+	$script_dir/../../gds/icache.gds \
+	$script_dir/../../gds/dcache.gds \
+	$script_dir/../../gds/clock_div.gds \
+	$script_dir/../../gds/wb_compressor.gds \
+	$script_dir/../../gds/wb_cross_clk.gds \
+	$script_dir/../../gds/wishbone_arbiter.gds \
+	$script_dir/../../gds/top_cw_logic.gds \
+	$script_dir/../../gds/upper_core_logic.gds \
+	$script_dir/../../gds/uprj_w_const.gds \
+	$script_dir/../../gds/core.gds"
 
-# set ::env(GLB_RT_MAXLAYER) 5
+### Macro PDN Connections
+set ::env(FP_PDN_MACRO_HOOKS) "\
+	top_cw.upc.icache vccd1 vssd1 vccd1 vssd1, \
+	top_cw.upc.dcache vccd1 vssd1 vccd1 vssd1, \
+	top_cw.wb_compressor vccd1 vssd1 vccd1 vssd1, \
+	top_cw.clock_div vccd1 vssd1 vccd1 vssd1, \
+	top_cw.upc.core vccd1 vssd1 vccd1 vssd1, \
+	top_cw.wb_cross_clk vccd1 vssd1 vccd1 vssd1, \ 
+	top_cw.upc.wb_arbiter vccd1 vssd1 vccd1 vssd1, \
+	top_cw.upc.upper_core_logic vccd1 vssd1 vccd1 vssd1, \
+	top_cw.top_cw_logic vccd1 vssd1 vccd1 vssd1, \
+	uprj_w_const vccd1 vssd1 vccd1 vssd1"
+
+set ::env(SYNTH_MAX_FANOUT) 10
+set ::env(CLOCK_BUFFER_FANOUT) 16
+set ::env(SYNTH_STRATEGY) {DELAY 0}
+
+# Floor plan tuning
+set ::env(FP_TAP_HORIZONTAL_HALO) 20
+set ::env(FP_PDN_HORIZONTAL_HALO) 20
+set ::env(FP_TAP_VERTICAL_HALO) 10
+set ::env(FP_PDN_VERTICAL_HALO) 10
+
 set ::env(RT_MAX_LAYER) {met4}
 
-# disable pdn check nodes becuase it hangs with multiple power domains.
-# any issue with pdn connections will be flagged with LVS so it is not a critical check.
-set ::env(FP_PDN_CHECK_NODES) 0
+set ::env(FP_PDN_CHECK_NODES) 1
 
-# The following is because there are no std cells in the example wrapper project.
-set ::env(SYNTH_TOP_LEVEL) 1
+set ::env(PL_BASIC_PLACEMENT) 0
+set ::env(PL_TARGET_DENSITY) 0.3
+
+#set ::env(SYNTH_TOP_LEVEL) 1
 set ::env(PL_RANDOM_GLB_PLACEMENT) 1
 
 set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 0
@@ -85,4 +134,10 @@ set ::env(FILL_INSERTION) 0
 set ::env(TAP_DECAP_INSERTION) 0
 set ::env(CLOCK_TREE_SYNTH) 0
 
+set ::env(RUN_KLAYOUT_XOR) 0
 
+set ::env(FP_PDN_ENABLE_MACROS_GRID) {1}
+set ::env(FP_PDN_ENABLE_GLOBAL_CONNECTIONS) "1"
+set ::env(FP_PDN_CHECK_NODES) 1
+set ::env(FP_PDN_ENABLE_RAILS) 0
+set ::env(FP_PDN_IRDROP) "1"
