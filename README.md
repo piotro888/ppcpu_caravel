@@ -1,12 +1,25 @@
-# Caravel User Project
+# PPCPU
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![UPRJ_CI](https://github.com/efabless/caravel_project_example/actions/workflows/user_project_ci.yml/badge.svg)](https://github.com/efabless/caravel_project_example/actions/workflows/user_project_ci.yml) [![Caravel Build](https://github.com/efabless/caravel_project_example/actions/workflows/caravel_build.yml/badge.svg)](https://github.com/efabless/caravel_project_example/actions/workflows/caravel_build.yml)
+Submission of [pipelined pcpu](https://github.com/piotro888/ppcpu) to openMPW shuttle.
 
-| :exclamation: Important Note            |
-|-----------------------------------------|
+## About ppcpu
 
-## Please fill in your project documentation in this README.md file 
+ppcpu is a 16-bit RISC processor, with designed from scratch architecture. This is 3rd revision of processor, which started as personal project back in 2020.
 
-Refer to [README](docs/source/quickstart.rst) for a quick start of how to use caravel_user_project
+## Features
+* Outside bus interface for memory and devices
+* Instruction and data caches
+* Custom PCPU ISA
+* Memory paging
+* 4 stage pipeline
 
-Refer to [README](docs/source/index.rst) for this sample project documentation. 
+
+## Tests
+
+Basic boot test is included in `verilog/dv/boot`.
+
+Rest of tests for cpu and ISA are included in `ppcpu` repo.
+
+## Docs
+
+For ISA docs see `pcpu` and `ppcpu` repositories. 
