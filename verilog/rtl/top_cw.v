@@ -93,7 +93,7 @@ upper_core upc (
 wire cmp_clk;
 
 //`define CLK_DIV_ADDR `WB_ADDR_W'h001001
-clock_div clock_div (
+clk_div clk_div (
 `ifdef USE_POWER_PINS
     .vccd1(vccd1), .vssd1(vssd1),
 `endif

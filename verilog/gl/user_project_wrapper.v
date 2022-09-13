@@ -187,6 +187,7 @@ module user_project_wrapper (user_clock2,
  wire \top_cw.dbg_r0[7] ;
  wire \top_cw.dbg_r0[8] ;
  wire \top_cw.dbg_r0[9] ;
+ wire \top_cw.i_rst ;
  wire \top_cw.ignore_dbg_pc[0] ;
  wire \top_cw.ignore_dbg_pc[10] ;
  wire \top_cw.ignore_dbg_pc[11] ;
@@ -567,7 +568,7 @@ module user_project_wrapper (user_clock2,
  wire \top_cw.upc.wb1_4_burst ;
  wire \top_cw.upc.wb1_8_burst ;
 
- clock_div \top_cw.clock_div  (.clock_sel(la_data_in[104]),
+ clk_div \top_cw.clk_div  (.clock_sel(la_data_in[104]),
     .div_we(\top_cw.u_wb_ack_clk ),
     .i_clk(user_clock2),
     .i_rst(\top_cw.s_rst ),
@@ -597,7 +598,7 @@ module user_project_wrapper (user_clock2,
     .cw_rst_z(\top_cw.cw_rst_z ),
     .i_clk(user_clock2),
     .i_irq(io_in[22]),
-    .i_rst(la_data_in[105]),
+    .i_rst(\top_cw.i_rst ),
     .ic_split_clock(la_data_in[104]),
     .irq_s(\top_cw.irq_s ),
     .la_cw_ack(la_data_in[94]),
@@ -1826,10 +1827,14 @@ module user_project_wrapper (user_clock2,
     .cw_req_o(io_out[17]),
     .cw_rst_i(\top_cw.cw_rst ),
     .cw_rst_o(io_out[21]),
+    .i_pin_rst(io_in[23]),
+    .i_wb_rst(wb_rst_i),
     .io_oeb_21(io_oeb[21]),
     .io_oeb_22(io_oeb[22]),
     .io_out_22(io_out[22]),
     .la_data_out_21(la_data_out[21]),
+    .o_s_rst(\top_cw.i_rst ),
+    .soft_rst(la_data_in[105]),
     .vccd1(vccd1),
     .vssd1(vssd1),
     .b0_drv({wbs_dat_o[31],

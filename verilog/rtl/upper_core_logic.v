@@ -47,7 +47,7 @@ dmmu d_mmu(
 
 assign fetch_wb_o_dat = `RW'b0;
 assign wb0_8_burst = 1'b0;
-assign wb1_4_burst = 1'b1;
-assign wb1_8_burst = 1'b0;
+assign wb1_4_burst = 1'b0;
+assign wb1_8_burst = 1'b1;
 
 endmodule

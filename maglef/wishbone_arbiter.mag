@@ -1,7 +1,7 @@
 magic
 tech sky130B
 magscale 1 2
-timestamp 1663005168
+timestamp 1663070888
 << nwell >>
 rect 1066 37253 38862 37574
 rect 1066 36165 38862 36731
@@ -714,7 +714,7 @@ string FIXED_BBOX 0 0 40000 40000
 string LEFclass BLOCK
 string LEFview TRUE
 string GDS_END 1017362
-string GDS_FILE /home/piotro/ppcpu_caravel/openlane/wishbone_arbiter/runs/22_09_12_19_51/results/signoff/wishbone_arbiter.magic.gds
+string GDS_FILE /home/piotro/ppcpu_caravel/openlane/wishbone_arbiter/runs/22_09_13_14_06/results/signoff/wishbone_arbiter.magic.gds
 string GDS_START 104962
 << end >>
 

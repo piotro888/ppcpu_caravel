@@ -1,7 +1,7 @@
 magic
 tech sky130B
 magscale 1 2
-timestamp 1663051564
+timestamp 1663070243
 << obsli1 >>
 rect 1104 2159 38824 47345
 << obsm1 >>
@@ -1072,7 +1072,7 @@ string FIXED_BBOX 0 0 40000 50000
 string LEFclass BLOCK
 string LEFview TRUE
 string GDS_END 1770760
-string GDS_FILE /home/piotro/ppcpu_caravel/openlane/top_cw_logic/runs/22_09_13_08_44/results/signoff/top_cw_logic.magic.gds
+string GDS_FILE /home/piotro/ppcpu_caravel/openlane/top_cw_logic/runs/22_09_13_13_56/results/signoff/top_cw_logic.magic.gds
 string GDS_START 183926
 << end >>
 

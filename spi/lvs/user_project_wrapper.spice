@@ -101,6 +101,11 @@
 + wb_sel[0] wb_sel[1] wb_stb wb_we
 .ends
 
+* Black-box entry subcircuit for clk_div abstract view
+.subckt clk_div clock_sel div[0] div[1] div[2] div[3] div_we i_clk i_rst o_clk vccd1
++ vssd1
+.ends
+
 * Black-box entry subcircuit for upper_core_logic abstract view
 .subckt upper_core_logic cc_data_page cc_instr_page data_cacheable data_mem_addr[0]
 + data_mem_addr[10] data_mem_addr[11] data_mem_addr[12] data_mem_addr[13] data_mem_addr[14]
@@ -146,22 +151,23 @@
 + b0_drv[66] b0_drv[67] b0_drv[68] b0_drv[69] b0_drv[6] b0_drv[70] b0_drv[71] b0_drv[72]
 + b0_drv[73] b0_drv[74] b0_drv[75] b0_drv[76] b0_drv[77] b0_drv[78] b0_drv[79] b0_drv[7]
 + b0_drv[80] b0_drv[81] b0_drv[82] b0_drv[8] b0_drv[9] cw_clk_i cw_clk_o cw_dir cw_dir_b_o
-+ cw_dir_b_oo cw_dir_o cw_req_i cw_req_o cw_rst_i cw_rst_o io_oeb_15_0[0] io_oeb_15_0[10]
-+ io_oeb_15_0[11] io_oeb_15_0[12] io_oeb_15_0[13] io_oeb_15_0[14] io_oeb_15_0[15]
-+ io_oeb_15_0[1] io_oeb_15_0[2] io_oeb_15_0[3] io_oeb_15_0[4] io_oeb_15_0[5] io_oeb_15_0[6]
-+ io_oeb_15_0[7] io_oeb_15_0[8] io_oeb_15_0[9] io_oeb_18_16[0] io_oeb_18_16[1] io_oeb_18_16[2]
-+ io_oeb_20_19[0] io_oeb_20_19[1] io_oeb_21 io_oeb_22 io_out[0] io_out[10] io_out[11]
-+ io_out[12] io_out[13] io_out[14] io_out[1] io_out[2] io_out[3] io_out[4] io_out[5]
-+ io_out[6] io_out[7] io_out[8] io_out[9] io_out_20_19[0] io_out_20_19[1] io_out_22
-+ la_data_out_16_17[0] la_data_out_16_17[1] la_data_out_21 la_data_out_37_36[0] la_data_out_37_36[1]
-+ la_data_out_77_62[0] la_data_out_77_62[10] la_data_out_77_62[11] la_data_out_77_62[12]
-+ la_data_out_77_62[13] la_data_out_77_62[14] la_data_out_77_62[15] la_data_out_77_62[1]
-+ la_data_out_77_62[2] la_data_out_77_62[3] la_data_out_77_62[4] la_data_out_77_62[5]
-+ la_data_out_77_62[6] la_data_out_77_62[7] la_data_out_77_62[8] la_data_out_77_62[9]
-+ la_data_out_97_95[0] la_data_out_97_95[1] la_data_out_97_95[2] la_datb_i[0] la_datb_i[1]
-+ la_datb_i[2] la_datb_o[0] la_datb_o[1] la_datb_o[2] oeb_out[0] oeb_out[10] oeb_out[11]
-+ oeb_out[12] oeb_out[13] oeb_out[14] oeb_out[1] oeb_out[2] oeb_out[3] oeb_out[4]
-+ oeb_out[5] oeb_out[6] oeb_out[7] oeb_out[8] oeb_out[9] vccd1 vssd1
++ cw_dir_b_oo cw_dir_o cw_req_i cw_req_o cw_rst_i cw_rst_o i_pin_rst i_wb_rst io_oeb_15_0[0]
++ io_oeb_15_0[10] io_oeb_15_0[11] io_oeb_15_0[12] io_oeb_15_0[13] io_oeb_15_0[14]
++ io_oeb_15_0[15] io_oeb_15_0[1] io_oeb_15_0[2] io_oeb_15_0[3] io_oeb_15_0[4] io_oeb_15_0[5]
++ io_oeb_15_0[6] io_oeb_15_0[7] io_oeb_15_0[8] io_oeb_15_0[9] io_oeb_18_16[0] io_oeb_18_16[1]
++ io_oeb_18_16[2] io_oeb_20_19[0] io_oeb_20_19[1] io_oeb_21 io_oeb_22 io_out[0] io_out[10]
++ io_out[11] io_out[12] io_out[13] io_out[14] io_out[1] io_out[2] io_out[3] io_out[4]
++ io_out[5] io_out[6] io_out[7] io_out[8] io_out[9] io_out_20_19[0] io_out_20_19[1]
++ io_out_22 la_data_out_16_17[0] la_data_out_16_17[1] la_data_out_21 la_data_out_37_36[0]
++ la_data_out_37_36[1] la_data_out_77_62[0] la_data_out_77_62[10] la_data_out_77_62[11]
++ la_data_out_77_62[12] la_data_out_77_62[13] la_data_out_77_62[14] la_data_out_77_62[15]
++ la_data_out_77_62[1] la_data_out_77_62[2] la_data_out_77_62[3] la_data_out_77_62[4]
++ la_data_out_77_62[5] la_data_out_77_62[6] la_data_out_77_62[7] la_data_out_77_62[8]
++ la_data_out_77_62[9] la_data_out_97_95[0] la_data_out_97_95[1] la_data_out_97_95[2]
++ la_datb_i[0] la_datb_i[1] la_datb_i[2] la_datb_o[0] la_datb_o[1] la_datb_o[2] o_s_rst
++ oeb_out[0] oeb_out[10] oeb_out[11] oeb_out[12] oeb_out[13] oeb_out[14] oeb_out[1]
++ oeb_out[2] oeb_out[3] oeb_out[4] oeb_out[5] oeb_out[6] oeb_out[7] oeb_out[8] oeb_out[9]
++ soft_rst vccd1 vssd1
 .ends
 
 * Black-box entry subcircuit for top_cw_logic abstract view
@@ -246,11 +252,6 @@
 + wb_i_dat[0] wb_i_dat[10] wb_i_dat[11] wb_i_dat[12] wb_i_dat[13] wb_i_dat[14] wb_i_dat[15]
 + wb_i_dat[1] wb_i_dat[2] wb_i_dat[3] wb_i_dat[4] wb_i_dat[5] wb_i_dat[6] wb_i_dat[7]
 + wb_i_dat[8] wb_i_dat[9] wb_sel[0] wb_sel[1] wb_stb wb_we
-.ends
-
-* Black-box entry subcircuit for clock_div abstract view
-.subckt clock_div clock_sel div[0] div[1] div[2] div[3] div_we i_clk i_rst o_clk vccd1
-+ vssd1
 .ends
 
 .subckt user_project_wrapper analog_io[0] analog_io[10] analog_io[11] analog_io[12]
@@ -388,7 +389,7 @@ Xtop_cw.upc.core la_data_in[100] la_data_in[101] la_data_in[102] la_data_in[103]
 + top_cw.upc.icache/mem_data[31] top_cw.upc.icache/mem_data[3] top_cw.upc.icache/mem_data[4]
 + top_cw.upc.icache/mem_data[5] top_cw.upc.icache/mem_data[6] top_cw.upc.icache/mem_data[7]
 + top_cw.upc.icache/mem_data[8] top_cw.upc.icache/mem_data[9] top_cw.upc.icache/mem_ack
-+ top_cw.upc.core/i_rst top_cw.upc.core/o_c_data_page top_cw.upc.core/o_c_instr_page
++ top_cw.clk_div/i_rst top_cw.upc.core/o_c_data_page top_cw.upc.core/o_c_instr_page
 + top_cw.upc.core/o_icache_flush top_cw.upc.core/o_mem_addr[0] top_cw.upc.core/o_mem_addr[10]
 + top_cw.upc.core/o_mem_addr[11] top_cw.upc.core/o_mem_addr[12] top_cw.upc.core/o_mem_addr[13]
 + top_cw.upc.core/o_mem_addr[14] top_cw.upc.core/o_mem_addr[15] top_cw.upc.core/o_mem_addr[1]
@@ -419,7 +420,7 @@ Xtop_cw.upc.core la_data_in[100] la_data_in[101] la_data_in[102] la_data_in[103]
 + top_cw.upc.core/sr_bus_data_o[4] top_cw.upc.core/sr_bus_data_o[5] top_cw.upc.core/sr_bus_data_o[6]
 + top_cw.upc.core/sr_bus_data_o[7] top_cw.upc.core/sr_bus_data_o[8] top_cw.upc.core/sr_bus_data_o[9]
 + top_cw.upc.core/sr_bus_we vccd1 vssd1 core
-Xtop_cw.wb_cross_clk user_clock2 uprj_w_const/cw_clk_i top_cw.upc.core/i_rst top_cw.wb_cross_clk/m_wb_4_burst
+Xtop_cw.wb_cross_clk user_clock2 top_cw.clk_div/o_clk top_cw.clk_div/i_rst top_cw.wb_cross_clk/m_wb_4_burst
 + top_cw.wb_cross_clk/m_wb_8_burst top_cw.wb_cross_clk/m_wb_ack la_data_out[38] la_data_out[48]
 + la_data_out[49] la_data_out[50] la_data_out[51] la_data_out[52] la_data_out[53]
 + la_data_out[54] la_data_out[55] la_data_out[56] la_data_out[57] la_data_out[39]
@@ -431,36 +432,35 @@ Xtop_cw.wb_cross_clk user_clock2 uprj_w_const/cw_clk_i top_cw.upc.core/i_rst top
 + top_cw.wb_cross_clk/m_wb_i_dat[15] top_cw.wb_cross_clk/m_wb_i_dat[1] top_cw.wb_cross_clk/m_wb_i_dat[2]
 + top_cw.wb_cross_clk/m_wb_i_dat[3] top_cw.wb_cross_clk/m_wb_i_dat[4] top_cw.wb_cross_clk/m_wb_i_dat[5]
 + top_cw.wb_cross_clk/m_wb_i_dat[6] top_cw.wb_cross_clk/m_wb_i_dat[7] top_cw.wb_cross_clk/m_wb_i_dat[8]
-+ top_cw.wb_cross_clk/m_wb_i_dat[9] top_cw.clock_div/div[0] top_cw.wb_cross_clk/m_wb_o_dat[10]
++ top_cw.wb_cross_clk/m_wb_i_dat[9] top_cw.clk_div/div[0] top_cw.wb_cross_clk/m_wb_o_dat[10]
 + top_cw.wb_cross_clk/m_wb_o_dat[11] top_cw.wb_cross_clk/m_wb_o_dat[12] top_cw.wb_cross_clk/m_wb_o_dat[13]
-+ top_cw.wb_cross_clk/m_wb_o_dat[14] top_cw.wb_cross_clk/m_wb_o_dat[15] top_cw.clock_div/div[1]
-+ top_cw.clock_div/div[2] top_cw.clock_div/div[3] top_cw.wb_cross_clk/m_wb_o_dat[4]
-+ top_cw.wb_cross_clk/m_wb_o_dat[5] top_cw.wb_cross_clk/m_wb_o_dat[6] top_cw.wb_cross_clk/m_wb_o_dat[7]
-+ top_cw.wb_cross_clk/m_wb_o_dat[8] top_cw.wb_cross_clk/m_wb_o_dat[9] top_cw.wb_cross_clk/m_wb_sel[0]
-+ top_cw.wb_cross_clk/m_wb_sel[1] uprj_w_const/la_datb_i[0] uprj_w_const/la_datb_i[1]
-+ uprj_w_const/cw_rst_i top_cw.wb_cross_clk/s_wb_4_burst top_cw.wb_cross_clk/s_wb_8_burst
-+ top_cw.wb_compressor/wb_ack top_cw.wb_cross_clk/s_wb_adr[0] top_cw.wb_cross_clk/s_wb_adr[10]
-+ top_cw.wb_cross_clk/s_wb_adr[11] top_cw.wb_cross_clk/s_wb_adr[12] top_cw.wb_cross_clk/s_wb_adr[13]
-+ top_cw.wb_cross_clk/s_wb_adr[14] top_cw.wb_cross_clk/s_wb_adr[15] top_cw.wb_cross_clk/s_wb_adr[16]
-+ top_cw.wb_cross_clk/s_wb_adr[17] top_cw.wb_cross_clk/s_wb_adr[18] top_cw.wb_cross_clk/s_wb_adr[19]
-+ top_cw.wb_cross_clk/s_wb_adr[1] top_cw.wb_cross_clk/s_wb_adr[20] top_cw.wb_cross_clk/s_wb_adr[21]
-+ top_cw.wb_cross_clk/s_wb_adr[22] top_cw.wb_cross_clk/s_wb_adr[23] top_cw.wb_cross_clk/s_wb_adr[2]
-+ top_cw.wb_cross_clk/s_wb_adr[3] top_cw.wb_cross_clk/s_wb_adr[4] top_cw.wb_cross_clk/s_wb_adr[5]
-+ top_cw.wb_cross_clk/s_wb_adr[6] top_cw.wb_cross_clk/s_wb_adr[7] top_cw.wb_cross_clk/s_wb_adr[8]
-+ top_cw.wb_cross_clk/s_wb_adr[9] top_cw.wb_cross_clk/s_wb_cyc top_cw.wb_compressor/wb_err
-+ top_cw.wb_compressor/wb_i_dat[0] top_cw.wb_compressor/wb_i_dat[10] top_cw.wb_compressor/wb_i_dat[11]
-+ top_cw.wb_compressor/wb_i_dat[12] top_cw.wb_compressor/wb_i_dat[13] top_cw.wb_compressor/wb_i_dat[14]
-+ top_cw.wb_compressor/wb_i_dat[15] top_cw.wb_compressor/wb_i_dat[1] top_cw.wb_compressor/wb_i_dat[2]
-+ top_cw.wb_compressor/wb_i_dat[3] top_cw.wb_compressor/wb_i_dat[4] top_cw.wb_compressor/wb_i_dat[5]
-+ top_cw.wb_compressor/wb_i_dat[6] top_cw.wb_compressor/wb_i_dat[7] top_cw.wb_compressor/wb_i_dat[8]
-+ top_cw.wb_compressor/wb_i_dat[9] top_cw.wb_cross_clk/s_wb_o_dat[0] top_cw.wb_cross_clk/s_wb_o_dat[10]
-+ top_cw.wb_cross_clk/s_wb_o_dat[11] top_cw.wb_cross_clk/s_wb_o_dat[12] top_cw.wb_cross_clk/s_wb_o_dat[13]
-+ top_cw.wb_cross_clk/s_wb_o_dat[14] top_cw.wb_cross_clk/s_wb_o_dat[15] top_cw.wb_cross_clk/s_wb_o_dat[1]
-+ top_cw.wb_cross_clk/s_wb_o_dat[2] top_cw.wb_cross_clk/s_wb_o_dat[3] top_cw.wb_cross_clk/s_wb_o_dat[4]
-+ top_cw.wb_cross_clk/s_wb_o_dat[5] top_cw.wb_cross_clk/s_wb_o_dat[6] top_cw.wb_cross_clk/s_wb_o_dat[7]
-+ top_cw.wb_cross_clk/s_wb_o_dat[8] top_cw.wb_cross_clk/s_wb_o_dat[9] top_cw.wb_cross_clk/s_wb_sel[0]
-+ top_cw.wb_cross_clk/s_wb_sel[1] top_cw.wb_cross_clk/s_wb_stb top_cw.wb_cross_clk/s_wb_we
-+ vccd1 vssd1 wb_cross_clk
++ top_cw.wb_cross_clk/m_wb_o_dat[14] top_cw.wb_cross_clk/m_wb_o_dat[15] top_cw.clk_div/div[1]
++ top_cw.clk_div/div[2] top_cw.clk_div/div[3] top_cw.wb_cross_clk/m_wb_o_dat[4] top_cw.wb_cross_clk/m_wb_o_dat[5]
++ top_cw.wb_cross_clk/m_wb_o_dat[6] top_cw.wb_cross_clk/m_wb_o_dat[7] top_cw.wb_cross_clk/m_wb_o_dat[8]
++ top_cw.wb_cross_clk/m_wb_o_dat[9] top_cw.wb_cross_clk/m_wb_sel[0] top_cw.wb_cross_clk/m_wb_sel[1]
++ uprj_w_const/la_datb_i[0] uprj_w_const/la_datb_i[1] uprj_w_const/cw_rst_i top_cw.wb_cross_clk/s_wb_4_burst
++ top_cw.wb_cross_clk/s_wb_8_burst top_cw.wb_compressor/wb_ack top_cw.wb_cross_clk/s_wb_adr[0]
++ top_cw.wb_cross_clk/s_wb_adr[10] top_cw.wb_cross_clk/s_wb_adr[11] top_cw.wb_cross_clk/s_wb_adr[12]
++ top_cw.wb_cross_clk/s_wb_adr[13] top_cw.wb_cross_clk/s_wb_adr[14] top_cw.wb_cross_clk/s_wb_adr[15]
++ top_cw.wb_cross_clk/s_wb_adr[16] top_cw.wb_cross_clk/s_wb_adr[17] top_cw.wb_cross_clk/s_wb_adr[18]
++ top_cw.wb_cross_clk/s_wb_adr[19] top_cw.wb_cross_clk/s_wb_adr[1] top_cw.wb_cross_clk/s_wb_adr[20]
++ top_cw.wb_cross_clk/s_wb_adr[21] top_cw.wb_cross_clk/s_wb_adr[22] top_cw.wb_cross_clk/s_wb_adr[23]
++ top_cw.wb_cross_clk/s_wb_adr[2] top_cw.wb_cross_clk/s_wb_adr[3] top_cw.wb_cross_clk/s_wb_adr[4]
++ top_cw.wb_cross_clk/s_wb_adr[5] top_cw.wb_cross_clk/s_wb_adr[6] top_cw.wb_cross_clk/s_wb_adr[7]
++ top_cw.wb_cross_clk/s_wb_adr[8] top_cw.wb_cross_clk/s_wb_adr[9] top_cw.wb_cross_clk/s_wb_cyc
++ top_cw.wb_compressor/wb_err top_cw.wb_compressor/wb_i_dat[0] top_cw.wb_compressor/wb_i_dat[10]
++ top_cw.wb_compressor/wb_i_dat[11] top_cw.wb_compressor/wb_i_dat[12] top_cw.wb_compressor/wb_i_dat[13]
++ top_cw.wb_compressor/wb_i_dat[14] top_cw.wb_compressor/wb_i_dat[15] top_cw.wb_compressor/wb_i_dat[1]
++ top_cw.wb_compressor/wb_i_dat[2] top_cw.wb_compressor/wb_i_dat[3] top_cw.wb_compressor/wb_i_dat[4]
++ top_cw.wb_compressor/wb_i_dat[5] top_cw.wb_compressor/wb_i_dat[6] top_cw.wb_compressor/wb_i_dat[7]
++ top_cw.wb_compressor/wb_i_dat[8] top_cw.wb_compressor/wb_i_dat[9] top_cw.wb_cross_clk/s_wb_o_dat[0]
++ top_cw.wb_cross_clk/s_wb_o_dat[10] top_cw.wb_cross_clk/s_wb_o_dat[11] top_cw.wb_cross_clk/s_wb_o_dat[12]
++ top_cw.wb_cross_clk/s_wb_o_dat[13] top_cw.wb_cross_clk/s_wb_o_dat[14] top_cw.wb_cross_clk/s_wb_o_dat[15]
++ top_cw.wb_cross_clk/s_wb_o_dat[1] top_cw.wb_cross_clk/s_wb_o_dat[2] top_cw.wb_cross_clk/s_wb_o_dat[3]
++ top_cw.wb_cross_clk/s_wb_o_dat[4] top_cw.wb_cross_clk/s_wb_o_dat[5] top_cw.wb_cross_clk/s_wb_o_dat[6]
++ top_cw.wb_cross_clk/s_wb_o_dat[7] top_cw.wb_cross_clk/s_wb_o_dat[8] top_cw.wb_cross_clk/s_wb_o_dat[9]
++ top_cw.wb_cross_clk/s_wb_sel[0] top_cw.wb_cross_clk/s_wb_sel[1] top_cw.wb_cross_clk/s_wb_stb
++ top_cw.wb_cross_clk/s_wb_we vccd1 vssd1 wb_cross_clk
 Xtop_cw.wb_compressor top_cw.wb_compressor/cw_ack uprj_w_const/cw_dir top_cw.wb_compressor/cw_err
 + top_cw.wb_compressor/cw_io_i[0] top_cw.wb_compressor/cw_io_i[10] top_cw.wb_compressor/cw_io_i[11]
 + top_cw.wb_compressor/cw_io_i[12] top_cw.wb_compressor/cw_io_i[13] top_cw.wb_compressor/cw_io_i[14]
@@ -469,7 +469,7 @@ Xtop_cw.wb_compressor top_cw.wb_compressor/cw_ack uprj_w_const/cw_dir top_cw.wb_
 + top_cw.wb_compressor/cw_io_i[6] top_cw.wb_compressor/cw_io_i[7] top_cw.wb_compressor/cw_io_i[8]
 + top_cw.wb_compressor/cw_io_i[9] io_out[0] io_out[10] io_out[11] io_out[12] io_out[13]
 + io_out[14] io_out[15] io_out[1] io_out[2] io_out[3] io_out[4] io_out[5] io_out[6]
-+ io_out[7] io_out[8] io_out[9] uprj_w_const/cw_req_i uprj_w_const/cw_clk_i uprj_w_const/cw_rst_i
++ io_out[7] io_out[8] io_out[9] uprj_w_const/cw_req_i top_cw.clk_div/o_clk uprj_w_const/cw_rst_i
 + vccd1 vssd1 top_cw.wb_compressor/wb_4_burst top_cw.wb_compressor/wb_8_burst top_cw.wb_compressor/wb_ack
 + top_cw.wb_compressor/wb_adr[0] top_cw.wb_compressor/wb_adr[10] top_cw.wb_compressor/wb_adr[11]
 + top_cw.wb_compressor/wb_adr[12] top_cw.wb_compressor/wb_adr[13] top_cw.wb_compressor/wb_adr[14]
@@ -492,7 +492,7 @@ Xtop_cw.wb_compressor top_cw.wb_compressor/cw_ack uprj_w_const/cw_dir top_cw.wb_
 + top_cw.wb_compressor/wb_o_dat[6] top_cw.wb_compressor/wb_o_dat[7] top_cw.wb_compressor/wb_o_dat[8]
 + top_cw.wb_compressor/wb_o_dat[9] top_cw.wb_compressor/wb_sel[0] top_cw.wb_compressor/wb_sel[1]
 + top_cw.wb_compressor/wb_stb top_cw.wb_compressor/wb_we wb_compressor
-Xtop_cw.upc.dcache user_clock2 top_cw.upc.core/i_rst top_cw.upc.dcache/mem_ack top_cw.upc.dcache/mem_addr[0]
+Xtop_cw.upc.dcache user_clock2 top_cw.clk_div/i_rst top_cw.upc.dcache/mem_ack top_cw.upc.dcache/mem_addr[0]
 + top_cw.upc.dcache/mem_addr[10] top_cw.upc.dcache/mem_addr[11] top_cw.upc.dcache/mem_addr[12]
 + top_cw.upc.dcache/mem_addr[13] top_cw.upc.dcache/mem_addr[14] top_cw.upc.dcache/mem_addr[15]
 + top_cw.upc.dcache/mem_addr[16] top_cw.upc.dcache/mem_addr[17] top_cw.upc.dcache/mem_addr[18]
@@ -535,6 +535,9 @@ Xtop_cw.upc.dcache user_clock2 top_cw.upc.core/i_rst top_cw.upc.dcache/mem_ack t
 + top_cw.upc.dcache/wb_o_dat[6] top_cw.upc.dcache/wb_o_dat[7] top_cw.upc.dcache/wb_o_dat[8]
 + top_cw.upc.dcache/wb_o_dat[9] top_cw.upc.dcache/wb_sel[0] top_cw.upc.dcache/wb_sel[1]
 + top_cw.upc.dcache/wb_stb top_cw.upc.dcache/wb_we dcache
+Xtop_cw.clk_div la_data_in[104] top_cw.clk_div/div[0] top_cw.clk_div/div[1] top_cw.clk_div/div[2]
++ top_cw.clk_div/div[3] top_cw.clk_div/div_we user_clock2 top_cw.clk_div/i_rst top_cw.clk_div/o_clk
++ vccd1 vssd1 clk_div
 Xtop_cw.upc.upper_core_logic top_cw.upc.core/o_c_data_page top_cw.upc.core/o_c_instr_page
 + top_cw.upc.dcache/mem_cache_enable top_cw.upc.core/o_mem_addr[0] top_cw.upc.core/o_mem_addr[10]
 + top_cw.upc.core/o_mem_addr[11] top_cw.upc.core/o_mem_addr[12] top_cw.upc.core/o_mem_addr[13]
@@ -568,7 +571,7 @@ Xtop_cw.upc.upper_core_logic top_cw.upc.core/o_c_data_page top_cw.upc.core/o_c_i
 + top_cw.upc.wb_arbiter/wb1_o_dat[15] top_cw.upc.wb_arbiter/wb1_o_dat[1] top_cw.upc.wb_arbiter/wb1_o_dat[2]
 + top_cw.upc.wb_arbiter/wb1_o_dat[3] top_cw.upc.wb_arbiter/wb1_o_dat[4] top_cw.upc.wb_arbiter/wb1_o_dat[5]
 + top_cw.upc.wb_arbiter/wb1_o_dat[6] top_cw.upc.wb_arbiter/wb1_o_dat[7] top_cw.upc.wb_arbiter/wb1_o_dat[8]
-+ top_cw.upc.wb_arbiter/wb1_o_dat[9] user_clock2 top_cw.upc.core/i_rst top_cw.upc.core/sr_bus_addr[0]
++ top_cw.upc.wb_arbiter/wb1_o_dat[9] user_clock2 top_cw.clk_div/i_rst top_cw.upc.core/sr_bus_addr[0]
 + top_cw.upc.core/sr_bus_addr[10] top_cw.upc.core/sr_bus_addr[11] top_cw.upc.core/sr_bus_addr[12]
 + top_cw.upc.core/sr_bus_addr[13] top_cw.upc.core/sr_bus_addr[14] top_cw.upc.core/sr_bus_addr[15]
 + top_cw.upc.core/sr_bus_addr[1] top_cw.upc.core/sr_bus_addr[2] top_cw.upc.core/sr_bus_addr[3]
@@ -595,22 +598,23 @@ Xuprj_w_const la_data_out[98] la_data_out[108] la_data_out[109] la_data_out[110]
 + wbs_dat_o[13] wbs_dat_o[14] wbs_dat_o[15] wbs_dat_o[16] wbs_dat_o[17] wbs_dat_o[18]
 + la_data_out[104] wbs_dat_o[19] wbs_dat_o[20] wbs_dat_o[21] wbs_dat_o[22] wbs_dat_o[23]
 + wbs_dat_o[24] wbs_dat_o[25] wbs_dat_o[26] wbs_dat_o[27] wbs_dat_o[28] la_data_out[105]
-+ wbs_dat_o[29] wbs_dat_o[30] wbs_dat_o[31] la_data_out[106] la_data_out[107] uprj_w_const/cw_clk_i
++ wbs_dat_o[29] wbs_dat_o[30] wbs_dat_o[31] la_data_out[106] la_data_out[107] top_cw.clk_div/o_clk
 + io_out[16] uprj_w_const/cw_dir uprj_w_const/cw_dir_o io_out[18] uprj_w_const/cw_dir_o
-+ uprj_w_const/cw_req_i io_out[17] uprj_w_const/cw_rst_i io_out[21] io_oeb[0] io_oeb[10]
-+ io_oeb[11] io_oeb[12] io_oeb[13] io_oeb[14] io_oeb[15] io_oeb[1] io_oeb[2] io_oeb[3]
-+ io_oeb[4] io_oeb[5] io_oeb[6] io_oeb[7] io_oeb[8] io_oeb[9] io_oeb[16] io_oeb[17]
-+ io_oeb[18] io_oeb[19] io_oeb[20] io_oeb[21] io_oeb[22] io_out[23] io_out[33] io_out[34]
-+ io_out[35] io_out[36] io_out[37] io_out[24] io_out[25] io_out[26] io_out[27] io_out[28]
-+ io_out[29] io_out[30] io_out[31] io_out[32] io_out[19] io_out[20] io_out[22] la_data_out[16]
-+ la_data_out[17] la_data_out[21] la_data_out[36] la_data_out[37] la_data_out[62]
-+ la_data_out[72] la_data_out[73] la_data_out[74] la_data_out[75] la_data_out[76]
-+ la_data_out[77] la_data_out[63] la_data_out[64] la_data_out[65] la_data_out[66]
-+ la_data_out[67] la_data_out[68] la_data_out[69] la_data_out[70] la_data_out[71]
-+ la_data_out[95] la_data_out[96] la_data_out[97] uprj_w_const/la_datb_i[0] uprj_w_const/la_datb_i[1]
-+ uprj_w_const/la_datb_i[2] la_data_out[36] la_data_out[37] la_data_out[21] io_oeb[23]
-+ io_oeb[33] io_oeb[34] io_oeb[35] io_oeb[36] io_oeb[37] io_oeb[24] io_oeb[25] io_oeb[26]
-+ io_oeb[27] io_oeb[28] io_oeb[29] io_oeb[30] io_oeb[31] io_oeb[32] vccd1 vssd1 uprj_w_const
++ uprj_w_const/cw_req_i io_out[17] uprj_w_const/cw_rst_i io_out[21] io_in[23] wb_rst_i
++ io_oeb[0] io_oeb[10] io_oeb[11] io_oeb[12] io_oeb[13] io_oeb[14] io_oeb[15] io_oeb[1]
++ io_oeb[2] io_oeb[3] io_oeb[4] io_oeb[5] io_oeb[6] io_oeb[7] io_oeb[8] io_oeb[9]
++ io_oeb[16] io_oeb[17] io_oeb[18] io_oeb[19] io_oeb[20] io_oeb[21] io_oeb[22] io_out[23]
++ io_out[33] io_out[34] io_out[35] io_out[36] io_out[37] io_out[24] io_out[25] io_out[26]
++ io_out[27] io_out[28] io_out[29] io_out[30] io_out[31] io_out[32] io_out[19] io_out[20]
++ io_out[22] la_data_out[16] la_data_out[17] la_data_out[21] la_data_out[36] la_data_out[37]
++ la_data_out[62] la_data_out[72] la_data_out[73] la_data_out[74] la_data_out[75]
++ la_data_out[76] la_data_out[77] la_data_out[63] la_data_out[64] la_data_out[65]
++ la_data_out[66] la_data_out[67] la_data_out[68] la_data_out[69] la_data_out[70]
++ la_data_out[71] la_data_out[95] la_data_out[96] la_data_out[97] uprj_w_const/la_datb_i[0]
++ uprj_w_const/la_datb_i[1] uprj_w_const/la_datb_i[2] la_data_out[36] la_data_out[37]
++ la_data_out[21] uprj_w_const/o_s_rst io_oeb[23] io_oeb[33] io_oeb[34] io_oeb[35]
++ io_oeb[36] io_oeb[37] io_oeb[24] io_oeb[25] io_oeb[26] io_oeb[27] io_oeb[28] io_oeb[29]
++ io_oeb[30] io_oeb[31] io_oeb[32] la_data_in[105] vccd1 vssd1 uprj_w_const
 Xtop_cw.top_cw_logic top_cw.wb_compressor/wb_4_burst top_cw.wb_compressor/wb_8_burst
 + top_cw.wb_compressor/wb_ack top_cw.wb_compressor/wb_adr[0] top_cw.wb_compressor/wb_adr[10]
 + top_cw.wb_compressor/wb_adr[11] top_cw.wb_compressor/wb_adr[12] top_cw.wb_compressor/wb_adr[13]
@@ -648,10 +652,10 @@ Xtop_cw.top_cw_logic top_cw.wb_compressor/wb_4_burst top_cw.wb_compressor/wb_8_b
 + top_cw.wb_cross_clk/s_wb_o_dat[3] top_cw.wb_cross_clk/s_wb_o_dat[4] top_cw.wb_cross_clk/s_wb_o_dat[5]
 + top_cw.wb_cross_clk/s_wb_o_dat[6] top_cw.wb_cross_clk/s_wb_o_dat[7] top_cw.wb_cross_clk/s_wb_o_dat[8]
 + top_cw.wb_cross_clk/s_wb_o_dat[9] top_cw.wb_cross_clk/s_wb_sel[0] top_cw.wb_cross_clk/s_wb_sel[1]
-+ top_cw.wb_cross_clk/s_wb_stb top_cw.wb_cross_clk/s_wb_we io_in[19] uprj_w_const/cw_clk_i
++ top_cw.wb_cross_clk/s_wb_stb top_cw.wb_cross_clk/s_wb_we io_in[19] top_cw.clk_div/o_clk
 + io_in[20] io_in[0] io_in[10] io_in[11] io_in[12] io_in[13] io_in[14] io_in[15] io_in[1]
 + io_in[2] io_in[3] io_in[4] io_in[5] io_in[6] io_in[7] io_in[8] io_in[9] uprj_w_const/cw_rst_i
-+ top_cw.top_cw_logic/cw_rst_z user_clock2 io_in[22] la_data_in[105] la_data_in[104]
++ top_cw.top_cw_logic/cw_rst_z user_clock2 io_in[22] uprj_w_const/o_s_rst la_data_in[104]
 + top_cw.upc.core/i_irq la_data_in[94] la_data_in[78] la_data_in[88] la_data_in[89]
 + la_data_in[90] la_data_in[91] la_data_in[92] la_data_in[93] la_data_in[79] la_data_in[80]
 + la_data_in[81] la_data_in[82] la_data_in[83] la_data_in[84] la_data_in[85] la_data_in[86]
@@ -661,9 +665,9 @@ Xtop_cw.top_cw_logic top_cw.wb_compressor/wb_4_burst top_cw.wb_compressor/wb_8_b
 + top_cw.wb_compressor/cw_io_i[15] top_cw.wb_compressor/cw_io_i[1] top_cw.wb_compressor/cw_io_i[2]
 + top_cw.wb_compressor/cw_io_i[3] top_cw.wb_compressor/cw_io_i[4] top_cw.wb_compressor/cw_io_i[5]
 + top_cw.wb_compressor/cw_io_i[6] top_cw.wb_compressor/cw_io_i[7] top_cw.wb_compressor/cw_io_i[8]
-+ top_cw.wb_compressor/cw_io_i[9] top_cw.upc.core/i_rst top_cw.wb_cross_clk/m_wb_4_burst
++ top_cw.wb_compressor/cw_io_i[9] top_cw.clk_div/i_rst top_cw.wb_cross_clk/m_wb_4_burst
 + top_cw.wb_cross_clk/m_wb_8_burst top_cw.top_cw_logic/u_wb_ack top_cw.wb_cross_clk/m_wb_ack
-+ top_cw.clock_div/div_we top_cw.top_cw_logic/u_wb_ack_mxed la_data_out[38] la_data_out[48]
++ top_cw.clk_div/div_we top_cw.top_cw_logic/u_wb_ack_mxed la_data_out[38] la_data_out[48]
 + la_data_out[49] la_data_out[50] la_data_out[51] la_data_out[52] la_data_out[53]
 + la_data_out[54] la_data_out[55] la_data_out[56] la_data_out[57] la_data_out[39]
 + la_data_out[58] la_data_out[59] la_data_out[60] la_data_out[61] la_data_out[40]
@@ -680,44 +684,43 @@ Xtop_cw.top_cw_logic top_cw.wb_compressor/wb_4_burst top_cw.wb_compressor/wb_8_b
 + top_cw.wb_cross_clk/m_wb_i_dat[1] top_cw.wb_cross_clk/m_wb_i_dat[2] top_cw.wb_cross_clk/m_wb_i_dat[3]
 + top_cw.wb_cross_clk/m_wb_i_dat[4] top_cw.wb_cross_clk/m_wb_i_dat[5] top_cw.wb_cross_clk/m_wb_i_dat[6]
 + top_cw.wb_cross_clk/m_wb_i_dat[7] top_cw.wb_cross_clk/m_wb_i_dat[8] top_cw.wb_cross_clk/m_wb_i_dat[9]
-+ top_cw.clock_div/div[0] top_cw.wb_cross_clk/m_wb_o_dat[10] top_cw.wb_cross_clk/m_wb_o_dat[11]
++ top_cw.clk_div/div[0] top_cw.wb_cross_clk/m_wb_o_dat[10] top_cw.wb_cross_clk/m_wb_o_dat[11]
 + top_cw.wb_cross_clk/m_wb_o_dat[12] top_cw.wb_cross_clk/m_wb_o_dat[13] top_cw.wb_cross_clk/m_wb_o_dat[14]
-+ top_cw.wb_cross_clk/m_wb_o_dat[15] top_cw.clock_div/div[1] top_cw.clock_div/div[2]
-+ top_cw.clock_div/div[3] top_cw.wb_cross_clk/m_wb_o_dat[4] top_cw.wb_cross_clk/m_wb_o_dat[5]
-+ top_cw.wb_cross_clk/m_wb_o_dat[6] top_cw.wb_cross_clk/m_wb_o_dat[7] top_cw.wb_cross_clk/m_wb_o_dat[8]
-+ top_cw.wb_cross_clk/m_wb_o_dat[9] top_cw.wb_cross_clk/m_wb_sel[0] top_cw.wb_cross_clk/m_wb_sel[1]
-+ uprj_w_const/la_datb_i[0] uprj_w_const/la_datb_i[1] vccd1 vssd1 top_cw_logic
-Xtop_cw.upc.wb_arbiter user_clock2 top_cw.upc.core/i_rst top_cw.upc.dcache/wb_cyc
-+ top_cw.upc.icache/wb_cyc top_cw.upc.wb_arbiter/o_sel_sig top_cw.wb_cross_clk/m_wb_cyc
-+ top_cw.wb_cross_clk/m_wb_4_burst top_cw.wb_cross_clk/m_wb_8_burst top_cw.top_cw_logic/u_wb_ack
-+ la_data_out[38] la_data_out[48] la_data_out[49] la_data_out[50] la_data_out[51]
-+ la_data_out[52] la_data_out[53] la_data_out[54] la_data_out[55] la_data_out[56]
-+ la_data_out[57] la_data_out[39] la_data_out[58] la_data_out[59] la_data_out[60]
-+ la_data_out[61] la_data_out[40] la_data_out[41] la_data_out[42] la_data_out[43]
-+ la_data_out[44] la_data_out[45] la_data_out[46] la_data_out[47] top_cw.top_cw_logic/u_wb_err
-+ top_cw.clock_div/div[0] top_cw.wb_cross_clk/m_wb_o_dat[10] top_cw.wb_cross_clk/m_wb_o_dat[11]
-+ top_cw.wb_cross_clk/m_wb_o_dat[12] top_cw.wb_cross_clk/m_wb_o_dat[13] top_cw.wb_cross_clk/m_wb_o_dat[14]
-+ top_cw.wb_cross_clk/m_wb_o_dat[15] top_cw.clock_div/div[1] top_cw.clock_div/div[2]
-+ top_cw.clock_div/div[3] top_cw.wb_cross_clk/m_wb_o_dat[4] top_cw.wb_cross_clk/m_wb_o_dat[5]
-+ top_cw.wb_cross_clk/m_wb_o_dat[6] top_cw.wb_cross_clk/m_wb_o_dat[7] top_cw.wb_cross_clk/m_wb_o_dat[8]
-+ top_cw.wb_cross_clk/m_wb_o_dat[9] top_cw.wb_cross_clk/m_wb_sel[0] top_cw.wb_cross_clk/m_wb_sel[1]
-+ uprj_w_const/la_datb_i[0] uprj_w_const/la_datb_i[1] vccd1 vssd1 top_cw.upc.dcache/wb_4_burst
-+ top_cw.upc.wb_arbiter/wb0_8_burst top_cw.upc.dcache/wb_ack top_cw.upc.dcache/wb_adr[0]
-+ top_cw.upc.dcache/wb_adr[10] top_cw.upc.dcache/wb_adr[11] top_cw.upc.dcache/wb_adr[12]
-+ top_cw.upc.dcache/wb_adr[13] top_cw.upc.dcache/wb_adr[14] top_cw.upc.dcache/wb_adr[15]
-+ top_cw.upc.dcache/wb_adr[16] top_cw.upc.dcache/wb_adr[17] top_cw.upc.dcache/wb_adr[18]
-+ top_cw.upc.dcache/wb_adr[19] top_cw.upc.dcache/wb_adr[1] top_cw.upc.dcache/wb_adr[20]
-+ top_cw.upc.dcache/wb_adr[21] top_cw.upc.dcache/wb_adr[22] top_cw.upc.dcache/wb_adr[23]
-+ top_cw.upc.dcache/wb_adr[2] top_cw.upc.dcache/wb_adr[3] top_cw.upc.dcache/wb_adr[4]
-+ top_cw.upc.dcache/wb_adr[5] top_cw.upc.dcache/wb_adr[6] top_cw.upc.dcache/wb_adr[7]
-+ top_cw.upc.dcache/wb_adr[8] top_cw.upc.dcache/wb_adr[9] top_cw.upc.dcache/wb_err
-+ top_cw.upc.dcache/wb_o_dat[0] top_cw.upc.dcache/wb_o_dat[10] top_cw.upc.dcache/wb_o_dat[11]
-+ top_cw.upc.dcache/wb_o_dat[12] top_cw.upc.dcache/wb_o_dat[13] top_cw.upc.dcache/wb_o_dat[14]
-+ top_cw.upc.dcache/wb_o_dat[15] top_cw.upc.dcache/wb_o_dat[1] top_cw.upc.dcache/wb_o_dat[2]
-+ top_cw.upc.dcache/wb_o_dat[3] top_cw.upc.dcache/wb_o_dat[4] top_cw.upc.dcache/wb_o_dat[5]
-+ top_cw.upc.dcache/wb_o_dat[6] top_cw.upc.dcache/wb_o_dat[7] top_cw.upc.dcache/wb_o_dat[8]
-+ top_cw.upc.dcache/wb_o_dat[9] top_cw.upc.dcache/wb_sel[0] top_cw.upc.dcache/wb_sel[1]
-+ top_cw.upc.dcache/wb_stb top_cw.upc.dcache/wb_we top_cw.upc.wb_arbiter/wb1_4_burst
++ top_cw.wb_cross_clk/m_wb_o_dat[15] top_cw.clk_div/div[1] top_cw.clk_div/div[2] top_cw.clk_div/div[3]
++ top_cw.wb_cross_clk/m_wb_o_dat[4] top_cw.wb_cross_clk/m_wb_o_dat[5] top_cw.wb_cross_clk/m_wb_o_dat[6]
++ top_cw.wb_cross_clk/m_wb_o_dat[7] top_cw.wb_cross_clk/m_wb_o_dat[8] top_cw.wb_cross_clk/m_wb_o_dat[9]
++ top_cw.wb_cross_clk/m_wb_sel[0] top_cw.wb_cross_clk/m_wb_sel[1] uprj_w_const/la_datb_i[0]
++ uprj_w_const/la_datb_i[1] vccd1 vssd1 top_cw_logic
+Xtop_cw.upc.wb_arbiter user_clock2 top_cw.clk_div/i_rst top_cw.upc.dcache/wb_cyc top_cw.upc.icache/wb_cyc
++ top_cw.upc.wb_arbiter/o_sel_sig top_cw.wb_cross_clk/m_wb_cyc top_cw.wb_cross_clk/m_wb_4_burst
++ top_cw.wb_cross_clk/m_wb_8_burst top_cw.top_cw_logic/u_wb_ack la_data_out[38] la_data_out[48]
++ la_data_out[49] la_data_out[50] la_data_out[51] la_data_out[52] la_data_out[53]
++ la_data_out[54] la_data_out[55] la_data_out[56] la_data_out[57] la_data_out[39]
++ la_data_out[58] la_data_out[59] la_data_out[60] la_data_out[61] la_data_out[40]
++ la_data_out[41] la_data_out[42] la_data_out[43] la_data_out[44] la_data_out[45]
++ la_data_out[46] la_data_out[47] top_cw.top_cw_logic/u_wb_err top_cw.clk_div/div[0]
++ top_cw.wb_cross_clk/m_wb_o_dat[10] top_cw.wb_cross_clk/m_wb_o_dat[11] top_cw.wb_cross_clk/m_wb_o_dat[12]
++ top_cw.wb_cross_clk/m_wb_o_dat[13] top_cw.wb_cross_clk/m_wb_o_dat[14] top_cw.wb_cross_clk/m_wb_o_dat[15]
++ top_cw.clk_div/div[1] top_cw.clk_div/div[2] top_cw.clk_div/div[3] top_cw.wb_cross_clk/m_wb_o_dat[4]
++ top_cw.wb_cross_clk/m_wb_o_dat[5] top_cw.wb_cross_clk/m_wb_o_dat[6] top_cw.wb_cross_clk/m_wb_o_dat[7]
++ top_cw.wb_cross_clk/m_wb_o_dat[8] top_cw.wb_cross_clk/m_wb_o_dat[9] top_cw.wb_cross_clk/m_wb_sel[0]
++ top_cw.wb_cross_clk/m_wb_sel[1] uprj_w_const/la_datb_i[0] uprj_w_const/la_datb_i[1]
++ vccd1 vssd1 top_cw.upc.dcache/wb_4_burst top_cw.upc.wb_arbiter/wb0_8_burst top_cw.upc.dcache/wb_ack
++ top_cw.upc.dcache/wb_adr[0] top_cw.upc.dcache/wb_adr[10] top_cw.upc.dcache/wb_adr[11]
++ top_cw.upc.dcache/wb_adr[12] top_cw.upc.dcache/wb_adr[13] top_cw.upc.dcache/wb_adr[14]
++ top_cw.upc.dcache/wb_adr[15] top_cw.upc.dcache/wb_adr[16] top_cw.upc.dcache/wb_adr[17]
++ top_cw.upc.dcache/wb_adr[18] top_cw.upc.dcache/wb_adr[19] top_cw.upc.dcache/wb_adr[1]
++ top_cw.upc.dcache/wb_adr[20] top_cw.upc.dcache/wb_adr[21] top_cw.upc.dcache/wb_adr[22]
++ top_cw.upc.dcache/wb_adr[23] top_cw.upc.dcache/wb_adr[2] top_cw.upc.dcache/wb_adr[3]
++ top_cw.upc.dcache/wb_adr[4] top_cw.upc.dcache/wb_adr[5] top_cw.upc.dcache/wb_adr[6]
++ top_cw.upc.dcache/wb_adr[7] top_cw.upc.dcache/wb_adr[8] top_cw.upc.dcache/wb_adr[9]
++ top_cw.upc.dcache/wb_err top_cw.upc.dcache/wb_o_dat[0] top_cw.upc.dcache/wb_o_dat[10]
++ top_cw.upc.dcache/wb_o_dat[11] top_cw.upc.dcache/wb_o_dat[12] top_cw.upc.dcache/wb_o_dat[13]
++ top_cw.upc.dcache/wb_o_dat[14] top_cw.upc.dcache/wb_o_dat[15] top_cw.upc.dcache/wb_o_dat[1]
++ top_cw.upc.dcache/wb_o_dat[2] top_cw.upc.dcache/wb_o_dat[3] top_cw.upc.dcache/wb_o_dat[4]
++ top_cw.upc.dcache/wb_o_dat[5] top_cw.upc.dcache/wb_o_dat[6] top_cw.upc.dcache/wb_o_dat[7]
++ top_cw.upc.dcache/wb_o_dat[8] top_cw.upc.dcache/wb_o_dat[9] top_cw.upc.dcache/wb_sel[0]
++ top_cw.upc.dcache/wb_sel[1] top_cw.upc.dcache/wb_stb top_cw.upc.dcache/wb_we top_cw.upc.wb_arbiter/wb1_4_burst
 + top_cw.upc.wb_arbiter/wb1_8_burst top_cw.upc.icache/wb_ack top_cw.upc.wb_arbiter/wb1_adr[0]
 + top_cw.upc.wb_arbiter/wb1_adr[10] top_cw.upc.wb_arbiter/wb1_adr[11] top_cw.upc.wb_arbiter/wb1_adr[12]
 + top_cw.upc.wb_arbiter/wb1_adr[13] top_cw.upc.wb_arbiter/wb1_adr[14] top_cw.upc.wb_arbiter/wb1_adr[15]
@@ -734,7 +737,7 @@ Xtop_cw.upc.wb_arbiter user_clock2 top_cw.upc.core/i_rst top_cw.upc.dcache/wb_cy
 + top_cw.upc.wb_arbiter/wb1_o_dat[6] top_cw.upc.wb_arbiter/wb1_o_dat[7] top_cw.upc.wb_arbiter/wb1_o_dat[8]
 + top_cw.upc.wb_arbiter/wb1_o_dat[9] top_cw.upc.icache/wb_sel[0] top_cw.upc.icache/wb_sel[1]
 + top_cw.upc.icache/wb_stb top_cw.upc.icache/wb_we wishbone_arbiter
-Xtop_cw.upc.icache user_clock2 top_cw.upc.core/i_rst top_cw.upc.icache/mem_ack top_cw.upc.icache/mem_addr[0]
+Xtop_cw.upc.icache user_clock2 top_cw.clk_div/i_rst top_cw.upc.icache/mem_ack top_cw.upc.icache/mem_addr[0]
 + top_cw.upc.icache/mem_addr[10] top_cw.upc.icache/mem_addr[11] top_cw.upc.icache/mem_addr[12]
 + top_cw.upc.icache/mem_addr[13] top_cw.upc.icache/mem_addr[14] top_cw.upc.icache/mem_addr[15]
 + top_cw.upc.icache/mem_addr[1] top_cw.upc.icache/mem_addr[2] top_cw.upc.icache/mem_addr[3]
@@ -765,8 +768,5 @@ Xtop_cw.upc.icache user_clock2 top_cw.upc.core/i_rst top_cw.upc.icache/mem_ack t
 + top_cw.upc.icache/wb_i_dat[7] top_cw.upc.icache/wb_i_dat[8] top_cw.upc.icache/wb_i_dat[9]
 + top_cw.upc.icache/wb_sel[0] top_cw.upc.icache/wb_sel[1] top_cw.upc.icache/wb_stb
 + top_cw.upc.icache/wb_we icache
-Xtop_cw.clock_div la_data_in[104] top_cw.clock_div/div[0] top_cw.clock_div/div[1]
-+ top_cw.clock_div/div[2] top_cw.clock_div/div[3] top_cw.clock_div/div_we user_clock2
-+ top_cw.upc.core/i_rst uprj_w_const/cw_clk_i vccd1 vssd1 clock_div
 .ends
 

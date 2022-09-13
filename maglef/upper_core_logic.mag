@@ -1,11 +1,11 @@
 magic
 tech sky130B
 magscale 1 2
-timestamp 1663051598
+timestamp 1663070444
 << obsli1 >>
 rect 1104 2159 48852 47345
 << obsm1 >>
-rect 14 1776 49666 47524
+rect 14 1776 49666 47592
 << metal2 >>
 rect 662 49200 718 50000
 rect 1950 49200 2006 50000
@@ -313,7 +313,7 @@ rect 4208 2128 4528 47376
 rect 19568 2128 19888 47376
 rect 34928 2128 35248 47376
 << obsm4 >>
-rect 4659 2347 19488 47021
+rect 16619 2347 19488 47021
 rect 19968 2347 34848 47021
 rect 35328 2347 48149 47021
 << labels >>
@@ -601,8 +601,8 @@ port 139 nsew signal output
 string FIXED_BBOX 0 0 50000 50000
 string LEFclass BLOCK
 string LEFview TRUE
-string GDS_END 5939022
-string GDS_FILE /home/piotro/ppcpu_caravel/openlane/upper_core_logic/runs/22_09_13_08_44/results/signoff/upper_core_logic.magic.gds
-string GDS_START 333974
+string GDS_END 5912324
+string GDS_FILE /home/piotro/ppcpu_caravel/openlane/upper_core_logic/runs/22_09_13_13_58/results/signoff/upper_core_logic.magic.gds
+string GDS_START 326174
 << end >>
 

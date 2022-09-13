@@ -1,7 +1,7 @@
 magic
 tech sky130B
 magscale 1 2
-timestamp 1662930737
+timestamp 1663070791
 << nwell >>
 rect 1066 37253 38862 37574
 rect 1066 36165 38862 36731
@@ -602,7 +602,7 @@ string FIXED_BBOX 0 0 40000 40000
 string LEFclass BLOCK
 string LEFview TRUE
 string GDS_END 2470728
-string GDS_FILE /home/piotro/ppcpu_caravel/openlane/wb_cross_clk/runs/22_09_11_23_10/results/signoff/wb_cross_clk.magic.gds
+string GDS_FILE /home/piotro/ppcpu_caravel/openlane/wb_cross_clk/runs/22_09_13_14_04/results/signoff/wb_cross_clk.magic.gds
 string GDS_START 280276
 << end >>
 

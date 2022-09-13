@@ -20,11 +20,11 @@ set ::env(ROUTING_CORES) "6"
 
 set script_dir [file dirname [file normalize [info script]]]
 
-set ::env(DESIGN_NAME) clock_div
+set ::env(DESIGN_NAME) clk_div
 
 set ::env(VERILOG_FILES) "\
 	$::env(CARAVEL_ROOT)/verilog/rtl/defines.v \
-	$script_dir/../../verilog/rtl/clock_div.v"
+	$script_dir/../../verilog/rtl/clk_div.v"
 
 set ::env(VERILOG_INCLUDE_DIRS) [glob $::env(DESIGN_DIR)/../../verilog/rtl/ ]
 

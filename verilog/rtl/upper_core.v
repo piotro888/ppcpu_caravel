@@ -31,16 +31,16 @@ module upper_core (
     input wire i_rst,
 
     output wb_cyc,
-    output reg wb_stb,
-    output reg [`WB_DATA_W-1:0] wb_o_dat,
+    output wb_stb,
+    output [`WB_DATA_W-1:0] wb_o_dat,
     input [`WB_DATA_W-1:0] wb_i_dat,
-    output reg [`WB_ADDR_W-1:0]  wb_adr,
-    output reg wb_we,
+    output [`WB_ADDR_W-1:0]  wb_adr,
+    output wb_we,
     input wb_ack,
     input wb_err,
     input wb_rty,
-    output reg [`WB_SEL_BITS-1:0] wb_sel,
-    output reg wb_8_burst, wb_4_burst,
+    output [`WB_SEL_BITS-1:0] wb_sel,
+    output wb_8_burst, wb_4_burst,
 
     input i_irq,
     output [`RW-1:0] dbg_r0, dbg_pc,
@@ -79,14 +79,14 @@ core core (
     .i_mem_exception(dcache_exception), .dbg_out(dbg_out_core), .dbg_in(dbg_in));
 
 wire fetch_wb_cyc, fetch_wb_stb, fetch_wb_we;
-reg fetch_wb_ack, fetch_wb_err, fetch_wb_rty;
+wire fetch_wb_ack, fetch_wb_err, fetch_wb_rty;
 wire [`WB_DATA_W-1:0] fetch_wb_o_dat;
 wire [`RW-1:0]  fetch_wb_adr;
 wire [`WB_ADDR_W-1:0]  fetch_wb_adr_paged;
 wire [`WB_SEL_BITS-1:0] fetch_wb_sel;
 
 wire data_wb_cyc, data_wb_stb, data_wb_we;
-reg data_wb_ack, data_wb_err, data_wb_rty;
+wire data_wb_ack, data_wb_err, data_wb_rty;
 wire [`WB_DATA_W-1:0] data_wb_o_dat;
 wire [`WB_ADDR_W-1:0]  data_wb_adr;
 wire [`WB_SEL_BITS-1:0] data_wb_sel;

@@ -50,7 +50,12 @@ module uprj_w_const (
     output cw_dir_b_oo,
 
     input [2:0] la_datb_i,
-    output [2:0] la_datb_o
+    output [2:0] la_datb_o,
+
+    input soft_rst,
+    input i_wb_rst,
+    input i_pin_rst,
+    output o_s_rst
 );
 
 assign io_out_20_19 = 2'b0;
@@ -72,5 +77,8 @@ assign cw_req_o = cw_req_i;
 assign cw_clk_o = cw_clk_i;
 assign cw_rst_o = cw_rst_i;
 assign cw_dir_b_oo = cw_dir_b_o;
-
+assign o_s_rst = soft_rst | i_pin_rst | i_wb_rst;
+assign cw_dir_o = cw_dir;
+assign io_out = 15'b0;
+assign oeb_out = {14'b0, 1'b1}; //pin_rst
 endmodule

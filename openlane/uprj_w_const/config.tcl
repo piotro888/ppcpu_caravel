@@ -37,7 +37,7 @@ set ::env(CLOCK_PORT) ""
 set ::env(CLOCK_PERIOD) "10"
 
 set ::env(FP_SIZING) "absolute"
-set ::env(DIE_AREA) "0 0 150 150"
+set ::env(DIE_AREA) "0 0 200 200"
 
 set ::env(SYNTH_MAX_FANOUT) 10
 set ::env(CLOCK_BUFFER_FANOUT) 16

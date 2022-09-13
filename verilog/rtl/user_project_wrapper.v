@@ -30,7 +30,7 @@
  *
  *-------------------------------------------------------------
  */
-
+`define MPRJ_IO_PADS 38
 module user_project_wrapper (
 `ifdef USE_POWER_PINS
     inout vdda1,	// User area 1 3.3V supply
@@ -87,7 +87,7 @@ module user_project_wrapper (
 wire soft_rst = la_data_in[105];
 
 wire i_clk = user_clock2;
-wire i_rst = soft_rst;
+wire i_rst = o_s_rst;
 wire i_irq;
 
 wire cw_clk;
@@ -131,7 +131,7 @@ assign {cw_err, cw_ack} = io_in[20:19];
 
 assign i_irq = io_in[22];
 
-wire cw_rst, cw_dir_o;
+wire cw_rst, cw_dir_o, o_s_rst;
 
 // constant driver and buffers not allowed in wrapper
 uprj_w_const uprj_w_const (
@@ -167,7 +167,12 @@ uprj_w_const uprj_w_const (
     .cw_rst_i(cw_rst), .cw_rst_o(io_out[21]),
     .cw_dir_b_o(cw_dir_o), .cw_dir_b_oo(io_out[18]),
     .la_datb_i({dbg_out[21], dbg_out[37:36]}),
-    .la_datb_o({la_data_out[21], la_data_out[37:36]})
+    .la_datb_o({la_data_out[21], la_data_out[37:36]}),
+
+    .soft_rst(soft_rst),
+    .i_wb_rst(wb_rst_i),
+    .i_pin_rst(io_in[23]),
+    .o_s_rst(o_s_rst)
 );
 
 // MODULES

@@ -55,7 +55,7 @@ set ::env(VERILOG_FILES_BLACKBOX) "\
 	$::env(CARAVEL_ROOT)/verilog/rtl/defines.v \
 	$script_dir/../../verilog/rtl/icache.v \
 	$script_dir/../../verilog/rtl/dcache.v \
-	$script_dir/../../verilog/rtl/clock_div.v \
+	$script_dir/../../verilog/rtl/clk_div.v \
 	$script_dir/../../verilog/rtl/wb_compressor.v \
 	$script_dir/../../verilog/rtl/wb_cross_clk.v \
 	$script_dir/../../verilog/rtl/wishbone_arbiter.v \
@@ -68,7 +68,7 @@ set ::env(VERILOG_FILES_BLACKBOX) "\
 set ::env(EXTRA_LEFS) "\
 	$script_dir/../../lef/icache.lef \
 	$script_dir/../../lef/dcache.lef \
-	$script_dir/../../lef/clock_div.lef \
+	$script_dir/../../lef/clk_div.lef \
 	$script_dir/../../lef/wb_compressor.lef \
 	$script_dir/../../lef/wb_cross_clk.lef \
 	$script_dir/../../lef/wishbone_arbiter.lef \
@@ -80,7 +80,7 @@ set ::env(EXTRA_LEFS) "\
 set ::env(EXTRA_GDS_FILES) "\
 	$script_dir/../../gds/icache.gds \
 	$script_dir/../../gds/dcache.gds \
-	$script_dir/../../gds/clock_div.gds \
+	$script_dir/../../gds/clk_div.gds \
 	$script_dir/../../gds/wb_compressor.gds \
 	$script_dir/../../gds/wb_cross_clk.gds \
 	$script_dir/../../gds/wishbone_arbiter.gds \
@@ -94,7 +94,7 @@ set ::env(FP_PDN_MACRO_HOOKS) "\
 	top_cw.upc.icache vccd1 vssd1 vccd1 vssd1, \
 	top_cw.upc.dcache vccd1 vssd1 vccd1 vssd1, \
 	top_cw.wb_compressor vccd1 vssd1 vccd1 vssd1, \
-	top_cw.clock_div vccd1 vssd1 vccd1 vssd1, \
+	top_cw.clk_div vccd1 vssd1 vccd1 vssd1, \
 	top_cw.upc.core vccd1 vssd1 vccd1 vssd1, \
 	top_cw.wb_cross_clk vccd1 vssd1 vccd1 vssd1, \ 
 	top_cw.upc.wb_arbiter vccd1 vssd1 vccd1 vssd1, \

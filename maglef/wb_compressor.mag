@@ -1,7 +1,7 @@
 magic
 tech sky130B
 magscale 1 2
-timestamp 1662930667
+timestamp 1663070775
 << obsli1 >>
 rect 1104 2159 38824 37553
 << obsm1 >>
@@ -442,7 +442,7 @@ string FIXED_BBOX 0 0 40000 40000
 string LEFclass BLOCK
 string LEFview TRUE
 string GDS_END 1508484
-string GDS_FILE /home/piotro/ppcpu_caravel/openlane/wb_compressor/runs/22_09_11_23_09/results/signoff/wb_compressor.magic.gds
+string GDS_FILE /home/piotro/ppcpu_caravel/openlane/wb_compressor/runs/22_09_13_14_04/results/signoff/wb_compressor.magic.gds
 string GDS_START 302790
 << end >>
 
