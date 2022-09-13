@@ -1,3 +1,17 @@
 # Caravel user project includes	     
++incdir+$(USER_PROJECT_VERILOG)/rtl/
 -v $(USER_PROJECT_VERILOG)/gl/user_project_wrapper.v	     
--v $(USER_PROJECT_VERILOG)/gl/user_proj_example.v     
+-v $(USER_PROJECT_VERILOG)/gl/clock_div.v
+-v $(USER_PROJECT_VERILOG)/gl/wb_compressor.v
+-v $(USER_PROJECT_VERILOG)/gl/wb_cross_clk.v
+-v $(USER_PROJECT_VERILOG)/gl/core.v
+-v $(USER_PROJECT_VERILOG)/gl/dcache.v
+-v $(USER_PROJECT_VERILOG)/gl/icache.v
+-v $(USER_PROJECT_VERILOG)/gl/top_cw_logic.v
+-v $(USER_PROJECT_VERILOG)/gl/upper_core_logic.v
+-v $(USER_PROJECT_VERILOG)/gl/uprj_w_const.v
+-v $(USER_PROJECT_VERILOG)/gl/wishbone_arbiter.v
+-v $(USER_PROJECT_VERILOG)/gl/dcache_ram.v
+-v $(USER_PROJECT_VERILOG)/gl/icache_ram.v
+
+

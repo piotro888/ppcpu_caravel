@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2020 Efabless Corporation
+// SPDX-FileCopyrightText: 2022 Piotr Wegrzyn
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -28,7 +28,12 @@ module la_test1_tb;
 	wire uart_tx;
 	wire [37:0] mprj_io;
 	wire [15:0] checkbits;
-
+	assign mprj_io[15:0] = (mprj_io[18] ? mprj_io_r[15:0] : 16'hZZZZ);
+	reg [15:0] mprj_io_r;
+	reg mprj_io_ack = 1'b0;
+	assign mprj_io[19] = mprj_io_ack;
+	assign mprj_io[20] = 1'b0; //err
+	assign mprj_io[23] = 1'b0; //rst
 	assign checkbits  = mprj_io[31:16];
 	assign uart_tx = mprj_io[6];
 
@@ -140,7 +145,7 @@ module la_test1_tb;
 		$dumpvars(0, la_test1_tb);
 
 		// Repeat cycles of 1000 clock edges as needed to complete testbench
-		repeat (250) begin
+		repeat (40) begin
 			repeat (1000) @(posedge clock);
 			// $display("+1000 cycles");
 		end
@@ -182,6 +187,148 @@ module la_test1_tb;
 		power2 <= 1'b1;
 	end
 
+	initial begin
+		$display("TEST START");
+	    // WAIT FOR FIRST REQUEST
+		wait(mprj_io[17] == 1'b1);
+		wait(mprj_io[15:0] == 16'hff17);
+		wait(mprj_io[15:0] == 16'he000);
+		mprj_io_ack <= 1'b1;
+		@(posedge clock);
+		mprj_io_ack <= 1'b0;
+		@(posedge clock);
+		@(posedge clock);
+		wait(mprj_io[18] == 1'b1);
+		// Submit fake jump to address 0x1000
+		mprj_io_r[15:0] <= 16'h000e;
+		mprj_io_ack <= 1'b1;
+		@(posedge clock);
+		mprj_io_ack <= 1'b0;
+		@(posedge clock);
+		mprj_io_r[15:0] <= 16'h0100;
+		mprj_io_ack <= 1'b1;
+		@(posedge clock);
+		mprj_io_ack <= 1'b0;
+		@(posedge clock);
+		mprj_io_ack <= 1'b1;
+		@(posedge clock);
+		mprj_io_ack <= 1'b0;
+		@(posedge clock);
+		mprj_io_ack <= 1'b1;
+		@(posedge clock);
+		mprj_io_ack <= 1'b0;
+		@(posedge clock);
+		mprj_io_ack <= 1'b1;
+		@(posedge clock);
+		mprj_io_ack <= 1'b0;
+		@(posedge clock);
+		mprj_io_ack <= 1'b1;
+		@(posedge clock);
+		mprj_io_ack <= 1'b0;
+		@(posedge clock);
+		mprj_io_ack <= 1'b1;
+		@(posedge clock);
+		mprj_io_ack <= 1'b0;
+		@(posedge clock);
+		mprj_io_ack <= 1'b1;
+		@(posedge clock);
+		mprj_io_ack <= 1'b0;
+		$display("first instr fetched");
+
+		// simulate memory write instruction
+		wait(mprj_io[17] == 1'b1);
+		wait(mprj_io[17] == 1'b1);
+		wait(mprj_io[15:0] == 16'hff17);
+		wait(mprj_io[15:0] == 16'he200);
+		mprj_io_ack <= 1'b1;
+		@(posedge clock);
+		mprj_io_ack <= 1'b0;
+		@(posedge clock);
+		@(posedge clock);
+		wait(mprj_io[18] == 1'b1);
+		// Submit fake jump to address 0x1000
+		mprj_io_r[15:0] <= 16'h0005;
+		mprj_io_ack <= 1'b1;
+		@(posedge clock);
+		mprj_io_ack <= 1'b0;
+		@(posedge clock);
+		mprj_io_r[15:0] <= 16'h0100;
+		mprj_io_ack <= 1'b1;
+		@(posedge clock);
+		mprj_io_ack <= 1'b0;
+		@(posedge clock);
+		mprj_io_ack <= 1'b1;
+		@(posedge clock);
+		mprj_io_ack <= 1'b0;
+		@(posedge clock);
+		mprj_io_ack <= 1'b1;
+		@(posedge clock);
+		mprj_io_ack <= 1'b0;
+		@(posedge clock);
+		mprj_io_ack <= 1'b1;
+		@(posedge clock);
+		mprj_io_ack <= 1'b0;
+		@(posedge clock);
+		mprj_io_ack <= 1'b1;
+		@(posedge clock);
+		mprj_io_ack <= 1'b0;
+		@(posedge clock);
+		mprj_io_ack <= 1'b1;
+		@(posedge clock);
+		mprj_io_ack <= 1'b0;
+		@(posedge clock);
+		mprj_io_ack <= 1'b1;
+		@(posedge clock);
+		mprj_io_ack <= 1'b0;
+
+		$display("second instr fetched");
+
+		wait(mprj_io[17] == 1'b1);
+		wait(mprj_io[15:0] == 16'h1027);
+		wait(mprj_io[15:0] == 16'h0080); // virt addr 0x100
+		$display("rcvreq");
+		mprj_io_ack <= 1'b1;
+		@(posedge clock);
+		mprj_io_ack <= 1'b0;
+		// wait(mprj_io[15:0] == 16'h0000); no, that is read req from cache
+
+		@(posedge clock);
+		mprj_io_ack <= 1'b1;
+		mprj_io_r[15:0] <= 16'ha0a0;
+		@(posedge clock);
+		mprj_io_ack <= 1'b0;
+		@(posedge clock);
+		mprj_io_ack <= 1'b1;
+		@(posedge clock);
+		mprj_io_ack <= 1'b0;
+		@(posedge clock);
+		mprj_io_ack <= 1'b1;
+		@(posedge clock);
+		mprj_io_ack <= 1'b0;
+		@(posedge clock);
+		mprj_io_ack <= 1'b1;
+		@(posedge clock);
+		mprj_io_ack <= 1'b0;
+
+		@(posedge clock);
+		@(posedge clock);
+		@(posedge clock);
+		@(posedge clock);
+		@(posedge clock);
+		@(posedge clock);
+
+		`ifdef GL
+	    	$display("Monitor: Test 1 Mega-Project IO (GL) Passed");
+		`else
+		    $display("Monitor: Test 1 Mega-Project IO (RTL) Passed");
+		`endif
+	    $finish;
+	end
+
+	always @(mprj_io) begin
+		#1 $display("MPRJ-IO state = %b ", mprj_io[31:0]);
+	end
+
 	wire flash_csb;
 	wire flash_clk;
 	wire flash_io0;
@@ -194,9 +341,6 @@ module la_test1_tb;
 	assign VDD3V3 = power1;
 	assign VDD1V8 = power2;
 	assign VSS = 1'b0;
-
-	assign mprj_io[3] = 1;  // Force CSB high.
-	assign mprj_io[0] = 0;  // Disable debug mode
 
 	caravel uut (
 		.vddio	  (VDD3V3),
@@ -236,11 +380,6 @@ module la_test1_tb;
 		.io1(flash_io1),
 		.io2(),			// not used
 		.io3()			// not used
-	);
-
-	// Testbench UART
-	tbuart tbuart (
-		.ser_rx(uart_tx)
 	);
 
 endmodule

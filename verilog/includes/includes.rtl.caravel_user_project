@@ -1,8 +1,29 @@
 # Caravel user project includes
++incdir+$(USER_PROJECT_VERILOG)/rtl/
 -v $(USER_PROJECT_VERILOG)/rtl/user_project_wrapper.v	     
 -v $(USER_PROJECT_VERILOG)/rtl/top_cw.v
+-v $(USER_PROJECT_VERILOG)/rtl/clk_div.v
 -v $(USER_PROJECT_VERILOG)/rtl/config.v
 -v $(USER_PROJECT_VERILOG)/rtl/reset_sync.v
 -v $(USER_PROJECT_VERILOG)/rtl/upper_core.v
 -v $(USER_PROJECT_VERILOG)/rtl/wb_compressor.v
 -v $(USER_PROJECT_VERILOG)/rtl/wb_cross_clk.v
+-v $(USER_PROJECT_VERILOG)/rtl/core.v
+-v $(USER_PROJECT_VERILOG)/rtl/dcache.v
+-v $(USER_PROJECT_VERILOG)/rtl/ff_mb_sync.v
+-v $(USER_PROJECT_VERILOG)/rtl/icache.v
+-v $(USER_PROJECT_VERILOG)/rtl/top_cw_logic.v
+-v $(USER_PROJECT_VERILOG)/rtl/upper_core_logic.v
+-v $(USER_PROJECT_VERILOG)/rtl/uprj_w_const.v
+-v $(USER_PROJECT_VERILOG)/rtl/wishbone_arbiter.v
+-v $(USER_PROJECT_VERILOG)/rtl/dcache_ram.v
+-v $(USER_PROJECT_VERILOG)/rtl/icache_ram.v
+-v $(USER_PROJECT_VERILOG)/rtl/decode.v
+-v $(USER_PROJECT_VERILOG)/rtl/execute.v
+-v $(USER_PROJECT_VERILOG)/rtl/fetch.v
+-v $(USER_PROJECT_VERILOG)/rtl/immu.v
+-v $(USER_PROJECT_VERILOG)/rtl/memwb.v
+-v $(USER_PROJECT_VERILOG)/rtl/alu.v
+-v $(USER_PROJECT_VERILOG)/rtl/dmmu.v
+-v $(USER_PROJECT_VERILOG)/rtl/pc.v
+-v $(USER_PROJECT_VERILOG)/rtl/rf.v

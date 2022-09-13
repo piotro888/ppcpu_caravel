@@ -13,13 +13,16 @@ ppcpu is a 16-bit RISC processor, with designed from scratch architecture. This 
 * Memory paging
 * 4 stage pipeline
 
-
 ## Tests
 
-Basic boot test is included in `verilog/dv/boot`.
+Basic boot test is included in `verilog/dv/la_test1`.
 
 Rest of tests for cpu and ISA are included in `ppcpu` repo.
 
 ## Docs
 
 For ISA docs see `pcpu` and `ppcpu` repositories. 
+
+## License
+
+See `LICENSE` file
