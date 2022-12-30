@@ -1,14 +1,54 @@
 {
     "DESIGN_NAME": "user_project_wrapper",
-    "VERILOG_FILES": ["dir::../../verilog/rtl/defines.v", "dir::../../verilog/rtl/user_project_wrapper.v"],
-    "CLOCK_PERIOD": 10,
+    "VERILOG_FILES": [
+        "dir::../../verilog/rtl/defines.v",
+        "dir::../../verilog/rtl/user_project_wrapper.v",
+        "dir::../../verilog/rtl/ppcpu/rtl/top.v"
+    ],
+    "CLOCK_PERIOD": 12,
     "CLOCK_PORT": "user_clock2",
     "CLOCK_NET": "mprj.clk",
     "FP_PDN_MACRO_HOOKS": "mprj vccd1 vssd1 vccd1 vssd1",
     "MACRO_PLACEMENT_CFG": "dir::macro.cfg",
-    "VERILOG_FILES_BLACKBOX": ["dir::../../verilog/rtl/defines.v", "dir::../../verilog/rtl/user_proj_example.v"],
-    "EXTRA_LEFS": "dir::../../lef/user_proj_example.lef",
-    "EXTRA_GDS_FILES": "dir::../../gds/user_proj_example.gds",
+    "VERILOG_INCLUDE_DIRS": ["dir::../../verilog/rtl/ppcpu/rtl/"],
+    
+    "VERILOG_FILES_BLACKBOX": [
+        "dir::../../verilog/rtl/defines.v",
+        "dir::../../verilog/rtl/ppcpu/rtl/core/core.v",
+        "dir::../../verilog/rtl/ppcpu/rtl/interconnect/interconnect_inner.v",
+        "dir::../../verilog/rtl/ppcpu/rtl/interconnect/interconnect_outer.v",
+        "dir::../../verilog/rtl/ppcpu/rtl/dcache/dcache.v",
+        "dir::../../verilog/rtl/ppcpu/rtl/icache/icache.v",
+        "pdk_dir::libs.ref/sky130_sram_macros/verilog/sky130_sram_1kbyte_1rw1r_32x256_8.v"
+    ],
+    "EXTRA_LEFS": [
+        "dir::../../lef/core0.lef",
+        "dir::../../lef/core1.lef",
+        "dir::../../lef/dcache.lef",
+        "dir::../../lef/icache.lef",
+        "dir::../../lef/interconnect_inner.lef",
+        "dir::../../lef/interconnect_outer.lef",
+        "pdk_dir::libs.ref/sky130_sram_macros/lef/sky130_sram_1kbyte_1rw1r_32x256_8.lef"
+    ], 
+    "EXTRA_S_FILES": [
+        "dir::../../gds/core0.gds",
+        "dir::../../gds/core1.gds",
+        "dir::../../gds/dcache.gds",
+        "dir::../../gds/icache.gds",
+        "dir::../../gds/interconnect_inner.gds",
+        "dir::../../gds/interconnect_outer.gds",
+        "pdk_dir::libs.ref/sky130_sram_macros/gds/sky130_sram_1kbyte_1rw1r_32x256_8.gds"
+    ],
+    "EXTRA_LIBS": [
+        "dir::../../lib/core0.lib",
+        "dir::../../lib/core1.lib",
+        "dir::../../lib/dcache.lib",
+        "dir::../../lib/icache.lib",
+        "dir::../../lib/interconnect_inner.lib",
+        "dir::../../lib/interconnect_outer.lib",
+        "pdk_dir::libs.ref/sky130_sram_macros/lib/sky130_sram_1kbyte_1rw1r_32x256_8.lib"
+    ],
+    
     "FP_PDN_CHECK_NODES": 0,
     "SYNTH_ELABORATE_ONLY": 1,
     "PL_RANDOM_GLB_PLACEMENT": 1,
@@ -68,18 +108,6 @@
         "scl::sky130_fd_sc_ms": {
             "CLOCK_PERIOD": 10
         }
-     },
-    "pdk::gf180mcuC": {
-        "STD_CELL_LIBRARY": "gf180mcu_fd_sc_mcu7t5v0",
-        "FP_PDN_CHECK_NODES": 0,
-        "FP_PDN_ENABLE_RAILS": 0,
-        "RT_MAX_LAYER": "Metal4",
-        "DIE_AREA": "0 0 3000 3000",
-        "FP_DEF_TEMPLATE": "dir::fixed_dont_change/user_project_wrapper_gf180mcu.def",
-        "PL_OPENPHYSYN_OPTIMIZATIONS": 0,
-        "DIODE_INSERTION_STRATEGY": 0,
-        "FP_PDN_CHECK_NODES": 0,
-        "MAGIC_WRITE_FULL_LEF": 0,
-        "FP_PDN_ENABLE_RAILS": 0
-   }
+    },
+   "ROUTING_CORES": 6
 }

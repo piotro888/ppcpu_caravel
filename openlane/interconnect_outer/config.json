@@ -1,0 +1,53 @@
+{
+    "DESIGN_NAME": "interconnect_outer",
+    "DESIGN_IS_CORE": 0,
+    "VERILOG_FILES": [
+        "dir::../../verilog/rtl/defines.v", 
+        "dir::../../verilog/rtl/ppcpu/rtl/interconnect/interconnect_outer.v",
+
+        "dir::../../verilog/rtl/ppcpu/rtl/interconnect/outer/clk_div.v",
+        "dir::../../verilog/rtl/ppcpu/rtl/interconnect/outer/ff_mb_sync.v",
+        "dir::../../verilog/rtl/ppcpu/rtl/interconnect/outer/reset_sync.v",
+        "dir::../../verilog/rtl/ppcpu/rtl/interconnect/outer/wb_compressor.v",
+        "dir::../../verilog/rtl/ppcpu/rtl/interconnect/outer/wb_cross_clk.v",
+        "dir::../../verilog/rtl/ppcpu/rtl/embed/gpio.v",
+        "dir::../../verilog/rtl/ppcpu/rtl/embed/sspi.v",
+        "dir::../../verilog/rtl/ppcpu/rtl/interconnect/inner/wishbone_arbiter.v"
+    ],
+    "VERILOG_INCLUDE_DIRS": ["dir::../../verilog/rtl/ppcpu/rtl/"],
+    "CLOCK_PERIOD": 10,
+    "CLOCK_PORT": "user_clock2",
+    "CLOCK_NET": "user_clock2 soc_clock cw_clk core_clock",
+    "FP_SIZING": "absolute",
+    "DIE_AREA": "0 0 300 400",
+    "FP_PIN_ORDER_CFG": "dir::pin_order.cfg",
+    "PL_BASIC_PLACEMENT": 0,
+    "PL_TARGET_DENSITY": 0.35,
+    "VDD_NETS": ["vccd1"],
+    "GND_NETS": ["vssd1"],
+    "DIODE_INSERTION_STRATEGY": 4,
+    "RUN_CVC": 1,
+    "pdk::sky130*": {
+        "FP_CORE_UTIL": 45,
+        "RT_MAX_LAYER": "met4",
+        "scl::sky130_fd_sc_hd": {
+            "CLOCK_PERIOD": 10
+        },
+        "scl::sky130_fd_sc_hdll": {
+            "CLOCK_PERIOD": 10
+        },
+        "scl::sky130_fd_sc_hs": {
+            "CLOCK_PERIOD": 8
+        },
+        "scl::sky130_fd_sc_ls": {
+            "CLOCK_PERIOD": 10,
+            "SYNTH_MAX_FANOUT": 5
+        },
+        "scl::sky130_fd_sc_ms": {
+            "CLOCK_PERIOD": 10
+        }
+    },
+    "PL_RESIZER_HOLD_SLACK_MARGIN": 0.5,
+    "GLB_RESIZER_HOLD_SLACK_MARGIN": 0.5,
+    "ROUTING_CORES": 6
+}

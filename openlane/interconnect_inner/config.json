@@ -1,0 +1,48 @@
+{
+    "DESIGN_NAME": "interconnect_inner",
+    "DESIGN_IS_CORE": 0,
+    "VERILOG_FILES": [
+        "dir::../../verilog/rtl/defines.v",
+
+        "dir::../../verilog/rtl/ppcpu/rtl/interconnect/interconnect_inner.v",
+
+        "dir::../../verilog/rtl/ppcpu/rtl/interconnect/inner/dmmu.v",
+        "dir::../../verilog/rtl/ppcpu/rtl/interconnect/inner/immu.v",
+        "dir::../../verilog/rtl/ppcpu/rtl/interconnect/inner/intercore_sregs.v",
+        "dir::../../verilog/rtl/ppcpu/rtl/interconnect/inner/mem_dcache_arb.v",
+        "dir::../../verilog/rtl/ppcpu/rtl/interconnect/inner/wishbone_arbiter.v"
+    ],
+    "VERILOG_INCLUDE_DIRS": ["dir::../../verilog/rtl/ppcpu/rtl/"],
+    "CLOCK_PERIOD": 10,
+    "CLOCK_PORT": "core_clock",
+    "CLOCK_NET": "core_clock",
+    "FP_SIZING": "absolute",
+    "DIE_AREA": "0 0 300 800",
+    "FP_PIN_ORDER_CFG": "dir::pin_order.cfg",
+    "PL_BASIC_PLACEMENT": 0,
+    "PL_TARGET_DENSITY": 0.25,
+    "VDD_NETS": ["vccd1"],
+    "GND_NETS": ["vssd1"],
+    "DIODE_INSERTION_STRATEGY": 4,
+    "RUN_CVC": 1,
+    "pdk::sky130*": {
+        "RT_MAX_LAYER": "met4",
+        "scl::sky130_fd_sc_hd": {
+            "CLOCK_PERIOD": 10
+        },
+        "scl::sky130_fd_sc_hdll": {
+            "CLOCK_PERIOD": 10
+        },
+        "scl::sky130_fd_sc_hs": {
+            "CLOCK_PERIOD": 8
+        },
+        "scl::sky130_fd_sc_ls": {
+            "CLOCK_PERIOD": 10,
+            "SYNTH_MAX_FANOUT": 5
+        },
+        "scl::sky130_fd_sc_ms": {
+            "CLOCK_PERIOD": 10
+        }
+    },
+    "ROUTING_CORES": 6
+}
