@@ -1,3 +1,0 @@
-[submodule "verilog/rtl/ppcpu"]
-	path = verilog/rtl/ppcpu
-	url = https://github.com/piotro888/ppcpu.git
