@@ -14,28 +14,17 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-# ---- Test patterns for project striVe ----
+PWDD := $(shell pwd)
+BLOCKS := $(shell basename $(PWDD))
 
-.SUFFIXES:
-#.SILENT: clean all
+# ---- Include Partitioned Makefiles ----
+
+CONFIG = caravel_user_project
 
 
-PATTERNS = boot_cw
+include $(MCW_ROOT)/verilog/dv/make/env.makefile
+include $(MCW_ROOT)/verilog/dv/make/var.makefile
+include $(MCW_ROOT)/verilog/dv/make/cpu.makefile
+include $(MCW_ROOT)/verilog/dv/make/sim.makefile
 
-all:  ${PATTERNS}
 
-	for i in ${PATTERNS}; do \
-		( cd $$i && make -f Makefile $${i}.vcd &> verify.log && grep Monitor verify.log) ; \
-	done
-
-DV_PATTERNS = $(foreach dv, $(PATTERNS), verify-$(dv))
-$(DV_PATTERNS): verify-% : 
-	cd $* && make
-
-clean:  ${PATTERNS}
-	for i in ${PATTERNS}; do \
-		( cd $$i && \rm  -f *.elf *.hex *.bin *.vvp *.log *.vcd *.lst *.hexe ) ; \
-	done
-	rm -rf *.log
-	
-.PHONY: clean all
