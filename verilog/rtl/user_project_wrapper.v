@@ -29,9 +29,7 @@
  *-------------------------------------------------------------
  */
 
-module user_project_wrapper #(
-    parameter BITS = 32
-) (
+module user_project_wrapper (
 `ifdef USE_POWER_PINS
     inout vdda1,	// User area 1 3.3V supply
     inout vdda2,	// User area 2 3.3V supply
@@ -82,25 +80,25 @@ module user_project_wrapper #(
 /* User project is instantiated  here   */
 /*--------------------------------------*/
 
-user_proj_example mprj (
+top mprj (
 `ifdef USE_POWER_PINS
 	.vccd1(vccd1),	// User area 1 1.8V power
 	.vssd1(vssd1),	// User area 1 digital ground
 `endif
 
-    .wb_clk_i(wb_clk_i),
-    .wb_rst_i(wb_rst_i),
+    .mgt_wb_clk_i(wb_clk_i),
+    .mgt_wb_rst_i(wb_rst_i),
 
     // MGMT SoC Wishbone Slave
 
-    .wbs_cyc_i(wbs_cyc_i),
-    .wbs_stb_i(wbs_stb_i),
-    .wbs_we_i(wbs_we_i),
-    .wbs_sel_i(wbs_sel_i),
-    .wbs_adr_i(wbs_adr_i),
-    .wbs_dat_i(wbs_dat_i),
-    .wbs_ack_o(wbs_ack_o),
-    .wbs_dat_o(wbs_dat_o),
+    .mgt_wb_cyc_i(wbs_cyc_i),
+    .mgt_wb_stb_i(wbs_stb_i),
+    .mgt_wb_we_i(wbs_we_i),
+    .mgt_wb_sel_i(wbs_sel_i),
+    .mgt_wb_adr_i(wbs_adr_i),
+    .mgt_wb_dat_i(wbs_dat_i),
+    .mgt_wb_ack_o(wbs_ack_o),
+    .mgt_wb_dat_o(wbs_dat_o),
 
     // Logic Analyzer
 
@@ -110,12 +108,14 @@ user_proj_example mprj (
 
     // IO Pads
 
-    .io_in (io_in),
-    .io_out(io_out),
-    .io_oeb(io_oeb),
+    .m_io_in (io_in),
+    .m_io_out(io_out),
+    .m_io_oeb(io_oeb),
 
     // IRQ
-    .irq(user_irq)
+    .irq(user_irq),
+
+    .user_clock2(user_clock2)
 );
 
 endmodule	// user_project_wrapper
