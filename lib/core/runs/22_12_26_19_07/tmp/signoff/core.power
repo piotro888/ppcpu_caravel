@@ -1,0 +1,15 @@
+vccd1 power 1.8
+vssd1 power 0.0
+#define std_input min@vssd1 max@vccd1
+i_clk input std_input
+i_disable input std_input
+i_irq input std_input
+i_mc_core_int input std_input
+i_mem_ack input std_input
+i_mem_exception input std_input
+i_req_data_valid input std_input
+i_rst input std_input
+dbg_in[3:0] input std_input
+i_core_int_sreg[15:0] input std_input
+i_mem_data[15:0] input std_input
+i_req_data[31:0] input std_input

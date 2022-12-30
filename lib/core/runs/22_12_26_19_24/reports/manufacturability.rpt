@@ -1,0 +1,16 @@
+Design Name: core
+Run Directory: /home/piotro/caravel_user_project/openlane/core/runs/22_12_26_19_24
+----------------------------------------
+
+Magic DRC Summary:
+Source: /home/piotro/caravel_user_project/openlane/core/runs/22_12_26_19_24/reports/signoff/drc.rpt
+Total Magic DRC violations is 0
+----------------------------------------
+
+LVS Summary:
+Source: /home/piotro/caravel_user_project/openlane/core/runs/22_12_26_19_24/logs/signoff/core.lvs.lef.log
+Source not found.
+----------------------------------------
+
+Antenna Summary:
+No antenna report found.

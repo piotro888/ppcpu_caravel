@@ -1,0 +1,17 @@
+
+Input: /home/piotro/caravel_user_project/openlane/core/runs/22_12_26_19_24/results/routing/core.def
+Output: /home/piotro/caravel_user_project/openlane/core/runs/22_12_26_19_24/results/signoff/core.klayout.gds
+Design: core
+Technology File: /home/piotro/opt/silicon/pdks/sky130A/libs.tech/klayout/tech/sky130A.lyt
+GDS File List: ['/home/piotro/opt/silicon/pdks/sky130A/libs.ref/sky130_fd_sc_hd/gds/sky130_fd_sc_hd.gds']
+LEF File: /home/piotro/caravel_user_project/openlane/core/runs/22_12_26_19_24/tmp/merged.nom.lef
+
+[INFO] Clearing cells...
+[INFO] Merging GDS files...
+	/home/piotro/opt/silicon/pdks/sky130A/libs.ref/sky130_fd_sc_hd/gds/sky130_fd_sc_hd.gds
+[INFO] Copying toplevel cell 'core'
+WARNING: no fill config file specified
+[INFO] Checking for missing GDS...
+[INFO] All LEF cells have matching GDS cells
+[INFO] Writing out GDS '/home/piotro/caravel_user_project/openlane/core/runs/22_12_26_19_24/results/signoff/core.klayout.gds'
+[INFO] Done.
