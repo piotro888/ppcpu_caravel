@@ -1,0 +1,253 @@
+OpenROAD 7f00621cb612fd94e15b35790afe744c89d433a7 
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+pdk(libs) defined as:
+/home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+/home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_sc_hvl/lib/sky130_fd_sc_hvl__tt_025C_3v30.lib
+/home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_sc_hvl/lib/sky130_fd_sc_hvl__tt_025C_3v30_lv1v80.lib
+/home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_io/lib/sky130_fd_io__top_gpiov2_tt_tt_025C_1v80_3v30.lib
+/home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_io/lib/sky130_fd_io__top_ground_hvc_wpad_tt_025C_1v80_3v30_3v30.lib
+/home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_io/lib/sky130_fd_io__top_ground_lvc_wpad_tt_025C_1v80_3v30.lib
+/home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_io/lib/sky130_fd_io__top_power_lvc_wpad_tt_025C_1v80_3v30_3v30.lib
+/home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_io/lib/sky130_fd_io__top_xres4v2_tt_tt_025C_1v80_3v30.lib
+/home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_io/lib/sky130_ef_io__gpiov2_pad_tt_tt_025C_1v80_3v30.lib
+/home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_io/lib/sky130_ef_io__vccd_lvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib
+/home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_io/lib/sky130_ef_io__vdda_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib
+/home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_io/lib/sky130_ef_io__vssa_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib
+/home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_io/lib/sky130_ef_io__vddio_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib
+/home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_io/lib/sky130_ef_io__vssio_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib
+/home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped3_pad_tt_025C_1v80_3v30.lib
+/home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_io/lib/sky130_ef_io__vccd_lvc_clamped3_pad_tt_025C_1v80_3v30_3v30.lib
+/home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped_pad_tt_025C_1v80_3v30.lib
+/home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_sram_macros/lib/sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.lib
+pdk(lefs) defined as:
+/home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__min.tlef
+/home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef
+/home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_io/lef/sky130_fd_io.lef
+/home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_sc_hd/lef/sky130_ef_sc_hd.lef
+/home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_io/lef/sky130_ef_io.lef
+/home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_sram_macros/lef/sky130_sram_2kbyte_1rw1r_32x512_8.lef
+verilog exception: /home/piotro/caravel_user_project/caravel/verilog/gl/__user_analog_project_wrapper.v
+removing /home/piotro/caravel_user_project/caravel/verilog/gl/__user_analog_project_wrapper.v from verilogs list
+verilog exception: /home/piotro/caravel_user_project/caravel/verilog/gl/caravel-signoff.v
+removing /home/piotro/caravel_user_project/caravel/verilog/gl/caravel-signoff.v from verilogs list
+verilog exception: /home/piotro/caravel_user_project/caravel/verilog/gl/caravan-signoff.v
+removing /home/piotro/caravel_user_project/caravel/verilog/gl/caravan-signoff.v from verilogs list
+verilog exception: /home/piotro/caravel_user_project/caravel/verilog/gl/__user_project_wrapper.v
+removing /home/piotro/caravel_user_project/caravel/verilog/gl/__user_project_wrapper.v from verilogs list
+exec> read_liberty /home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+exec> read_liberty /home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_sc_hvl/lib/sky130_fd_sc_hvl__tt_025C_3v30.lib
+exec> read_liberty /home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_sc_hvl/lib/sky130_fd_sc_hvl__tt_025C_3v30_lv1v80.lib
+exec> read_liberty /home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_io/lib/sky130_fd_io__top_gpiov2_tt_tt_025C_1v80_3v30.lib
+[WARNING STA-0163] /home/piotro/opt/silicon/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_gpiov2_tt_tt_025C_1v80_3v30.lib line 33, default_fanout_load is 0.0.
+exec> read_liberty /home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_io/lib/sky130_fd_io__top_ground_hvc_wpad_tt_025C_1v80_3v30_3v30.lib
+[WARNING STA-0163] /home/piotro/opt/silicon/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_ground_hvc_wpad_tt_025C_1v80_3v30_3v30.lib line 42, default_fanout_load is 0.0.
+exec> read_liberty /home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_io/lib/sky130_fd_io__top_ground_lvc_wpad_tt_025C_1v80_3v30.lib
+[WARNING STA-0163] /home/piotro/opt/silicon/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_ground_lvc_wpad_tt_025C_1v80_3v30.lib line 43, default_fanout_load is 0.0.
+exec> read_liberty /home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_io/lib/sky130_fd_io__top_power_lvc_wpad_tt_025C_1v80_3v30_3v30.lib
+[WARNING STA-0163] /home/piotro/opt/silicon/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_power_lvc_wpad_tt_025C_1v80_3v30_3v30.lib line 42, default_fanout_load is 0.0.
+exec> read_liberty /home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_io/lib/sky130_fd_io__top_xres4v2_tt_tt_025C_1v80_3v30.lib
+[WARNING STA-0163] /home/piotro/opt/silicon/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_xres4v2_tt_tt_025C_1v80_3v30.lib line 33, default_fanout_load is 0.0.
+exec> read_liberty /home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_io/lib/sky130_ef_io__gpiov2_pad_tt_tt_025C_1v80_3v30.lib
+[WARNING STA-0163] /home/piotro/opt/silicon/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__gpiov2_pad_tt_tt_025C_1v80_3v30.lib line 33, default_fanout_load is 0.0.
+exec> read_liberty /home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_io/lib/sky130_ef_io__vccd_lvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib
+[WARNING STA-0163] /home/piotro/opt/silicon/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vccd_lvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib line 42, default_fanout_load is 0.0.
+exec> read_liberty /home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_io/lib/sky130_ef_io__vdda_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib
+[WARNING STA-0163] /home/piotro/opt/silicon/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vdda_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib line 42, default_fanout_load is 0.0.
+exec> read_liberty /home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_io/lib/sky130_ef_io__vssa_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib
+[WARNING STA-0163] /home/piotro/opt/silicon/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssa_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib line 42, default_fanout_load is 0.0.
+exec> read_liberty /home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_io/lib/sky130_ef_io__vddio_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib
+[WARNING STA-0163] /home/piotro/opt/silicon/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vddio_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib line 42, default_fanout_load is 0.0.
+exec> read_liberty /home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_io/lib/sky130_ef_io__vssio_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib
+[WARNING STA-0163] /home/piotro/opt/silicon/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssio_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib line 42, default_fanout_load is 0.0.
+exec> read_liberty /home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped3_pad_tt_025C_1v80_3v30.lib
+[WARNING STA-0163] /home/piotro/opt/silicon/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped3_pad_tt_025C_1v80_3v30.lib line 43, default_fanout_load is 0.0.
+exec> read_liberty /home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_io/lib/sky130_ef_io__vccd_lvc_clamped3_pad_tt_025C_1v80_3v30_3v30.lib
+[WARNING STA-0163] /home/piotro/opt/silicon/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vccd_lvc_clamped3_pad_tt_025C_1v80_3v30_3v30.lib line 42, default_fanout_load is 0.0.
+exec> read_liberty /home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped_pad_tt_025C_1v80_3v30.lib
+[WARNING STA-0163] /home/piotro/opt/silicon/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped_pad_tt_025C_1v80_3v30.lib line 43, default_fanout_load is 0.0.
+exec> read_liberty /home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_sram_macros/lib/sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.lib
+exec> read_lef /home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__min.tlef
+[INFO ODB-0222] Reading LEF file: /home/piotro/opt/silicon/pdks/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__min.tlef
+[INFO ODB-0223]     Created 13 technology layers
+[INFO ODB-0224]     Created 25 technology vias
+[INFO ODB-0226] Finished LEF file:  /home/piotro/opt/silicon/pdks/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__min.tlef
+exec> read_lef /home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef
+[INFO ODB-0222] Reading LEF file: /home/piotro/opt/silicon/pdks/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef
+[WARNING ODB-0220] WARNING (LEFPARS-2008): NOWIREEXTENSIONATPIN statement is obsolete in version 5.6 or later.
+The NOWIREEXTENSIONATPIN statement will be ignored. See file /home/piotro/opt/silicon/pdks/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef at line 2.
+
+[INFO ODB-0225]     Created 437 library cells
+[INFO ODB-0226] Finished LEF file:  /home/piotro/opt/silicon/pdks/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef
+exec> read_lef /home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_io/lef/sky130_fd_io.lef
+[INFO ODB-0222] Reading LEF file: /home/piotro/opt/silicon/pdks/sky130A/libs.ref/sky130_fd_io/lef/sky130_fd_io.lef
+[WARNING ODB-0220] WARNING (LEFPARS-2008): NOWIREEXTENSIONATPIN statement is obsolete in version 5.6 or later.
+The NOWIREEXTENSIONATPIN statement will be ignored. See file /home/piotro/opt/silicon/pdks/sky130A/libs.ref/sky130_fd_io/lef/sky130_fd_io.lef at line 2.
+
+[INFO ODB-0225]     Created 22 library cells
+[INFO ODB-0226] Finished LEF file:  /home/piotro/opt/silicon/pdks/sky130A/libs.ref/sky130_fd_io/lef/sky130_fd_io.lef
+[WARNING ORD-1001] LEF macro sky130_fd_io__top_ground_hvc_wpad pin PADISOR missing from liberty cell.
+[WARNING ORD-1001] LEF macro sky130_fd_io__top_ground_hvc_wpad pin PADISOL missing from liberty cell.
+exec> read_lef /home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_sc_hd/lef/sky130_ef_sc_hd.lef
+[INFO ODB-0222] Reading LEF file: /home/piotro/opt/silicon/pdks/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_ef_sc_hd.lef
+[WARNING ODB-0220] WARNING (LEFPARS-2008): NOWIREEXTENSIONATPIN statement is obsolete in version 5.6 or later.
+The NOWIREEXTENSIONATPIN statement will be ignored. See file /home/piotro/opt/silicon/pdks/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_ef_sc_hd.lef at line 2.
+
+[WARNING ODB-0220] WARNING (LEFPARS-2036): SOURCE statement is obsolete in version 5.6 and later.
+The LEF parser will ignore this statement.
+To avoid this warning in the future, remove this statement from the LEF file with version 5.6 or later. See file /home/piotro/opt/silicon/pdks/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_ef_sc_hd.lef at line 142.
+
+[INFO ODB-0225]     Created 4 library cells
+[INFO ODB-0226] Finished LEF file:  /home/piotro/opt/silicon/pdks/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_ef_sc_hd.lef
+exec> read_lef /home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_io/lef/sky130_ef_io.lef
+[INFO ODB-0222] Reading LEF file: /home/piotro/opt/silicon/pdks/sky130A/libs.ref/sky130_fd_io/lef/sky130_ef_io.lef
+[WARNING ODB-0220] WARNING (LEFPARS-2008): NOWIREEXTENSIONATPIN statement is obsolete in version 5.6 or later.
+The NOWIREEXTENSIONATPIN statement will be ignored. See file /home/piotro/opt/silicon/pdks/sky130A/libs.ref/sky130_fd_io/lef/sky130_ef_io.lef at line 2.
+
+[INFO ODB-0225]     Created 36 library cells
+[INFO ODB-0226] Finished LEF file:  /home/piotro/opt/silicon/pdks/sky130A/libs.ref/sky130_fd_io/lef/sky130_ef_io.lef
+exec> read_lef /home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_sram_macros/lef/sky130_sram_2kbyte_1rw1r_32x512_8.lef
+[INFO ODB-0222] Reading LEF file: /home/piotro/opt/silicon/pdks/sky130A/libs.ref/sky130_sram_macros/lef/sky130_sram_2kbyte_1rw1r_32x512_8.lef
+[INFO ODB-0225]     Created 1 library cells
+[INFO ODB-0226] Finished LEF file:  /home/piotro/opt/silicon/pdks/sky130A/libs.ref/sky130_sram_macros/lef/sky130_sram_2kbyte_1rw1r_32x512_8.lef
+exec> read_lef /home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_sram_macros/lef/sky130_sram_2kbyte_1rw1r_32x512_8.lef
+[WARNING ODB-0229] Error: library (sky130_sram_2kbyte_1rw1r_32x512_8) already exists
+exec> read_lef /home/piotro/caravel_user_project/caravel/lef/user_analog_project_wrapper_empty.lef
+[INFO ODB-0222] Reading LEF file: /home/piotro/caravel_user_project/caravel/lef/user_analog_project_wrapper_empty.lef
+[WARNING ODB-0220] WARNING (LEFPARS-2008): NOWIREEXTENSIONATPIN statement is obsolete in version 5.6 or later.
+The NOWIREEXTENSIONATPIN statement will be ignored. See file /home/piotro/caravel_user_project/caravel/lef/user_analog_project_wrapper_empty.lef at line 2.
+
+[INFO ODB-0225]     Created 1 library cells
+[INFO ODB-0226] Finished LEF file:  /home/piotro/caravel_user_project/caravel/lef/user_analog_project_wrapper_empty.lef
+exec> read_lef /home/piotro/caravel_user_project/caravel/lef/user_project_wrapper_empty.lef
+[INFO ODB-0222] Reading LEF file: /home/piotro/caravel_user_project/caravel/lef/user_project_wrapper_empty.lef
+[WARNING ODB-0220] WARNING (LEFPARS-2008): NOWIREEXTENSIONATPIN statement is obsolete in version 5.6 or later.
+The NOWIREEXTENSIONATPIN statement will be ignored. See file /home/piotro/caravel_user_project/caravel/lef/user_project_wrapper_empty.lef at line 2.
+
+[INFO ODB-0225]     Created 1 library cells
+[INFO ODB-0226] Finished LEF file:  /home/piotro/caravel_user_project/caravel/lef/user_project_wrapper_empty.lef
+exec> read_lef /home/piotro/caravel_user_project/mgmt_core_wrapper/lef/RAM256.lef
+[INFO ODB-0222] Reading LEF file: /home/piotro/caravel_user_project/mgmt_core_wrapper/lef/RAM256.lef
+[WARNING ODB-0220] WARNING (LEFPARS-2008): NOWIREEXTENSIONATPIN statement is obsolete in version 5.6 or later.
+The NOWIREEXTENSIONATPIN statement will be ignored. See file /home/piotro/caravel_user_project/mgmt_core_wrapper/lef/RAM256.lef at line 2.
+
+[INFO ODB-0225]     Created 1 library cells
+[INFO ODB-0226] Finished LEF file:  /home/piotro/caravel_user_project/mgmt_core_wrapper/lef/RAM256.lef
+exec> read_lef /home/piotro/caravel_user_project/mgmt_core_wrapper/lef/RAM128.lef
+[INFO ODB-0222] Reading LEF file: /home/piotro/caravel_user_project/mgmt_core_wrapper/lef/RAM128.lef
+[WARNING ODB-0220] WARNING (LEFPARS-2008): NOWIREEXTENSIONATPIN statement is obsolete in version 5.6 or later.
+The NOWIREEXTENSIONATPIN statement will be ignored. See file /home/piotro/caravel_user_project/mgmt_core_wrapper/lef/RAM128.lef at line 2.
+
+[INFO ODB-0225]     Created 1 library cells
+[INFO ODB-0226] Finished LEF file:  /home/piotro/caravel_user_project/mgmt_core_wrapper/lef/RAM128.lef
+exec> read_lef /home/piotro/caravel_user_project/mgmt_core_wrapper/lef/mgmt_core_wrapper.lef
+[INFO ODB-0222] Reading LEF file: /home/piotro/caravel_user_project/mgmt_core_wrapper/lef/mgmt_core_wrapper.lef
+[WARNING ODB-0220] WARNING (LEFPARS-2008): NOWIREEXTENSIONATPIN statement is obsolete in version 5.6 or later.
+The NOWIREEXTENSIONATPIN statement will be ignored. See file /home/piotro/caravel_user_project/mgmt_core_wrapper/lef/mgmt_core_wrapper.lef at line 2.
+
+[INFO ODB-0225]     Created 1 library cells
+[INFO ODB-0226] Finished LEF file:  /home/piotro/caravel_user_project/mgmt_core_wrapper/lef/mgmt_core_wrapper.lef
+exec> read_lef /home/piotro/caravel_user_project/lef/icache.lef
+[INFO ODB-0222] Reading LEF file: /home/piotro/caravel_user_project/lef/icache.lef
+[WARNING ODB-0220] WARNING (LEFPARS-2008): NOWIREEXTENSIONATPIN statement is obsolete in version 5.6 or later.
+The NOWIREEXTENSIONATPIN statement will be ignored. See file /home/piotro/caravel_user_project/lef/icache.lef at line 2.
+
+[INFO ODB-0225]     Created 1 library cells
+[INFO ODB-0226] Finished LEF file:  /home/piotro/caravel_user_project/lef/icache.lef
+exec> read_lef /home/piotro/caravel_user_project/lef/interconnect_inner.lef
+[INFO ODB-0222] Reading LEF file: /home/piotro/caravel_user_project/lef/interconnect_inner.lef
+[WARNING ODB-0220] WARNING (LEFPARS-2008): NOWIREEXTENSIONATPIN statement is obsolete in version 5.6 or later.
+The NOWIREEXTENSIONATPIN statement will be ignored. See file /home/piotro/caravel_user_project/lef/interconnect_inner.lef at line 2.
+
+[INFO ODB-0225]     Created 1 library cells
+[INFO ODB-0226] Finished LEF file:  /home/piotro/caravel_user_project/lef/interconnect_inner.lef
+exec> read_lef /home/piotro/caravel_user_project/lef/interconnect_outer.lef
+[INFO ODB-0222] Reading LEF file: /home/piotro/caravel_user_project/lef/interconnect_outer.lef
+[WARNING ODB-0220] WARNING (LEFPARS-2008): NOWIREEXTENSIONATPIN statement is obsolete in version 5.6 or later.
+The NOWIREEXTENSIONATPIN statement will be ignored. See file /home/piotro/caravel_user_project/lef/interconnect_outer.lef at line 2.
+
+[INFO ODB-0225]     Created 1 library cells
+[INFO ODB-0226] Finished LEF file:  /home/piotro/caravel_user_project/lef/interconnect_outer.lef
+exec> read_lef /home/piotro/caravel_user_project/lef/user_project_wrapper.lef
+[INFO ODB-0222] Reading LEF file: /home/piotro/caravel_user_project/lef/user_project_wrapper.lef
+[WARNING ODB-0220] WARNING (LEFPARS-2008): NOWIREEXTENSIONATPIN statement is obsolete in version 5.6 or later.
+The NOWIREEXTENSIONATPIN statement will be ignored. See file /home/piotro/caravel_user_project/lef/user_project_wrapper.lef at line 2.
+
+[INFO ODB-0225]     Created 1 library cells
+[INFO ODB-0226] Finished LEF file:  /home/piotro/caravel_user_project/lef/user_project_wrapper.lef
+exec> read_lef /home/piotro/caravel_user_project/lef/user_proj_example.lef
+[INFO ODB-0222] Reading LEF file: /home/piotro/caravel_user_project/lef/user_proj_example.lef
+[WARNING ODB-0220] WARNING (LEFPARS-2008): NOWIREEXTENSIONATPIN statement is obsolete in version 5.6 or later.
+The NOWIREEXTENSIONATPIN statement will be ignored. See file /home/piotro/caravel_user_project/lef/user_proj_example.lef at line 2.
+
+[INFO ODB-0225]     Created 1 library cells
+[INFO ODB-0226] Finished LEF file:  /home/piotro/caravel_user_project/lef/user_proj_example.lef
+exec> read_lef /home/piotro/caravel_user_project/lef/core1.lef
+[INFO ODB-0222] Reading LEF file: /home/piotro/caravel_user_project/lef/core1.lef
+[WARNING ODB-0220] WARNING (LEFPARS-2008): NOWIREEXTENSIONATPIN statement is obsolete in version 5.6 or later.
+The NOWIREEXTENSIONATPIN statement will be ignored. See file /home/piotro/caravel_user_project/lef/core1.lef at line 2.
+
+[INFO ODB-0225]     Created 1 library cells
+[INFO ODB-0226] Finished LEF file:  /home/piotro/caravel_user_project/lef/core1.lef
+exec> read_lef /home/piotro/caravel_user_project/lef/dcache.lef
+[INFO ODB-0222] Reading LEF file: /home/piotro/caravel_user_project/lef/dcache.lef
+[WARNING ODB-0220] WARNING (LEFPARS-2008): NOWIREEXTENSIONATPIN statement is obsolete in version 5.6 or later.
+The NOWIREEXTENSIONATPIN statement will be ignored. See file /home/piotro/caravel_user_project/lef/dcache.lef at line 2.
+
+[INFO ODB-0225]     Created 1 library cells
+[INFO ODB-0226] Finished LEF file:  /home/piotro/caravel_user_project/lef/dcache.lef
+exec> read_lef /home/piotro/caravel_user_project/lef/int_ram.lef
+[INFO ODB-0222] Reading LEF file: /home/piotro/caravel_user_project/lef/int_ram.lef
+[WARNING ODB-0220] WARNING (LEFPARS-2008): NOWIREEXTENSIONATPIN statement is obsolete in version 5.6 or later.
+The NOWIREEXTENSIONATPIN statement will be ignored. See file /home/piotro/caravel_user_project/lef/int_ram.lef at line 2.
+
+[INFO ODB-0225]     Created 1 library cells
+[INFO ODB-0226] Finished LEF file:  /home/piotro/caravel_user_project/lef/int_ram.lef
+exec> read_lef /home/piotro/caravel_user_project/lef/core.lef
+[INFO ODB-0222] Reading LEF file: /home/piotro/caravel_user_project/lef/core.lef
+[WARNING ODB-0220] WARNING (LEFPARS-2008): NOWIREEXTENSIONATPIN statement is obsolete in version 5.6 or later.
+The NOWIREEXTENSIONATPIN statement will be ignored. See file /home/piotro/caravel_user_project/lef/core.lef at line 2.
+
+[INFO ODB-0225]     Created 1 library cells
+[INFO ODB-0226] Finished LEF file:  /home/piotro/caravel_user_project/lef/core.lef
+exec> read_lef /home/piotro/caravel_user_project/lef/core0.lef
+[INFO ODB-0222] Reading LEF file: /home/piotro/caravel_user_project/lef/core0.lef
+[WARNING ODB-0220] WARNING (LEFPARS-2008): NOWIREEXTENSIONATPIN statement is obsolete in version 5.6 or later.
+The NOWIREEXTENSIONATPIN statement will be ignored. See file /home/piotro/caravel_user_project/lef/core0.lef at line 2.
+
+[INFO ODB-0225]     Created 1 library cells
+[INFO ODB-0226] Finished LEF file:  /home/piotro/caravel_user_project/lef/core0.lef
+exec> read_def /home/piotro/caravel_user_project/def/core0.def
+[INFO ODB-0127] Reading DEF file: /home/piotro/caravel_user_project/def/core0.def
+[INFO ODB-0128] Design: core0
+[INFO ODB-0130]     Created 214 pins.
+[INFO ODB-0131]     Created 43213 components and 184476 component-terminals.
+[INFO ODB-0132]     Created 2 special nets and 164212 connections.
+[INFO ODB-0133]     Created 4350 nets and 20263 connections.
+[INFO ODB-0134] Finished DEF file: /home/piotro/caravel_user_project/def/core0.def
+exec> define_process_corner -ext_model_index 0 X
+[INFO RCX-0431] Defined process_corner X with ext_model_index 0
+[INFO RCX-0029] Defined extraction corner X
+exec> extract_parasitics  -ext_model_file /home/piotro/opt/silicon/pdks/sky130A/libs.tech//openlane/rules.openrcx.sky130A.min.calibre  -lef_res
+[INFO RCX-0008] extracting parasitics of core0 ...
+[INFO RCX-0435] Reading extraction model file /home/piotro/opt/silicon/pdks/sky130A/libs.tech//openlane/rules.openrcx.sky130A.min.calibre ...
+[INFO RCX-0436] RC segment generation core0 (max_merge_res 50.0) ...
+[INFO RCX-0040] Final 29091 rc segments
+[INFO RCX-0439] Coupling Cap extraction core0 ...
+[INFO RCX-0440] Coupling threshhold is 0.1000 fF, coupling capacitance less than 0.1000 fF will be grounded.
+[INFO RCX-0043] 46110 wires to be extracted
+[INFO RCX-0442] 53% completion -- 24452 wires have been extracted
+[INFO RCX-0442] 100% completion -- 46110 wires have been extracted
+[INFO RCX-0045] Extract 4350 nets, 33441 rsegs, 33441 caps, 57441 ccs
+[INFO RCX-0015] Finished extracting core0.
+exec> write_spef /home/piotro/caravel_user_project/signoff/core0/openlane-signoff/spef/core0.min.spef
+[INFO RCX-0016] Writing SPEF ...
+[INFO RCX-0443] 4350 nets finished
+[INFO RCX-0017] Finished writing SPEF ...
+exec> read_spef /home/piotro/caravel_user_project/signoff/core0/openlane-signoff/spef/core0.min.spef
+spef: /home/piotro/caravel_user_project/signoff/core0/openlane-signoff/spef/core0.min.spef
+def: /home/piotro/caravel_user_project/def/core0.def
+rcx: /home/piotro/opt/silicon/pdks/sky130A/libs.tech//openlane/rules.openrcx.sky130A.min.calibre
+rcx-corner: min
+lib-corner: t.tcl
+tech_lef: /home/piotro/opt/silicon/pdks/sky130A/libs.ref//sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__min.tlef

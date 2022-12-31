@@ -5,10 +5,9 @@
         "dir::../../verilog/rtl/user_project_wrapper.v",
         "dir::../../verilog/rtl/ppcpu/rtl/top.v"
     ],
-    "CLOCK_PERIOD": 12,
+    "CLOCK_PERIOD": 14,
     "CLOCK_PORT": "user_clock2",
     "CLOCK_NET": "mprj.clk",
-    "FP_PDN_MACRO_HOOKS": "mprj vccd1 vssd1 vccd1 vssd1",
     "MACRO_PLACEMENT_CFG": "dir::macro.cfg",
     "VERILOG_INCLUDE_DIRS": ["dir::../../verilog/rtl/ppcpu/rtl/"],
     
@@ -19,7 +18,7 @@
         "dir::../../verilog/rtl/ppcpu/rtl/interconnect/interconnect_outer.v",
         "dir::../../verilog/rtl/ppcpu/rtl/dcache/dcache.v",
         "dir::../../verilog/rtl/ppcpu/rtl/icache/icache.v",
-        "pdk_dir::libs.ref/sky130_sram_macros/verilog/sky130_sram_1kbyte_1rw1r_32x256_8.v"
+        "dir::../../verilog/rtl/ppcpu/rtl/embed/int_ram.v"
     ],
     "EXTRA_LEFS": [
         "dir::../../lef/core0.lef",
@@ -28,16 +27,16 @@
         "dir::../../lef/icache.lef",
         "dir::../../lef/interconnect_inner.lef",
         "dir::../../lef/interconnect_outer.lef",
-        "pdk_dir::libs.ref/sky130_sram_macros/lef/sky130_sram_1kbyte_1rw1r_32x256_8.lef"
+        "dir::../../lef/int_ram.lef"
     ], 
-    "EXTRA_S_FILES": [
+    "EXTRA_GDS_FILES": [
         "dir::../../gds/core0.gds",
         "dir::../../gds/core1.gds",
         "dir::../../gds/dcache.gds",
         "dir::../../gds/icache.gds",
         "dir::../../gds/interconnect_inner.gds",
         "dir::../../gds/interconnect_outer.gds",
-        "pdk_dir::libs.ref/sky130_sram_macros/gds/sky130_sram_1kbyte_1rw1r_32x256_8.gds"
+        "dir::../../gds/int_ram.gds"
     ],
     "EXTRA_LIBS": [
         "dir::../../lib/core0.lib",
@@ -46,7 +45,18 @@
         "dir::../../lib/icache.lib",
         "dir::../../lib/interconnect_inner.lib",
         "dir::../../lib/interconnect_outer.lib",
-        "pdk_dir::libs.ref/sky130_sram_macros/lib/sky130_sram_1kbyte_1rw1r_32x256_8.lib"
+        "dir::../../lib/int_ram.lib"
+    ],
+
+    "FP_PDN_MACRO_HOOKS": [
+        "mprj/core0 vccd1 vssd1 vccd1 vssd1,",
+        "mprj/core1 vccd1 vssd1 vccd1 vssd1,",
+        "mprj/dcache vccd1 vssd1 vccd1 vssd1,",
+        "mprj/icache_0 vccd1 vssd1 vccd1 vssd1,",
+        "mprj/icache_1 vccd1 vssd1 vccd1 vssd1,",
+        "mprj/interconnect_inner vccd1 vssd1 vccd1 vssd1,",
+        "mprj/interconnect_outer vccd1 vssd1 vccd1 vssd1,",
+        "mprj/int_ram vccd1 vssd1 vccd1 vssd1"
     ],
     
     "FP_PDN_CHECK_NODES": 0,
@@ -91,23 +101,14 @@
     "pdk::sky130*": {
         "RT_MAX_LAYER": "met4",
         "DIE_AREA": "0 0 2920 3520",
-        "FP_DEF_TEMPLATE": "dir::fixed_dont_change/user_project_wrapper.def",
-        "scl::sky130_fd_sc_hd": {
-            "CLOCK_PERIOD": 10
-        },
-        "scl::sky130_fd_sc_hdll": {
-            "CLOCK_PERIOD": 10
-        },
-        "scl::sky130_fd_sc_hs": {
-            "CLOCK_PERIOD": 8
-        },
-        "scl::sky130_fd_sc_ls": {
-            "CLOCK_PERIOD": 10,
-            "SYNTH_MAX_FANOUT": 5
-        },
-        "scl::sky130_fd_sc_ms": {
-            "CLOCK_PERIOD": 10
-        }
+        "FP_DEF_TEMPLATE": "dir::fixed_dont_change/user_project_wrapper.def"
     },
-   "ROUTING_CORES": 6
+    "PL_RESIZER_SETUP_SLACK_MARGIN": 4,
+    "GLB_RESIZER_SETUP_SLACK_MARGIN": 4,
+    "PL_RESIZER_SETUP_MAX_BUFFER_PERCENT": 80,
+    "GLB_RESIZER_SETUP_MAX_BUFFER_PERCENT": 80,
+    "SYNTH_STRATEGY": "DELAY 4",
+    "ROUTING_CORES": 6,
+
+    "RUN_KLAYOUT_XOR": 0
 }

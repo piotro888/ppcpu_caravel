@@ -1,3 +1,18 @@
+// SPDX-FileCopyrightText: 2022 Piotr Wegrzyn
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// SPDX-License-Identifier: Apache-2.0
+
 `include "config.v"
 
 module decode (
@@ -475,6 +490,17 @@ always @(posedge i_clk) begin
     if(i_rst) begin
         o_submit <= 1'b0;
         input_valid <= 1'b0;
+
+        // default values for control signals at reset not zzz. Later delete it and catch bugs with load of zzz without exec_submit at gl tests
+        oc_pc_inc = 1'b0;
+        {oc_pc_ie, oc_r_bus_imm, oc_alu_carry_en, oc_alu_flags_ie, oc_mem_access,
+            oc_mem_we, oc_sreg_load, oc_sreg_store, oc_sreg_jal_over, oc_sreg_irt, oc_sys, oc_mem_width, oc_mem_long} = 13'b0;
+        oc_rf_ie = `REGNO'b0;
+        oc_alu_mode = `ALU_MODE_W'b0;
+        oc_l_reg_sel = `REGNO_LOG'b0;
+        oc_r_reg_sel = `REGNO_LOG'b0;
+        oc_jump_cond_code = `JUMP_CODE_W'b0;
+        oc_used_operands = 2'b0;
     end else begin
         // default bubble
         o_submit <= 1'b0;

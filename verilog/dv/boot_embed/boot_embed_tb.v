@@ -166,6 +166,11 @@ module boot_embed_tb;
 		spi_tx(24'h800037, 16'h0004);
 		spi_tx(24'h800038, 16'h0005);
 		spi_tx(24'h800039, 16'h0022);
+		// noops to not break gl, when fetch requests next before memwb starts write req
+		spi_tx(24'h80003a, 16'h0000);
+		spi_tx(24'h80003b, 16'h0000);
+		spi_tx(24'h80003c, 16'h0000);
+		spi_tx(24'h80003d, 16'h0000);
 		$display("spi_load_finished");
 
 		// enable the core

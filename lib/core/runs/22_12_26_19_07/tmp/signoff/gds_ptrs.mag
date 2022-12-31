@@ -1,6 +1,0 @@
-<< properties >>
-string FIXED_BBOX 0 0 100000 100000
-string GDS_END 19233724
-string GDS_FILE /home/piotro/caravel_user_project/openlane/core/runs/22_12_26_19_07/results/signoff/core.magic.gds
-string GDS_START 1282538
-<< end >>

@@ -1,0 +1,8 @@
+set spef_mapping(mprj/mprj/core0) "$::env(PROJECT_ROOT)/signoff/core0/openlane-signoff/spef/core0.$::env(RCX_CORNER).spef"
+set spef_mapping(mprj/mprj/core1) "$::env(PROJECT_ROOT)/signoff/core1/openlane-signoff/spef/core1.$::env(RCX_CORNER).spef"
+set spef_mapping(mprj/mprj/dcache) "$::env(PROJECT_ROOT)/signoff/dcache/openlane-signoff/spef/dcache.$::env(RCX_CORNER).spef"
+set spef_mapping(mprj/mprj/icache_0) "$::env(PROJECT_ROOT)/signoff/icache/openlane-signoff/spef/icache.$::env(RCX_CORNER).spef"
+set spef_mapping(mprj/mprj/icache_1) "$::env(PROJECT_ROOT)/signoff/icache/openlane-signoff/spef/icache.$::env(RCX_CORNER).spef"
+set spef_mapping(mprj/mprj/int_ram) "$::env(PROJECT_ROOT)/signoff/int_ram/openlane-signoff/spef/int_ram.$::env(RCX_CORNER).spef"
+set spef_mapping(mprj/mprj/interconnect_inner) "$::env(PROJECT_ROOT)/signoff/interconnect_inner/openlane-signoff/spef/interconnect_inner.$::env(RCX_CORNER).spef"
+set spef_mapping(mprj/mprj/interconnect_outer) "$::env(PROJECT_ROOT)/signoff/interconnect_outer/openlane-signoff/spef/interconnect_outer.$::env(RCX_CORNER).spef"

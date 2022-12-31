@@ -1,3 +1,18 @@
+// SPDX-FileCopyrightText: 2022 Piotr Wegrzyn
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// SPDX-License-Identifier: Apache-2.0
+
 `include "config.v"
 
 `define MPRJ_IO_PADS 38
@@ -50,15 +65,10 @@ module interconnect_outer (
 
     // Internal ram
     output iram_clk,
-    output [7:0] iram_addr,
-    output [31:0] iram_i_data,
-    input  [31:0] iram_o_data,
-    output iram_we, iram_csb,
-    output [3:0] iram_w_mask,
-    input iram1_clk,
-    output [7:0] iram1_addr,
-    input  [31:0] iram1_dout,
-    input iram1_csb
+    output [6:0] iram_addr,
+    output [`RW-1:0] iram_i_data,
+    input  [`RW-1:0] iram_o_data,
+    output iram_we
 );
 
 // Use user_clock2 as clock. It can be used independently from mgmt cpu and is not limited to 40Mhz by it.
@@ -94,7 +104,7 @@ assign m_io_out[25:10] = cw_io_o;
 assign cw_io_i = m_io_in[25:10];
 assign cw_ack = m_io_in[26];
 assign cw_err = m_io_in[27];
-assign m_io_out[28] = cw_clk;
+assign m_io_out[37] = cw_clk; // nearest pin
 assign m_io_out[29] = cw_rst; // reset out
 
 wire ext_irq = m_io_in[30];
@@ -109,7 +119,7 @@ assign m_io_out[36] = spi_miso;
 
 assign gpio_in = m_io_in[7:0];
 assign m_io_out[7:0] = gpio_out;
-assign m_io_out[37] = 1'b1;
+assign m_io_out[28] = 1'b1;
 
 assign m_io_oeb[7:0] = gpio_dir;
 assign m_io_oeb[9:8] = 2'b0;
@@ -370,26 +380,33 @@ wishbone_arbiter m_arbiter (
 wire [`RW-1:0] iram_wb_i_dat;
 
 assign iram_clk = core_clock;
-assign iram_addr = m_wb_adr[7:0];
-assign iram_i_data = {16'b0,m_wb_o_dat};
-assign iram_wb_i_dat = iram_o_data[15:0];
-assign iram_we = m_wb_cyc & m_wb_stb & m_wb_we & wb_tsel_iram;
-assign iram_csb = 1'b1;
-assign iram1_clk = 1'b0;
-assign iram1_csb = 1'b0;
-assign iram1_addr = 1'b0;
+assign iram_addr = m_wb_adr[6:0];
+assign iram_i_data = m_wb_o_dat;
+assign iram_wb_i_dat = iram_o_data;
+assign iram_we = (m_wb_cyc & m_wb_stb & m_wb_we & wb_tsel_iram);
 
+// simple sram driver?
 reg iram_wb_ack;
+reg iram_wb_ack_del;
+reg [`RW-1:0] iram_latched;
 always @(posedge core_clock) begin
-    if (core_reset) iram_wb_ack <= 1'b0;
-    else iram_wb_ack <= m_wb_cyc & m_wb_stb & wb_tsel_iram & ~m_wb_ack; // 1 cyc delay
+    if (core_reset) begin
+        iram_wb_ack <= 1'b0;
+        iram_wb_ack_del <= 1'b0;
+        iram_latched <= `RW'b0;
+    end else begin
+        if (iram_wb_ack)
+            iram_latched <= iram_o_data;
+        iram_wb_ack <= m_wb_cyc & m_wb_stb & wb_tsel_iram & ~m_wb_ack & ~iram_wb_ack; // 1 cyc delay
+        iram_wb_ack_del <= iram_wb_ack; // 2  cyc delay
+    end
 end
 
 // WISHBONE TARGET SELECT
 `define NE_INTMEM_BEGIN 24'h7ffe00
 `define E_PROG_START    24'h800000
 `define E_MEM_START     24'h100000
-`define INTMEM_SIZE     24'h100
+`define INTMEM_SIZE     24'h080
 `define GPIO_START      24'h001010
 `define GPIO_END        24'h001012
 
@@ -406,9 +423,9 @@ always @(*) begin
         m_wb_err = cw_out_wb_err;
         m_wb_i_dat = cw_out_wb_i_dat;
     end else if (wb_tsel_iram) begin
-        m_wb_ack = iram_wb_ack;
+        m_wb_ack = iram_wb_ack_del;
         m_wb_err = 1'b0;
-        m_wb_i_dat = iram_wb_i_dat;
+        m_wb_i_dat = iram_latched;
     end else if (wb_tsel_clk) begin
         m_wb_ack = 1'b1;
         m_wb_err = 1'b0;
@@ -419,7 +436,7 @@ always @(*) begin
         m_wb_i_dat = gpio_wb_o_dat;
     end else begin
         m_wb_ack = 1'b0;
-        m_wb_err = 1'b1;
+        m_wb_err = 1'b1 & wb_cyc & wb_stb;
         m_wb_i_dat = `RW'b0;
     end
 end

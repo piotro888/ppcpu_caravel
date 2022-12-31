@@ -2,3 +2,13 @@ values on irq, la pins make defaults
 critical path: wb responses in one cycle, ignore them next time
 wb not connected
 macro hooks
+lic
+
+to resynth:
+outer ... done
+core0 ... done
+core1
+
+top
+
+nd core test

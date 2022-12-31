@@ -1,3 +1,18 @@
+// SPDX-FileCopyrightText: 2022 Piotr Wegrzyn
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// SPDX-License-Identifier: Apache-2.0
+
 `include "config.v"
 
 module execute #(parameter CORENO = 0, INT_VEC = 1) (
@@ -390,7 +405,7 @@ register  #(.RESET_VAL((CORENO == 0 ? 3'b001 : 3'b000)), .N(3)) sreg_jtr_buff (
 `ifdef USE_POWER_PINS
     .vccd1(vccd1), .vssd1(vssd1),
 `endif
-    .i_clk(i_clk), .i_rst(i_rst), .i_d(jtr_buff_in), .o_d(sreg_jtr_buff_o), .i_ie(sreg_jtr_ie | jtr_irqh_write));
+    .i_clk(i_clk), .i_rst(i_rst), .i_d(jtr_buff_in), .o_d(sreg_jtr_buff_o), .i_ie((sreg_jtr_ie & exec_submit) | jtr_irqh_write));
 register  #(.RESET_VAL((CORENO == 0 ? 3'b001 : 3'b000)), .N(3)) sreg_jtr (
 `ifdef USE_POWER_PINS
     .vccd1(vccd1), .vssd1(vssd1),

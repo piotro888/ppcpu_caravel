@@ -1,3 +1,18 @@
+// SPDX-FileCopyrightText: 2022 Piotr Wegrzyn
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// SPDX-License-Identifier: Apache-2.0
+
 `include "config.v"
 
 // Internal ram for use in embed mode (programmable from outside)
@@ -12,13 +27,13 @@ module int_ram (
 
     input i_clk,
 
-    input [8:0] i_addr, // 1kB
+    input [6:0] i_addr, // 256B
     input [`RW-1:0] i_data,
     output reg [`RW-1:0] o_data,
     input i_we
 );
 
-reg [`RW-1:0] mem [511:0];
+reg [`RW-1:0] mem [128:0];
 
 always @(posedge i_clk) begin
     if(i_we)

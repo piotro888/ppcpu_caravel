@@ -1,3 +1,18 @@
+// SPDX-FileCopyrightText: 2022 Piotr Wegrzyn
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// SPDX-License-Identifier: Apache-2.0
+
 `include "config.v"
 
 // Instruction fetch stage v2
@@ -80,7 +95,9 @@ end
 
 reg [`RW-1:0] prev_request_pc;
 always @(posedge i_clk) begin
-    if(mem_submit)
+    if (i_rst)
+        prev_request_pc <= 16'b0; // not synthed pred fix
+    else if(mem_submit)
         prev_request_pc <= mem_addr;
 end
 

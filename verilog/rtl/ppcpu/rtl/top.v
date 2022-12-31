@@ -1,3 +1,18 @@
+// SPDX-FileCopyrightText: 2022 Piotr Wegrzyn
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// SPDX-License-Identifier: Apache-2.0
+
 // Connects all moules to interconnects
 // No logic or buffers allowed here
 // See both interconnect codes to see how it is connected
@@ -389,28 +404,20 @@ icache icache_1 (
 
 
 // Internal ram
-wire iram_clk, iram1_clk;
-wire [7:0] iram_addr, iram1_addr;
-wire [31:0] iram_i_data, iram_o_data, iram1_dout;
-wire [3:0]  iram_w_mask;
-wire iram_we, iram_csb, iram1_csb;
+wire iram_clk;
+wire [6:0] iram_addr;
+wire [`RW-1:0] iram_i_data, iram_o_data;
+wire iram_we;
 
-sky130_sram_1kbyte_1rw1r_32x256_8 int_ram (
+int_ram int_ram (
 `ifdef USE_POWER_PINS
-    .vccd1(vccd1),
-    .vssd1(vssd1),
+    .vccd1(vccd1), .vssd1(vssd1),
 `endif
-    .clk0(iram_clk),
-    .csb0(iram_csb),
-    .web0(iram_we),
-    .wmask0(iram_w_mask),
-    .addr0(iram_addr),
-    .din0(iram_i_data),
-    .dout0(iram_o_data),
-    .clk1(iram1_clk),
-    .csb1(iram1_csb),
-    .addr1(iram1_addr),
-    .dout1(iram1_dout)
+    .i_clk(iram_clk),
+    .i_addr(iram_addr),
+    .i_data(iram_i_data),
+    .o_data(iram_o_data),
+    .i_we(iram_we)
 );
 
 
