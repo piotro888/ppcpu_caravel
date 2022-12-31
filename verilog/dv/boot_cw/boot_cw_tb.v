@@ -59,7 +59,7 @@ module boot_cw_tb;
 	assign mprj_io[CW_PIN_OFF+17:CW_PIN_OFF+2] = (cw_dir ? cw_io_i : 16'hZZZZ);
 	assign mprj_io[CW_PIN_OFF+18] = cw_ack;
 	assign mprj_io[CW_PIN_OFF+19] = cw_err;
-	assign cw_clk = mprj_io[CW_PIN_OFF+20];
+	assign cw_clk = mprj_io[CW_PIN_OFF+29];
 	assign cw_rst = mprj_io[CW_PIN_OFF+21];
 
 	reg ext_irq, split_clk, core_disable, embed_mode;
@@ -316,10 +316,14 @@ module boot_cw_tb;
 
 	initial begin
 		$dumpfile("boot_cw.vcd");
-		$dumpvars(0, boot_cw_tb);
 
 		// Repeat cycles of 1000 clock edges as needed to complete testbench
-		repeat (1) begin
+		repeat (33) begin // core sets up gpio at ~ 38k cycles
+			repeat (1000) @(posedge clock);
+			$display("+1000 cycles");
+		end
+		$dumpvars(2, boot_cw_tb.uut.mprj);
+		repeat (5) begin // core sets up gpio at ~ 38k cycles
 			repeat (1000) @(posedge clock);
 			$display("+1000 cycles");
 		end
@@ -333,8 +337,8 @@ module boot_cw_tb;
 		$finish;
 	end
 
-	always @({mprj_io[37:CW_PIN_OFF+21],mprj_io[CW_PIN_OFF+19:0]}) begin //exclude clk
-		#1 $display("MPRJ-IO state = %b ", mprj_io[31:0]);
+	always @(mprj_io[36:8]) begin //exclude clk
+		#1 $display("MPRJ-IO state = %b ", mprj_io[37:8]);
 	end
 
 	initial begin

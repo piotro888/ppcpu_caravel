@@ -20,7 +20,7 @@
 #.SILENT: clean all
 
 
-PATTERNS = boot_cw
+PATTERNS = boot_cw boot_cw_split boot_embed
 
 all:  ${PATTERNS}
 

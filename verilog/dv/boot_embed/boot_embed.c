@@ -27,7 +27,11 @@ void main()
 	reg_la0_data = 1;
 	reg_la0_data = 0;
 
-	reg_mprj_io_0 =  GPIO_MODE_USER_STD_INPUT_PULLUP;
+	reg_mprj_io_0 = GPIO_MODE_USER_STD_OUTPUT;
+	reg_mprj_io_1 = GPIO_MODE_USER_STD_OUTPUT;
+	reg_mprj_io_2 = GPIO_MODE_USER_STD_OUTPUT;
+	reg_mprj_io_4 = GPIO_MODE_USER_STD_INPUT_NOPULL;
+	reg_mprj_io_5 = GPIO_MODE_USER_STD_INPUT_NOPULL;
 	reg_mprj_io_5 =  GPIO_MODE_USER_STD_BIDIRECTIONAL;
 	reg_mprj_io_6 =  GPIO_MODE_USER_STD_BIDIRECTIONAL;
 	reg_mprj_io_7 =  GPIO_MODE_USER_STD_BIDIRECTIONAL;

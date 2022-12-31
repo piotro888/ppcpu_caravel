@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2020 Efabless Corporation
+// SPDX-FileCopyrightText: 2020 Piotr Wegrzyn
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,30 +13,27 @@
 // limitations under the License.
 // SPDX-License-Identifier: Apache-2.0
 
+/*
+	CW BOOT TEST
+
+	Boots core in CW mode, monitors CW bus pins and inserts fixed instruction to see if CW outside
+	communication works correctly
+
+*/
+
 `default_nettype none
 
 `timescale 1 ns / 1 ps
 
-module io_ports_tb;
+module boot_cw_split_tb;
 	reg clock;
-	reg RSTB;
+    reg RSTB;
 	reg CSB;
+
 	reg power1, power2;
-	reg power3, power4;
 
 	wire gpio;
 	wire [37:0] mprj_io;
-	wire [7:0] mprj_io_0;
-
-	assign mprj_io_0 = mprj_io[7:0];
-	// assign mprj_io_0 = {mprj_io[8:4],mprj_io[2:0]};
-
-	assign mprj_io[3] = (CSB == 1'b1) ? 1'b1 : 1'bz;
-	// assign mprj_io[3] = 1'b1;
-
-	// External clock is used by default.  Make this artificially fast for the
-	// simulation.  Normally this would be a slow clock and the digital PLL
-	// would be the fast clock.
 
 	always #12.5 clock <= (clock === 1'b0);
 
@@ -44,6 +41,118 @@ module io_ports_tb;
 		clock = 0;
 	end
 
+
+	// CW PINS
+	reg [15:0] cw_io_i;
+	wire [15:0] cw_io_o;
+	wire cw_req;
+	wire cw_dir;
+	reg cw_ack;
+	reg cw_err;
+	wire cw_clk;
+	wire cw_rst;
+
+	localparam CW_PIN_OFF=8;
+	assign cw_req = mprj_io[CW_PIN_OFF+0];
+	assign cw_dir = mprj_io[CW_PIN_OFF+1];
+	assign cw_io_o = mprj_io[CW_PIN_OFF+17:CW_PIN_OFF+2];
+	assign mprj_io[CW_PIN_OFF+17:CW_PIN_OFF+2] = (cw_dir ? cw_io_i : 16'hZZZZ);
+	assign mprj_io[CW_PIN_OFF+18] = cw_ack;
+	assign mprj_io[CW_PIN_OFF+19] = cw_err;
+	assign cw_clk = mprj_io[CW_PIN_OFF+29];
+	assign cw_rst = mprj_io[CW_PIN_OFF+21];
+
+	reg ext_irq, split_clk, core_disable, embed_mode;
+	reg spi_clk, spi_mosi;
+	wire spi_miso;
+	assign mprj_io[CW_PIN_OFF+22] = ext_irq;
+	assign mprj_io[CW_PIN_OFF+23] = split_clk;
+	assign mprj_io[CW_PIN_OFF+24] = core_disable;
+	assign mprj_io[CW_PIN_OFF+25] = embed_mode;
+	assign mprj_io[CW_PIN_OFF+26] = spi_clk;
+	assign mprj_io[CW_PIN_OFF+27] = spi_mosi;
+	assign spi_miso = mprj_io[CW_PIN_OFF+28];
+
+	initial begin
+		cw_ack <= 0;
+		cw_err <= 0;
+		ext_irq <= 0;
+		split_clk <= 1;
+		core_disable <= 0;
+		embed_mode <= 0;
+		spi_clk <= 1;
+		spi_mosi <= 0;
+		cw_io_i <= 0;
+	end
+
+	/*
+	 *	THE TEST
+	 */
+	initial begin
+		$display("Start test");
+		$display("Waiting for CW request");
+		wait(cw_req);
+		wait(cw_io_o == 16'hff17); // 0xff addr high part + read req with 4 burst
+		wait(cw_io_o == 16'he000); // addr low part
+		cw_ack <= 1'b1;
+		@(posedge cw_clk);
+		cw_ack <= 1'b0;
+		// respond with jump to 0x0100
+		$display("Waiting for direction");
+		wait(cw_dir == 1'b1);
+		cw_io_i <= 16'h000e;
+		cw_ack <= 1'b1;
+		@(posedge cw_clk);
+		cw_ack <= 1'b0;
+		@(posedge cw_clk);
+		cw_io_i <= 16'h0100;
+		cw_ack <= 1'b1;
+		// nops
+		@(posedge cw_clk);
+		cw_ack <= 1'b0;
+		@(posedge cw_clk);
+		cw_ack <= 1'b1;
+		@(posedge cw_clk);
+		cw_ack <= 1'b0;
+		@(posedge cw_clk);
+		cw_ack <= 1'b1;
+		@(posedge cw_clk);
+		cw_ack <= 1'b0;
+		@(posedge cw_clk);
+		cw_ack <= 1'b1;
+		@(posedge cw_clk);
+		cw_ack <= 1'b0;
+		@(posedge cw_clk);
+		cw_ack <= 1'b1;
+		@(posedge cw_clk);
+		cw_ack <= 1'b0;
+		@(posedge cw_clk);
+		cw_ack <= 1'b1;
+		@(posedge cw_clk);
+		cw_ack <= 1'b0;
+		@(posedge cw_clk);
+		cw_ack <= 1'b1;
+		@(posedge cw_clk);
+		cw_ack <= 1'b0;
+		$display("first instr fetched");
+
+		// simulate memory write instruction
+		wait(cw_req == 1'b1);
+		wait(cw_io_o == 16'hff17);
+		wait(cw_io_o == 16'he200); // assert addr after jump
+		$display("addr verified");
+		cw_ack <= 1'b1;
+		@(posedge cw_clk);
+		cw_ack <= 1'b0;
+		@(posedge cw_clk);
+		@(posedge cw_clk);
+		wait(cw_dir);
+		$finish;
+	end
+	
+	/*
+	 *	TB INIT STUFF by Efabless
+	 */
 
 	`ifdef ENABLE_SDF
 		initial begin
@@ -140,46 +249,33 @@ module io_ports_tb;
 		end
 	`endif 
 
+	// assign mprj_io[3] = 1'b1;
+
 	initial begin
-		$dumpfile("io_ports.vcd");
-		$dumpvars(0, io_ports_tb);
+		$dumpfile("boot_cw_split.vcd");
 
 		// Repeat cycles of 1000 clock edges as needed to complete testbench
-		repeat (25) begin
+		repeat (33) begin
 			repeat (1000) @(posedge clock);
-			// $display("+1000 cycles");
+			$display("+1000 cycles");
+		end
+		$dumpvars(0, boot_cw_split_tb);
+		repeat (8) begin
+			repeat (1000) @(posedge clock);
+			$display("+1000 cycles");
 		end
 		$display("%c[1;31m",27);
 		`ifdef GL
-			$display ("Monitor: Timeout, Test Mega-Project IO Ports (GL) Failed");
+			$display ("Monitor: Timeout, Test LA (GL) Failed");
 		`else
-			$display ("Monitor: Timeout, Test Mega-Project IO Ports (RTL) Failed");
+			$display ("Monitor: Timeout, Test LA (RTL) Failed");
 		`endif
 		$display("%c[0m",27);
 		$finish;
 	end
 
-	initial begin
-	    // Observe Output pins [7:0]
-		wait(mprj_io_0 == 8'h01);
-		wait(mprj_io_0 == 8'h02);
-		wait(mprj_io_0 == 8'h03);
-		wait(mprj_io_0 == 8'h04);
-		wait(mprj_io_0 == 8'h05);
-		wait(mprj_io_0 == 8'h06);
-		wait(mprj_io_0 == 8'h07);
-		wait(mprj_io_0 == 8'h08);
-		wait(mprj_io_0 == 8'h09);
-		wait(mprj_io_0 == 8'h0A);   
-		wait(mprj_io_0 == 8'hFF);
-		wait(mprj_io_0 == 8'h00);
-		
-		`ifdef GL
-	    	$display("Monitor: Test 1 Mega-Project IO (GL) Passed");
-		`else
-		    $display("Monitor: Test 1 Mega-Project IO (RTL) Passed");
-		`endif
-	    $finish;
+	always @({mprj_io[37:CW_PIN_OFF+21],mprj_io[CW_PIN_OFF+19:0]}) begin //exclude clk
+		#1 $display("MPRJ-IO state = %b ", mprj_io[37:8]);
 	end
 
 	initial begin
@@ -187,27 +283,17 @@ module io_ports_tb;
 		CSB  <= 1'b1;		// Force CSB high
 		#2000;
 		RSTB <= 1'b1;	    	// Release reset
-		#3_00_000;
+		#170000;
 		CSB = 1'b0;		// CSB can be released
 	end
 
 	initial begin		// Power-up sequence
 		power1 <= 1'b0;
 		power2 <= 1'b0;
-		power3 <= 1'b0;
-		power4 <= 1'b0;
-		#100;
+		#200;
 		power1 <= 1'b1;
-		#100;
+		#200;
 		power2 <= 1'b1;
-		#100;
-		power3 <= 1'b1;
-		#100;
-		power4 <= 1'b1;
-	end
-
-	always @(mprj_io) begin
-		#1 $display("MPRJ-IO state = %b ", mprj_io[7:0]);
 	end
 
 	wire flash_csb;
@@ -215,13 +301,16 @@ module io_ports_tb;
 	wire flash_io0;
 	wire flash_io1;
 
-	wire VDD3V3;
 	wire VDD1V8;
+	wire VDD3V3;
 	wire VSS;
-	
+    
 	assign VDD3V3 = power1;
 	assign VDD1V8 = power2;
 	assign VSS = 1'b0;
+
+	assign mprj_io[3] = 1;  // Force CSB high.
+	assign mprj_io[0] = 0;  // Disable debug mode
 
 	caravel uut (
 		.vddio	  (VDD3V3),
@@ -253,7 +342,7 @@ module io_ports_tb;
 	);
 
 	spiflash #(
-		.FILENAME("io_ports.hex")
+		.FILENAME("boot_cw_split.hex")
 	) spiflash (
 		.csb(flash_csb),
 		.clk(flash_clk),

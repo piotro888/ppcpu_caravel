@@ -14,8 +14,6 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-
- 
 PWDD := $(shell pwd)
 BLOCKS := $(shell basename $(PWDD))
 
