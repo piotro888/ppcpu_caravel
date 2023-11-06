@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2020 Efabless Corporation
+// SPDX-FileCopyrightText: 2022 Piotr Wegrzyn
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,14 +13,26 @@
 // limitations under the License.
 // SPDX-License-Identifier: Apache-2.0
 
-// Include caravel global defines for the number of the user project IO pads 
-`include "defines.v"
-`define USE_POWER_PINS
-
-`ifdef GL
-    // Assume default net type to be wire because GL netlists don't have the wire definitions
-    `default_nettype wire
-    `include "gl/user_project_wrapper.v"
-`else
-    `include "user_project_wrapper.v"
+module icache_ram (
+`ifdef USE_POWER_PINS
+    inout vccd1,	// User area 1 1.8V supply
+    inout vssd1,	// User area 1 digital ground
 `endif
+
+    input i_clk,
+
+    input [4:0] i_addr,
+    input [137:0] i_data,
+    output reg [137:0] o_data,
+    input i_we
+);
+
+reg [137:0] mem [31:0];
+
+always @(posedge i_clk) begin
+    if(i_we)
+        mem[i_addr] <= i_data;
+    o_data <= mem[i_addr];
+end
+
+endmodule

@@ -1,28 +1,65 @@
 {
-	"PDK": "gf180mcuD",
+		"PDK": "gf180mcuD",
 	"DESIGN_NAME": "user_project_wrapper",
 	"STD_CELL_LIBRARY": "gf180mcu_fd_sc_mcu7t5v0",
-	"VERILOG_FILES": [
-		"dir::../../verilog/rtl/defines.v",
-		"dir::../../verilog/rtl/user_project_wrapper.v"
-	],
-	"CLOCK_PORT": "wb_clk_i",
-	"CLOCK_NET": "mprj.clk",
-	"CLOCK_PERIOD": 25,
-	"MACRO_PLACEMENT_CFG": "dir::macro.cfg",
-	"VERILOG_FILES_BLACKBOX": [
-		"dir::../../verilog/gl/user_proj_example.v"
-	],
-	"EXTRA_LEFS": "dir::../../lef/user_proj_example.lef",
-	"EXTRA_GDS_FILES": "dir::../../gds/user_proj_example.gds",
-	"EXTRA_LIBS": "dir::../../lib/user_proj_example.lib",
-	"EXTRA_SPEFS": [
-		"user_proj_example",
-		"dir::../../spef/multicorner/user_proj_example.min.spef",
-		"dir::../../spef/multicorner/user_proj_example.nom.spef",
-		"dir::../../spef/multicorner/user_proj_example.max.spef"
-	],
-	"FP_PDN_MACRO_HOOKS": "mprj vdd vss vdd vss",
+    "VERILOG_FILES": [
+        "dir::../../verilog/rtl/defines.v",
+        "dir::../../verilog/rtl/user_project_wrapper.v",
+        "dir::../../verilog/rtl/ppcpu/rtl/top.v"
+    ],
+    "CLOCK_PERIOD": 24,
+    "CLOCK_PORT": "user_clock2",
+    "CLOCK_NET": "mprj.clk",
+    "MACRO_PLACEMENT_CFG": "dir::macro.cfg",
+    "VERILOG_INCLUDE_DIRS": ["dir::../../verilog/rtl/ppcpu/rtl/"],
+    
+    "VERILOG_FILES_BLACKBOX": [
+        "dir::../../verilog/gl/core0.v",
+        "dir::../../verilog/gl/core1.v",
+        "dir::../../verilog/gl/interconnect_inner.v",
+        "dir::../../verilog/gl/interconnect_outer.v",
+        "dir::../../verilog/gl/dcache.v",
+        "dir::../../verilog/gl/icache.v",
+        "dir::../../verilog/gl/int_ram.v"
+    ],
+    "EXTRA_LEFS": [
+        "dir::../../lef/core0.lef",
+        "dir::../../lef/core1.lef",
+        "dir::../../lef/dcache.lef",
+        "dir::../../lef/icache.lef",
+        "dir::../../lef/interconnect_inner.lef",
+        "dir::../../lef/interconnect_outer.lef",
+        "dir::../../lef/int_ram.lef"
+    ], 
+    "EXTRA_GDS_FILES": [
+        "dir::../../gds/core0.gds",
+        "dir::../../gds/core1.gds",
+        "dir::../../gds/dcache.gds",
+        "dir::../../gds/icache.gds",
+        "dir::../../gds/interconnect_inner.gds",
+        "dir::../../gds/interconnect_outer.gds",
+        "dir::../../gds/int_ram.gds"
+    ],
+    "EXTRA_LIBS": [
+        "dir::../../lib/core0.lib",
+        "dir::../../lib/core1.lib",
+        "dir::../../lib/dcache.lib",
+        "dir::../../lib/icache.lib",
+        "dir::../../lib/interconnect_inner.lib",
+        "dir::../../lib/interconnect_outer.lib",
+        "dir::../../lib/int_ram.lib"
+    ],
+    "FP_PDN_MACRO_HOOKS": [
+        "mprj/core0 vdd vss vccd1 vssd1,",
+        "mprj/core1 vdd vss vccd1 vssd1,",
+        "mprj/dcache vdd vss vccd1 vssd1,",
+        "mprj/icache_0 vdd vss vccd1 vssd1,",
+        "mprj/icache_1 vdd vss vccd1 vssd1,",
+        "mprj/interconnect_inner vdd vss vccd1 vssd1,",
+        "mprj/interconnect_outer vdd vss vccd1 vssd1,",
+        "mprj/int_ram vdd vss vccd1 vssd1"
+    ],
+    "RUN_IRDROP_REPORT": 0,
 	"QUIT_ON_SYNTH_CHECKS": 0,
 	"FP_PDN_CHECK_NODES": 0,
 	"SYNTH_ELABORATE_ONLY": 1,

@@ -1,0 +1,34 @@
+{
+    "DESIGN_NAME": "interconnect_outer",
+    "DESIGN_IS_CORE": 0,
+    "VERILOG_FILES": [
+        "dir::../../verilog/rtl/defines.v", 
+        "dir::../../verilog/rtl/ppcpu/rtl/interconnect/interconnect_outer.v",
+
+        "dir::../../verilog/rtl/ppcpu/rtl/interconnect/outer/clk_div.v",
+        "dir::../../verilog/rtl/ppcpu/rtl/interconnect/outer/ff_mb_sync.v",
+        "dir::../../verilog/rtl/ppcpu/rtl/interconnect/outer/reset_sync.v",
+        "dir::../../verilog/rtl/ppcpu/rtl/interconnect/outer/wb_compressor.v",
+        "dir::../../verilog/rtl/ppcpu/rtl/interconnect/outer/wb_cross_clk.v",
+        "dir::../../verilog/rtl/ppcpu/rtl/embed/gpio.v",
+        "dir::../../verilog/rtl/ppcpu/rtl/embed/sspi.v",
+        "dir::../../verilog/rtl/ppcpu/rtl/embed/int_ram.v",
+        "dir::../../verilog/rtl/ppcpu/rtl/interconnect/inner/wishbone_arbiter.v"
+    ],
+    "VERILOG_INCLUDE_DIRS": ["dir::../../verilog/rtl/ppcpu/rtl/"],
+    "BASE_SDC_FILE": ["dir::base.sdc"],
+    "CLOCK_PERIOD": 24,
+    "CLOCK_PORT": "user_clock2",
+    "CLOCK_NET": "user_clock2 soc_clock cw_clk core_clock",
+    "FP_SIZING": "absolute",
+    "DIE_AREA": "0 0 500 300",
+    "RT_MAX_LAYER": "Metal4",
+    "FP_PIN_ORDER_CFG": "dir::pin_order.cfg",
+    "PL_BASIC_PLACEMENT": 0,
+    "PL_TARGET_DENSITY": 0.45,
+    "VDD_NETS": ["vccd1"],
+    "GND_NETS": ["vssd1"],
+    "DIODE_INSERTION_STRATEGY": 6,
+    "ROUTING_CORES": 16,
+    "SYNTH_STRATEGY": "AREA 0"
+}

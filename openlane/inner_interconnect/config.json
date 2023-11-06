@@ -1,0 +1,33 @@
+{
+    "DESIGN_NAME": "interconnect_inner",
+    "DESIGN_IS_CORE": 0,
+    "VERILOG_FILES": [
+        "dir::../../verilog/rtl/defines.v",
+
+        "dir::../../verilog/rtl/ppcpu/rtl/interconnect/interconnect_inner.v",
+
+        "dir::../../verilog/rtl/ppcpu/rtl/interconnect/inner/dmmu.v",
+        "dir::../../verilog/rtl/ppcpu/rtl/interconnect/inner/immu.v",
+        "dir::../../verilog/rtl/ppcpu/rtl/interconnect/inner/intercore_sregs.v",
+        "dir::../../verilog/rtl/ppcpu/rtl/interconnect/inner/mem_dcache_arb.v",
+        "dir::../../verilog/rtl/ppcpu/rtl/interconnect/inner/wishbone_arbiter.v"
+    ],
+    "VERILOG_INCLUDE_DIRS": ["dir::../../verilog/rtl/ppcpu/rtl/"],
+    "BASE_SDC_FILE": "dir::base.sdc",
+    "RT_MAX_LAYER": "Metal4",
+    "CLOCK_PERIOD": 24,
+    "CLOCK_PORT": "core_clock",
+    "CLOCK_NET": "core_clock",
+    "FP_SIZING": "absolute",
+    "DIE_AREA": "0 0 1200 350",
+    "FP_PIN_ORDER_CFG": "dir::pin_order.cfg",
+    "PL_BASIC_PLACEMENT": 0,
+    "PL_TARGET_DENSITY": 0.33,
+    "VDD_NETS": ["vccd1"],
+    "GND_NETS": ["vssd1"],
+
+    "DIODE_INSERTION_STRATEGY": 4,
+    "RUN_CVC": 1,
+	
+    "ROUTING_CORES": 16
+}

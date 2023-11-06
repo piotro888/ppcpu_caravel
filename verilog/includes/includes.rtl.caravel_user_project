@@ -1,5 +1,34 @@
 # Caravel user project includes
--v $(USER_PROJECT_VERILOG)/rtl/user_project_wrapper.v	     
--v $(USER_PROJECT_VERILOG)/rtl/user_proj_example.v
-
- 
+-v $(USER_PROJECT_VERILOG)/rtl/user_project_wrapper.v
++incdir+$(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/
+-v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/top.v
+-v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/core/core.v
+-v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/core/alu_mul_div.v
+-v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/core/alu.v
+-v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/core/decode.v
+-v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/core/execute.v
+-v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/core/fetch.v
+-v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/core/memwb.v
+-v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/core/pc.v
+-v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/core/rf.v
+-v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/dcache/dcache.v
+-v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/dcache/dcache_ram.v
+-v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/icache/icache.v
+-v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/icache/icache_ram.v
+-v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/interconnect/interconnect_inner.v
+-v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/interconnect/inner/immu.v
+-v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/interconnect/inner/dmmu.v
+-v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/interconnect/inner/intercore_sregs.v
+-v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/interconnect/inner/mem_dcache_arb.v
+-v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/interconnect/inner/wishbone_arbiter.v
+-v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/interconnect/interconnect_outer.v
+-v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/interconnect/outer/clk_div.v
+-v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/interconnect/outer/ff_mb_sync.v
+-v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/interconnect/outer/reset_sync.v
+-v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/interconnect/outer/wb_compressor.v
+-v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/interconnect/outer/wb_cross_clk.v
+-v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/interconnect/outer/wb_decomp.v
+-v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/embed/gpio.v
+-v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/embed/int_ram.v
+-v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/embed/sspi.v
+-v $(PDK_ROOT)/$(PDK)/libs.ref/sky130_sram_macros/verilog/sky130_sram_1kbyte_1rw1r_32x256_8.v
