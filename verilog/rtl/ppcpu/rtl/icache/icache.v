@@ -1,18 +1,3 @@
-// SPDX-FileCopyrightText: 2022 Piotr Wegrzyn
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-// SPDX-License-Identifier: Apache-2.0
-
 `include "config.v"
 
 module icache (
@@ -35,7 +20,7 @@ module icache (
     output reg wb_cyc,
     output reg wb_stb,
     input [`RW-1:0] wb_i_dat,
-    output [`RW-1:0]  wb_adr,
+    output reg [`RW-1:0]  wb_adr,
     output wb_we,
     input wb_ack,
     output [1:0] wb_sel,
@@ -109,7 +94,7 @@ always @(posedge i_clk) begin
     end
 end
 
-assign mem_ack = cache_ghit | mem_fetch_end;
+assign mem_ack = cache_ghit | prev_mem_fetch_end;
 
 wire cache_miss = cache_read_valid & (~(|cache_hit) | flush_prev_cycle);
 wire cache_ghit = cache_read_valid & ((|cache_hit) & ~flush_prev_cycle);
@@ -152,7 +137,13 @@ end
 
 wire mem_fetch_end = wb_cyc & wb_stb & (wb_ack | wb_err) & (&line_burst_cnt);
 
-assign wb_adr = {cache_write_addr[14:2], line_burst_cnt};
+reg prev_mem_fetch_end;
+always @(posedge i_clk) begin
+    if (i_rst)
+        prev_mem_fetch_end <= 1'b0;
+    else
+        prev_mem_fetch_end <= mem_fetch_end;
+end
 
 reg [`LINE_SIZE-1:0] line_collect;
 reg [`CACHE_OFF_W:0] line_burst_cnt;
@@ -161,17 +152,24 @@ always @(posedge i_clk) begin
     if (i_rst) begin
         wb_cyc <= 1'b0;
         wb_stb <= 1'b0;
+        wb_adr <= 16'b0;
         invalidate_bus_err <= 1'b0;
     end else if (mem_fetch_end) begin
         line_burst_cnt <= 3'b0;
+        wb_adr <= 16'b0;
         wb_cyc <= 1'b0;
         wb_stb <= 1'b0;
         invalidate_bus_err <= invalidate_bus_err | wb_err;
     end else if (wb_cyc & wb_stb & (wb_ack | wb_err)) begin
+        wb_adr <= {cache_write_addr[14:2], line_burst_cnt+1'b1};
         line_burst_cnt <= line_burst_cnt + 1'b1;
         invalidate_bus_err <= invalidate_bus_err | wb_err;
     end else if(cache_miss) begin
-        line_burst_cnt <= 3'b0;
+        line_burst_cnt <= 3'b0;    
+        if(cache_read_valid)
+            wb_adr <= {cache_read_addr[14:2], 3'b0};
+        else
+            wb_adr <= {cache_write_addr[14:2], 3'b0};
         wb_cyc <= 1'b1;
         wb_stb <= 1'b1;
         invalidate_bus_err <= 1'b0;
@@ -214,13 +212,13 @@ end
 
 reg [`ENTRY_SIZE-1:0] cache_hit_entry;
 
-wire [`ENTRY_SIZE-1:0] entry_out = (mem_fetch_end ? {`TAG_SIZE'b0, pre_assembled_line, 1'b0} : cache_hit_entry);
+wire [`ENTRY_SIZE-1:0] entry_out = (prev_mem_fetch_end ? {`TAG_SIZE'b0, line_collect[127:0], 1'b0} : cache_hit_entry);
 
 always @* begin
     cache_hit_entry = cache_out[0];
 end
 
-wire [`CACHE_OFF_W-1:0] offset_out = (mem_fetch_end ? write_off : compare_off);
+wire [`CACHE_OFF_W-1:0] offset_out = (prev_mem_fetch_end ? write_off : compare_off);
 always @* begin
     case (offset_out)
         default: mem_data = entry_out[32:1];
