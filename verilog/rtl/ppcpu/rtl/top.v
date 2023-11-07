@@ -102,7 +102,12 @@ interconnect_outer interconnect_outer (
     .iram_addr(iram_addr),
     .iram_i_data(iram_i_data),
     .iram_o_data(iram_o_data),
-    .iram_we(iram_we)
+    .iram_we(iram_we),
+    .ic0_clk(ic0_clk),
+    .ic1_clk(ic1_clk),
+    .dcache_clk(dcache_clk),
+    .c0_clk(c0_clk),
+    .c1_clk(c1_clk)
 );
 
 wire inner_wb_cyc, inner_wb_stb;
@@ -138,7 +143,6 @@ interconnect_inner interconnect_inner (
     .inner_wb_8_burst(inner_wb_8_burst),
     .inner_ext_irq(inner_ext_irq),
     .inner_embed_mode(inner_embed_mode),
-    .c0_clk(c0_clk),
     .c0_rst(c0_rst),
     .c0_disable(c0_disable),
     .c0_o_req_addr(c0_o_req_addr),
@@ -169,7 +173,6 @@ interconnect_inner interconnect_inner (
     .c0_o_instr_long_addr(c0_o_instr_long_addr),
     .c0_o_mem_long_mode(c0_o_mem_long),
     .c0_o_mem_high_addr(c0_o_mem_addr_high),
-    .c1_clk(c1_clk),
     .c1_rst(c1_rst),
     .c1_disable(c1_disable),
     .c1_o_req_addr(c1_o_req_addr),
@@ -200,7 +203,6 @@ interconnect_inner interconnect_inner (
     .c1_o_instr_long_addr(c1_o_instr_long_addr),
     .c1_o_mem_long_mode(c1_o_mem_long),
     .c1_o_mem_high_addr(c1_o_mem_addr_high),
-    .ic0_clk(ic0_clk),
     .ic0_rst(ic0_rst),
     .ic0_mem_req(ic0_mem_req),
     .ic0_mem_ack(ic0_mem_ack),
@@ -216,7 +218,6 @@ interconnect_inner interconnect_inner (
     .ic0_wb_ack(ic0_wb_ack),
     .ic0_wb_sel(ic0_wb_sel),
     .ic0_wb_err(ic0_wb_err),
-    .ic1_clk(ic1_clk),
     .ic1_rst(ic1_rst),
     .ic1_mem_req(ic1_mem_req),
     .ic1_mem_ack(ic1_mem_ack),
@@ -232,7 +233,6 @@ interconnect_inner interconnect_inner (
     .ic1_wb_ack(ic1_wb_ack),
     .ic1_wb_sel(ic1_wb_sel),
     .ic1_wb_err(ic1_wb_err),
-    .dcache_clk(dcache_clk),
     .dcache_rst(dcache_rst),
     .dcache_mem_req(dcache_mem_req),
     .dcache_mem_we(dcache_mem_we),

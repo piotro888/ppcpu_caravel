@@ -10,7 +10,7 @@
 #------------------------------------------#
 # Pre-defined Constraints
 #------------------------------------------#
-set ::env(IO_SYNC) 0
+set ::env(IO_SYNC) 1
 # Clock network
 if {[info exists ::env(CLOCK_PORT)] && $::env(CLOCK_PORT) != ""} {
 	set clk_input $::env(CLOCK_PORT)
@@ -27,6 +27,8 @@ if { ![info exists ::env(SYNTH_CLK_DRIVING_CELL)] } {
 if { ![info exists ::env(SYNTH_CLK_DRIVING_CELL_PIN)] } {
 	set ::env(SYNTH_CLK_DRIVING_CELL_PIN) $::env(SYNTH_DRIVING_CELL_PIN)
 }
+
+create_clock -name cw_clk -period 24.0000 [get_ports {io_out[37]}]
 
 # Clock non-idealities
 set_propagated_clock [all_clocks]
@@ -68,15 +70,15 @@ set usr_clk_max_latency 4.57
 set usr_clk_min_latency 4.11
 set clk_max_latency 5.57
 set clk_min_latency 4.65
-set_clock_latency -source -max $clk_max_latency [get_clocks {clk}]
-set_clock_latency -source -min $clk_min_latency [get_clocks {clk}]
-puts "\[INFO\]: Setting clock latency range: $clk_min_latency : $clk_max_latency"
+set_clock_latency -source -max $usr_clk_max_latency [get_clocks {clk}]
+set_clock_latency -source -min $usr_clk_min_latency [get_clocks {clk}]
+puts "\[INFO\]: Setting clock latency range: $usr_clk_min_latency : $usr_clk_max_latency"
 
 # Clock input Transition
 set usr_clk_tran 0.13
 set clk_tran 0.61
-set_input_transition $clk_tran [get_ports $clk_input]
-puts "\[INFO\]: Setting clock transition: $clk_tran"
+set_input_transition $usr_clk_tran [get_ports $clk_input]
+puts "\[INFO\]: Setting clock transition: $usr_clk_tran"
 
 # Input delays
 set_input_delay -max 1.87 -clock [get_clocks {clk}] [get_ports {la_data_in[*]}]
@@ -101,6 +103,10 @@ if { $::env(IO_SYNC) } {
 	set_input_delay -max [expr $in_ext_delay + 4.55] -clock [get_clocks {clk}] [get_ports {io_in[*]}]
 	set_input_delay -min [expr $in_ext_delay + 1.26] -clock [get_clocks {clk}] [get_ports {io_in[*]}]
 }
+
+set_false_path -through [get_ports {la_data_in[0]}] 
+set_false_path -through [get_ports {la_oenb[0]}] 
+# async rst
 
 # Input Transition
 set_input_transition -max 0.14  [get_ports {wbs_we_i}]

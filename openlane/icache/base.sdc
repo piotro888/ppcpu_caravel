@@ -11,17 +11,17 @@ set_clock_transition 0.1500 [get_clocks {i_clk}]
 set_clock_uncertainty 0.2500 i_clk
 set_propagated_clock [get_clocks {i_clk}]
 
-set_input_delay 4.8000 -clock [get_clocks {i_clk}] -add_delay [get_ports {i_rst}]
+set_input_delay 2.8000 -clock [get_clocks {i_clk}] -add_delay [get_ports {i_rst}]
 
 # SLOW DATA FROM X_O
-set_input_delay -min 7.0000 -clock [get_clocks {i_clk}] -add_delay [get_ports {wb_i_dat*}]
+set_input_delay  5.0000 -clock [get_clocks {i_clk}] -add_delay [get_ports {wb_i_dat*}]
 set_output_delay -max 2.0000 -clock [get_clocks {i_clk}] -add_delay [get_ports {wb_adr*}]
 set_output_delay -max 2.0000 -clock [get_clocks {i_clk}] -add_delay [get_ports {wb_cyc}]
 set_output_delay -max 2.0000 -clock [get_clocks {i_clk}] -add_delay [get_ports {wb_sel*}]
 set_output_delay -max 2.0000 -clock [get_clocks {i_clk}] -add_delay [get_ports {wb_stb}]
 set_output_delay -max 2.0000 -clock [get_clocks {i_clk}] -add_delay [get_ports {wb_we}]
-set_input_delay -min 7.0000 -clock [get_clocks {i_clk}] -add_delay [get_ports {wb_ack}]
-set_input_delay -min 7.0000 -clock [get_clocks {i_clk}] -add_delay [get_ports {wb_err}]
+set_input_delay  5.0000 -clock [get_clocks {i_clk}] -add_delay [get_ports {wb_ack}]
+set_input_delay 5.0000 -clock [get_clocks {i_clk}] -add_delay [get_ports {wb_err}]
 
 # core i/o
 set_input_delay 4.8000 -clock [get_clocks {i_clk}] -add_delay [get_ports {mem_addr[0]}]

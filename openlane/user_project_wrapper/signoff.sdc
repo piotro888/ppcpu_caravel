@@ -10,7 +10,7 @@
 #------------------------------------------#
 # Pre-defined Constraints
 #------------------------------------------#
-set ::env(IO_SYNC) 0
+set ::env(IO_SYNC) 1
 # Clock network
 if {[info exists ::env(CLOCK_PORT)] && $::env(CLOCK_PORT) != ""} {
 	set clk_input $::env(CLOCK_PORT)
@@ -49,6 +49,8 @@ puts "\[INFO\]: Setting timing derate to: [expr {0.05 * 100}] %"
 # Reset input delay
 set_input_delay [expr $::env(CLOCK_PERIOD) * 0.5] -clock [get_clocks {clk}] [get_ports {wb_rst_i}]
 
+create_clock -name cw_clk -period 24.0000 [get_ports {io_out[37]}]
+
 # Multicycle paths
 set_multicycle_path -setup 2 -through [get_ports {wbs_ack_o}]
 set_multicycle_path -hold 1  -through [get_ports {wbs_ack_o}]
@@ -66,14 +68,14 @@ set usr_clk_max_latency 4.57
 set usr_clk_min_latency 4.11
 set clk_max_latency 5.57
 set clk_min_latency 4.65
-set_clock_latency -source -max $clk_max_latency [get_clocks {clk}]
-set_clock_latency -source -min $clk_min_latency [get_clocks {clk}]
+set_clock_latency -source -max $usr_clk_max_latency [get_clocks {clk}]
+set_clock_latency -source -min $usr_clk_min_latency [get_clocks {clk}]
 puts "\[INFO\]: Setting clock latency range: $clk_min_latency : $clk_max_latency"
 
 # Clock input Transition
 set usr_clk_tran 0.13
 set clk_tran 0.61
-set_input_transition $clk_tran [get_ports $clk_input]
+set_input_transition $usr_clk_tran [get_ports $clk_input]
 puts "\[INFO\]: Setting clock transition: $clk_tran"
 
 # Input delays
@@ -93,6 +95,11 @@ set_input_delay -min 1.19 -clock [get_clocks {clk}] [get_ports {wbs_sel_i[*]}]
 set_input_delay -min 1.65 -clock [get_clocks {clk}] [get_ports {wbs_we_i}]
 set_input_delay -min 1.69 -clock [get_clocks {clk}] [get_ports {wbs_cyc_i}]
 set_input_delay -min 1.86 -clock [get_clocks {clk}] [get_ports {wbs_stb_i}]
+
+set_false_path -through [get_ports {la_data_in[0]}] 
+set_false_path -through [get_ports {la_oenb[0]}] 
+# async rst
+
 if { $::env(IO_SYNC) } {
 	set in_ext_delay 4
 	puts "\[INFO\]: Setting input ports external delay to: $in_ext_delay"

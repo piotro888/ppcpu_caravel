@@ -9,7 +9,7 @@
     ],
     "CLOCK_PERIOD": 24,
     "CLOCK_PORT": "user_clock2",
-    "CLOCK_NET": "mprj.clk",
+    "CLOCK_NET": "mprj.user_clock2",
     "MACRO_PLACEMENT_CFG": "dir::macro.cfg",
     "VERILOG_INCLUDE_DIRS": ["dir::../../verilog/rtl/ppcpu/rtl/"],
     

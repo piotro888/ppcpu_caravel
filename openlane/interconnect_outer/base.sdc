@@ -7,7 +7,8 @@ current_design interconnect_outer
 # Timing Constraints
 ###############################################################################
 create_clock -name user_clock2 -period 24.0000 [get_ports {user_clock2}]
-create_clock -name cw_clk -period 24.0000 [get_ports {m_io_out[37]}]
+#create_clock -name cw_clk -period 24.0000 [get_ports {m_io_out[37]}]
+create_generated_clock -source user_clock2 -divide_by 1 [get_ports {m_io_out[37]}]
 
 set_clock_transition 0.1500 [get_clocks {user_clock2}]
 set_clock_uncertainty 0.2500 user_clock2
@@ -15,14 +16,21 @@ set_propagated_clock [get_clocks {user_clock2}]
 
 # INNER COMMUNICATIONS
 
-set_output_delay -max 4.0000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {inner_clock}]
-set_output_delay -max 4.0000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {inner_disable}]
-set_output_delay -max 4.0000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {inner_embed_mode}]
-set_output_delay -max 4.0000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {inner_ext_irq}]
-set_output_delay -max 4.0000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {inner_reset}]
-set_output_delay -max 4.0000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {inner_wb_ack}]
-set_output_delay -max 4.0000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {inner_wb_err}]
-set_output_delay -max 4.0000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {inner_wb_i_dat*}]
+set_output_delay  0.5000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {inner_clock}]
+set_output_delay  0.5000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {ic0_clk}]
+set_output_delay  0.5000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {ic1_clk}]
+set_output_delay  0.5000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {dcache_clk}]
+set_output_delay  0.5000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {c0_clk}]
+set_output_delay  0.5000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {c1_clk}]
+
+set_output_delay -min 5.0000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {inner_disable}]
+set_output_delay -min 5.0000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {inner_embed_mode}]
+set_output_delay -min -4 -clock [get_clocks {user_clock2}] -add_delay [get_ports {inner_ext_irq}]
+set_output_delay -min -4 -clock [get_clocks {user_clock2}] -add_delay [get_ports {inner_reset}]
+# min - fix hold violations
+set_output_delay 8.0000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {inner_wb_ack}]
+set_output_delay 8.0000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {inner_wb_err}]
+set_output_delay 8.0000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {inner_wb_i_dat*}]
 
 set_input_delay 3.0000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {inner_wb_4_burst}]
 set_input_delay 3.0000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {inner_wb_8_burst}]
@@ -34,9 +42,11 @@ set_input_delay 3.0000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {
 set_input_delay 3.0000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {inner_wb_we}]
 
 
-set_input_delay 4.8000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {la_data_in[0]}]
+# as async reset
+set_false_path -through [get_ports {la_data_in[0]}]
 
 # I/O
+set_output_delay -max 0.5000 -clock [get_clocks {cw_clk}] -add_delay [get_ports {m_io_out[37]}]
 set_input_delay 4.8000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {m_io_in[0]}]
 set_input_delay 4.8000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {m_io_in[10]}]
 set_input_delay 4.8000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {m_io_in[11]}]
@@ -144,7 +154,6 @@ set_output_delay 4.8000 -clock [get_clocks {user_clock2}] -add_delay [get_ports 
 set_output_delay 4.8000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {m_io_out[34]}]
 set_output_delay 4.8000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {m_io_out[35]}]
 set_output_delay 4.8000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {m_io_out[36]}]
-#set_output_delay 4.8000 m_io_out37
 
 set_output_delay 4.8000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {m_io_out[3]}]
 set_output_delay 4.8000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {m_io_out[4]}]
@@ -678,6 +687,11 @@ set_load -pin_load 0.0729 [get_ports {iram_addr*}]
 set_load -pin_load 0.0729 [get_ports {iram_i_data*}]
 set_load -pin_load 0.0729 [get_ports {iram_o_data*}]
 set_load -pin_load 0.0729 [get_ports {iram_we*}]
+set_load -pin_load 0.0729 [get_ports {ic0_clk}]
+set_load -pin_load 0.0729 [get_ports {ic1_clk}]
+set_load -pin_load 0.0729 [get_ports {dcache_clk}]
+set_load -pin_load 0.0729 [get_ports {c1_clk}]
+set_load -pin_load 0.0729 [get_ports {c0_clk}]
 set_driving_cell -lib_cell gf180mcu_fd_sc_mcu7t5v0__inv_1 -pin {ZN} -input_transition_rise 0.0000 -input_transition_fall 0.0000 [get_ports {inner_wb_4_burst}]
 set_driving_cell -lib_cell gf180mcu_fd_sc_mcu7t5v0__inv_1 -pin {ZN} -input_transition_rise 0.0000 -input_transition_fall 0.0000 [get_ports {inner_wb_8_burst}]
 set_driving_cell -lib_cell gf180mcu_fd_sc_mcu7t5v0__inv_1 -pin {ZN} -input_transition_rise 0.0000 -input_transition_fall 0.0000 [get_ports {inner_wb_cyc}]

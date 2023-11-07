@@ -44,7 +44,7 @@ module interconnect_inner (
     input inner_disable,
 
     // CORE 0
-    output c0_clk,
+//    output c0_clk,
     output c0_rst,
     output c0_disable,
     input [`RW-1:0] c0_o_req_addr,
@@ -71,7 +71,7 @@ module interconnect_inner (
     output [`RW-1:0] c0_i_core_int_sreg,
 
     // CORE 1
-    output c1_clk,
+//   output c1_clk,
     output c1_rst,
     output c1_disable,
     input [`RW-1:0] c1_o_req_addr,
@@ -98,7 +98,7 @@ module interconnect_inner (
     output [`RW-1:0] c1_i_core_int_sreg,
 
     // ICACHE 0
-    output ic0_clk,
+//    output ic0_clk,
     output ic0_rst,
     output ic0_mem_req,
     input ic0_mem_ack,
@@ -116,7 +116,7 @@ module interconnect_inner (
     output ic0_wb_err,
 
     // ICACHE 1
-    output ic1_clk,
+//    output ic1_clk,
     output ic1_rst,
     output ic1_mem_req,
     input ic1_mem_ack,
@@ -134,7 +134,7 @@ module interconnect_inner (
     output ic1_wb_err,
 
     // DCACHE
-    output dcache_clk,
+//    output dcache_clk,
     output dcache_rst,
     output dcache_mem_req,
     output dcache_mem_we,

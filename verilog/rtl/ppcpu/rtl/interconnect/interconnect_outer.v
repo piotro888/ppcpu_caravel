@@ -67,8 +67,17 @@ module interconnect_outer (
     output [`RW-1:0] iram_i_data,
     input [`RW-1:0] iram_o_data,
     output iram_we,
-
+    
+    // skip clock buffers in inner_interconnect - fix hold violations 
+    output ic0_clk, ic1_clk, dcache_clk,
+    output c0_clk, c1_clk
 );
+
+assign ic0_clk = inner_clock;
+assign ic1_clk = inner_clock;
+assign dcache_clk = inner_clock;
+assign c0_clk = inner_clock;
+assign c1_clk = inner_clock;
 
  /*   int_ram int_ram (
 `ifdef USE_POWER_PINS

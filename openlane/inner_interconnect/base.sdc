@@ -11,6 +11,9 @@ set_clock_transition 0.1500 [get_clocks {core_clock}]
 set_clock_uncertainty 0.2500 core_clock
 set_propagated_clock [get_clocks {core_clock}]
 
+set_input_delay -3 -clock [get_clocks {core_clock}] -add_delay [get_ports {inner_reset}]
+set_input_delay -1 -clock [get_clocks {core_clock}] -add_delay [get_ports {inner_ext_irq}]
+
 set_input_delay -min 6.0000 -clock [get_clocks {core_clock}] -add_delay [get_ports {inner_wb_ack}]
 set_input_delay -min 6.0000 -clock [get_clocks {core_clock}] -add_delay [get_ports {inner_wb_err}]
 set_input_delay -min 6.0000 -clock [get_clocks {core_clock}] -add_delay [get_ports {inner_wb_i_dat*}]
@@ -425,7 +428,6 @@ set_input_delay 4.8000 -clock [get_clocks {core_clock}] -add_delay [get_ports {i
 
 set_input_delay 4.8000 -clock [get_clocks {core_clock}] -add_delay [get_ports {inner_disable}]
 set_input_delay 4.8000 -clock [get_clocks {core_clock}] -add_delay [get_ports {inner_embed_mode}]
-set_input_delay 4.8000 -clock [get_clocks {core_clock}] -add_delay [get_ports {inner_ext_irq}]
 
 set_output_delay 4.8000 -clock [get_clocks {core_clock}] -add_delay [get_ports {c0_clk}]
 set_output_delay 4.8000 -clock [get_clocks {core_clock}] -add_delay [get_ports {c0_disable}]
