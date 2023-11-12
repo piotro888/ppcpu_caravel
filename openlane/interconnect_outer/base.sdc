@@ -22,6 +22,7 @@ set_output_delay  0.5000 -clock [get_clocks {user_clock2}] -add_delay [get_ports
 set_output_delay  0.5000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {dcache_clk}]
 set_output_delay  0.5000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {c0_clk}]
 set_output_delay  0.5000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {c1_clk}]
+set_output_delay  0.5000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {iram_clk}]
 
 set_output_delay -min 5.0000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {inner_disable}]
 set_output_delay -min 5.0000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {inner_embed_mode}]
@@ -164,11 +165,10 @@ set_output_delay 4.8000 -clock [get_clocks {user_clock2}] -add_delay [get_ports 
 set_output_delay 4.8000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {m_io_out[9]}]
 
 
-set_output_delay 2.0000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {iram_clk}]
-set_output_delay 2.0000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {iram_addr*}]
-set_output_delay 2.0000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {iram_i_data*}]
-set_input_delay 2.0000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {iram_o_data*}]
-set_output_delay 2.0000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {iram_we*}]
+set_output_delay 10.0000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {iram_addr*}]
+set_output_delay 10.0000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {iram_i_data*}]
+set_input_delay 10.0000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {iram_o_data*}]
+set_output_delay 10.0000 -clock [get_clocks {user_clock2}] -add_delay [get_ports {iram_we*}]
 
 #### CONST FALSE PATHS
 

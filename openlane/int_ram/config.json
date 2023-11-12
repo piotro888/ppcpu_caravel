@@ -6,6 +6,7 @@
         "dir::../../verilog/rtl/ppcpu/rtl/embed/int_ram.v"
     ],
     "VERILOG_INCLUDE_DIRS": ["dir::../../verilog/rtl/ppcpu/rtl/"],
+    "BASE_SDC_FILE": ["dir::base.sdc"],
     "CLOCK_PERIOD": 24,
     "CLOCK_PORT": "i_clk",
     "CLOCK_NET": "i_clk",

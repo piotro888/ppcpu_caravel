@@ -31,4 +31,4 @@
 -v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/embed/gpio.v
 -v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/embed/int_ram.v
 -v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/embed/sspi.v
--v $(PDK_ROOT)/$(PDK)/libs.ref/sky130_sram_macros/verilog/sky130_sram_1kbyte_1rw1r_32x256_8.v
+-v $(USER_PROJECT_VERILOG)/rtl/user_defines.v
