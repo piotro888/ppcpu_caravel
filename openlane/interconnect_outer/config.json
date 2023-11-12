@@ -16,7 +16,6 @@
         "dir::../../verilog/rtl/ppcpu/rtl/interconnect/inner/wishbone_arbiter.v"
     ],
     "VERILOG_INCLUDE_DIRS": ["dir::../../verilog/rtl/ppcpu/rtl/"],
-    "RUN_LINTER":0,
     "BASE_SDC_FILE": ["dir::base.sdc"],
     "CLOCK_PERIOD": 24,
     "CLOCK_PORT": "user_clock2",
@@ -33,5 +32,6 @@
     "GND_NETS": ["vssd1"],
     "DIODE_INSERTION_STRATEGY": 6,
     "ROUTING_CORES": 16,
-    "SYNTH_STRATEGY": "AREA 0"
+    "SYNTH_STRATEGY": "AREA 0",
+    "RUN_LINTER": 0
 }
