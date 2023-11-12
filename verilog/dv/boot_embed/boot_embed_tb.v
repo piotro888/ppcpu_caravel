@@ -16,6 +16,9 @@
 /*
 	EMBED MODE BOOT TEST
 */
+// NOTE: this test is failing on GL (RTL variant passes), probably because of some bug in Caravel testing.
+// At fixed time regerdles of timing of start of any operations in testbench, caravel turns many of
+// its signals to X, including reset, that breaks everything.
 
 `default_nettype none
 
@@ -23,14 +26,13 @@
 
 module boot_embed_tb;
 	reg clock;
-    reg RSTB;
 
 	reg power1;
 
 	wire gpio;
 	wire [37:0] mprj_io;
 
-	always #12.5 clock <= (clock == 1'b0);
+	always #12.5 clock <= (clock === 1'b0);
 
 	initial begin
 		clock = 0;
@@ -46,9 +48,9 @@ module boot_embed_tb;
 	reg cw_err;
 	wire cw_clk;
 	wire cw_rst;
-//	wire [1:0] gpio2in = 2'b10;
 
-//	assign mprj_io[5:4] = gpio2in;
+	wire [1:0] const_gpio_in = 2'b10;
+	assign mprj_io[5:4] = const_gpio_in;
 	localparam CW_PIN_OFF=8;
 	assign cw_req = mprj_io[CW_PIN_OFF+0];
 	assign cw_dir = mprj_io[CW_PIN_OFF+1];
@@ -71,6 +73,7 @@ module boot_embed_tb;
 	assign spi_miso = mprj_io[CW_PIN_OFF+28];
 
 	reg spi_load = 0;
+	reg gpio_release = 0;
 
 	initial begin
 		cw_ack <= 0;
@@ -82,34 +85,7 @@ module boot_embed_tb;
 		spi_clk <= 1;
 		spi_mosi <= 1;
 		cw_io_i <= 0;
-		
 	end
-	integer i;
-	task spi_tx (input [23:0] addr, input [15:0] data);
-		begin
-			$display("spi_tx: addr=%h data=%h", addr, data);
-			spi_mosi <= 1'b0;
-			spi_clk <= 1'b1; @(posedge clock); @(posedge clock); spi_clk <= 1'b0; @(posedge clock); @(posedge clock);
-			
-			for (i=0; i<24; i=i+1) begin
-				spi_mosi <= addr[i];
-				spi_clk <= 1'b1; @(posedge clock); @(posedge clock); spi_clk <= 1'b0; @(posedge clock); @(posedge clock);			end
-			spi_mosi <= 1'b1; // we
-			spi_clk <= 1'b1; @(posedge clock); @(posedge clock); spi_clk <= 1'b0; @(posedge clock); @(posedge clock);
-			for (i=0; i<16; i=i+1) begin
-				spi_mosi <= data[i];
-				spi_clk <= 1'b1; @(posedge clock); @(posedge clock); spi_clk <= 1'b0; @(posedge clock); @(posedge clock);
-			end
-			spi_mosi <= 1'b1; // idle
-
-			while (spi_miso) begin // wait for end
-				spi_clk <= 1'b1; @(posedge clock); @(posedge clock); spi_clk <= 1'b0; @(posedge clock); @(posedge clock);
-			end
-			spi_clk <= 1'b1; @(posedge clock); @(posedge clock); spi_clk <= 1'b0; @(posedge clock); @(posedge clock);
-		end
-	endtask
-
-	reg gpio_release = 0;
 
 	/*
 	 *	THE TEST
@@ -120,24 +96,23 @@ module boot_embed_tb;
 		//$dumpvars(2, boot_embed_tb.uut.chip_core.mprj);
 		// wait for gpio init
 		//$dumpvars(0, boot_embed_tb);
-		`ifdef GL
-			wait(cw_rst);
-			wait(~cw_rst);
-			$display("gl: w1");
-		`endif
-		wait(cw_rst);
+		#10 @(posedge cw_rst);
+`ifdef GL
+		#10 @(posedge cw_rst);
+		$display("GL ONLY - SKIP FIRST REQUEST (preMGMT)");
+`endif
 		wait(~cw_rst);
 		//$dumpvars(2, boot_embed_tb.uut);
 		$dumpvars(2, boot_embed_tb.uut.chip_core.mprj);
+
 		$display("cw_rst: start spi load");
-//		gpio_release <= 1'b1;
-//
-		
-		repeat (100) @(posedge clock);
+		gpio_release <= 1'b1;
+
 		// init cycles
-	/*	spi_clk <= 1'b1; @(posedge clock); @(posedge clock); spi_clk <= 1'b0; @(posedge clock); @(posedge clock);
 		spi_clk <= 1'b1; @(posedge clock); @(posedge clock); spi_clk <= 1'b0; @(posedge clock); @(posedge clock);
-		
+		spi_clk <= 1'b1; @(posedge clock); @(posedge clock); spi_clk <= 1'b0; @(posedge clock); @(posedge clock);
+		spi_clk <= 1'b1;
+		#100;
 		// load program from test.s file
 		// explained there
 		spi_tx(24'h800000, 16'h000e);
@@ -199,7 +174,7 @@ module boot_embed_tb;
 		spi_tx(24'h80003c, 16'h1001);
 		spi_tx(24'h80003d, 16'h0000);
 		spi_tx(24'h80003e, 16'h001e);
-		spi_tx(24'h80003f, 16'h0000);*/
+		spi_tx(24'h80003f, 16'h0000);
 
 		$display("spi_load_finished");
 		spi_load <= 1;
@@ -246,7 +221,11 @@ module boot_embed_tb;
 		
 
 		// Repeat cycles of 1000 clock edges as needed to complete testbench
-		repeat (50) begin // mgmt core sets up gpio at ~ 38k cycles
+		repeat (33) begin // core sets up gpio at ~ 38k cycles
+			repeat (1000) @(posedge clock);
+			$display("+1000 cycles");
+		end
+		repeat (10) begin // core sets up gpio at ~ 38k cycles
 			repeat (1000) @(posedge clock);
 			$display("+1000 cycles");
 		end
@@ -264,38 +243,52 @@ module boot_embed_tb;
 	always @(mprj_io[36:8]) begin //exclude clk
 		if (spi_load) 
 			#1 $display("MPRJ-IO state = %b ", mprj_io[37:8]);
-		
-	end
-	always @(mprj_io[7:0]) begin //exclude clk
-		#1 $display("GPIO state = %b ", mprj_io[7:0]);
-	end
-	
-	initial begin
-		RSTB <= 1'b0;
-		#2000;
-		RSTB <= 1'b1;	    	// Release reset
 	end
 
-	//initial begin		// Power-up sequence
-	//	power1 <= 1'b0;
-	//	#200;
-	//	power1 <= 1'b1;
-	//end
+	always @(mprj_io[7:0]) begin
+		#1 $display("GPIO state = %b ", mprj_io[7:0]);
+	end
+
+	assign mprj_io[0] = gpio_release ? 1'bz : 1'b0;  //debug mode
+	assign mprj_io[3] = gpio_release ? 1'bz : 1'b1;  // CSB 
 
 	wire flash_csb;
 	wire flash_clk;
 	wire flash_io0;
 	wire flash_io1;
 
+	reg RSTB;
+
+	initial begin
+		RSTB <= 1'b0;
+		#100;
+		RSTB <= 1'b1;	    // Release reset
+	end
+
+	initial begin			// Power-up
+		power1 <= 1'b0; // por.v in caravel nedded to be pathed because of inout port that is always one in RTL. Remove wait for posedge VDD
+		#50;
+		power1 <= 1'b1;
+	end
+		
+
 	wire VDD;
-	assign VDD = 1'b1;
 	wire VSS;
-    
-	//assign VDD = power1;
+
+	assign VDD = power1;
 	assign VSS = 1'b0;
 
-	assign mprj_io[3] = 1'b1; //(gpio_release ? 1'bz : 1);  // Force CSB high.
-	assign mprj_io[0] = 1'b0; //(gpio_release ? 1'bz : 0);  // Disable debug mode
+	// These are the mappings of mprj_io GPIO pads that are set to
+	// specific functions on startup:
+	//
+	// JTAG      = mgmt_gpio_io[0]              (inout)
+	// SDO       = mgmt_gpio_io[1]              (output)
+	// SDI       = mgmt_gpio_io[2]              (input)
+	// CSB       = mgmt_gpio_io[3]              (input)
+	// SCK       = mgmt_gpio_io[4]              (input)
+	// ser_rx    = mgmt_gpio_io[5]              (input)
+	// ser_tx    = mgmt_gpio_io[6]              (output)
+	// irq       = mgmt_gpio_io[7]              (input)
 
 	caravel uut (
 		.VDD 	  (VDD),
@@ -310,7 +303,6 @@ module boot_embed_tb;
 		.resetb	  (RSTB)
 	);
 
-
 	spiflash #(
 		.FILENAME("boot_embed.hex")
 	) spiflash (
@@ -321,6 +313,30 @@ module boot_embed_tb;
 		.io2(),			// not used
 		.io3()			// not used
 	);
+
+integer i;
+task spi_tx (input [23:0] addr, input [15:0] data);
+	begin
+		$display("spi_tx: addr=%h data=%h", addr, data);
+		spi_mosi <= 1'b0;
+		spi_clk <= 1'b1; @(posedge clock); @(posedge clock); spi_clk <= 1'b0; @(posedge clock); @(posedge clock);
+		
+		for (i=0; i<24; i=i+1) begin
+			spi_mosi <= addr[i];
+			spi_clk <= 1'b1; @(posedge clock); @(posedge clock); spi_clk <= 1'b0; @(posedge clock); @(posedge clock);			end
+		spi_mosi <= 1'b1; // we
+		spi_clk <= 1'b1; @(posedge clock); @(posedge clock); spi_clk <= 1'b0; @(posedge clock); @(posedge clock);
+		for (i=0; i<16; i=i+1) begin
+			spi_mosi <= data[i];
+			spi_clk <= 1'b1; @(posedge clock); @(posedge clock); spi_clk <= 1'b0; @(posedge clock); @(posedge clock);
+		end
+		spi_mosi <= 1'b1; // idle
+		while (spi_miso) begin // wait for end
+			spi_clk <= 1'b1; @(posedge clock); @(posedge clock); spi_clk <= 1'b0; @(posedge clock); @(posedge clock);
+		end
+		spi_clk <= 1'b1; @(posedge clock); @(posedge clock); spi_clk <= 1'b0; @(posedge clock); @(posedge clock);
+	end
+endtask
 
 endmodule
 `default_nettype wire
