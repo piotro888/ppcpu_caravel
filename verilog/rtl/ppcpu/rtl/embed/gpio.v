@@ -15,7 +15,7 @@
 
 `include "config.v"
 
-module gpio #(parameter N = 4) (
+module gpio #(parameter N = 8) (
 `ifdef USE_POWER_PINS
     inout vccd1,
     inout vssd1,

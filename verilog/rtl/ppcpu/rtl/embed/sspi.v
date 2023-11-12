@@ -37,11 +37,11 @@ module sspi (
     input wb_err
 );
 
-reg [2:0] sy_clk;
-wire sclk_edge = (sy_clk[2] ^ sy_clk[1]) & ~sy_clk[2];
+reg [3:0] sy_clk;
+wire sclk_edge = (sy_clk[3] ^ sy_clk[2]) & ~sy_clk[3];
 always @(posedge i_clk) begin
-    if (i_rst) sy_clk <= 3'b0;
-    else sy_clk <= {sy_clk[1], sy_clk[0], spi_clk};
+    if (i_rst) sy_clk <= 4'b0;
+    else sy_clk <= {sy_clk[2], sy_clk[1], sy_clk[0], spi_clk};
 end
 
 reg [23:0] req_addr;
@@ -67,6 +67,10 @@ always @(posedge i_clk) begin
         spi_miso <= 1'b1;
         wb_cyc <= 1'b0;
         wb_stb <= 1'b0;
+	req_addr <= 24'b0;
+	req_data <= 16'b0;
+	res_data <= 16'b0;
+	resp_err <= 1'b0;
     end else if (sclk_edge) begin
         if (state == STATE_IDLE) begin
             spi_miso <= 1'b1;
