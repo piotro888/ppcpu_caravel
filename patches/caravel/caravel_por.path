@@ -1,0 +1,15 @@
+diff --git a/verilog/rtl/simple_por.v b/verilog/rtl/simple_por.v
+index f486ccd..d5acf6f 100644
+--- a/verilog/rtl/simple_por.v
++++ b/verilog/rtl/simple_por.v
+@@ -33,7 +33,10 @@ module simple_por(
+ 
+     initial begin
+         inode = 1'bx;
+-        @(posedge VDD);
++        #50
++        inode = 1'b1;
++        #20
+         inode = 1'b0; 
+         #PoR_DURATION;
+         inode = 1'b1; 
