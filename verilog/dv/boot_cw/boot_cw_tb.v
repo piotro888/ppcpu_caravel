@@ -295,10 +295,11 @@ module boot_cw_tb;
 		@(posedge cw_clk);
 		cw_ack <= 1'b0;
 		wait(cw_dir == 1'b0);
-		`ifndef GL
+	`ifndef GL
 		$display("waiting for register changes");
-		wait( boot_cw_tb.uut.chip_core.mprj.mprj.c0_dbg_r0 == 16'ha0a0);	
-		wait( boot_cw_tb.uut.chip_core.mprj.mprj.c0_dbg_r0 == 16'hf8e2);
+		wait( boot_cw_tb.uut.chip_core.mprj.mprj.la_data_out[31:16] == 16'ha0a0);	
+		$display("waiting for register changes2");
+		wait( boot_cw_tb.uut.chip_core.mprj.mprj.la_data_out[31:16] == 16'hf8e2);
 	`else
 		$display("skip checking register state");
 	`endif
@@ -307,10 +308,10 @@ module boot_cw_tb;
 	end
 	
 	initial begin
-	//	$dumpfile("boot_cw.vcd");
-		//$dumpvars(3, boot_cw_tb.uut);
+		$dumpfile("boot_cw.vcd");
+	//	$dumpvars(3, boot_cw_tb.uut);
 
-	//	$dumpvars(4, boot_cw_tb.uut.chip_core.mprj);
+		$dumpvars(4, boot_cw_tb.uut.chip_core.mprj);
 		
 		// Repeat cycles of 1000 clock edges as needed to complete testbench
 		repeat (33) begin // core sets up gpio at ~ 38k cycles

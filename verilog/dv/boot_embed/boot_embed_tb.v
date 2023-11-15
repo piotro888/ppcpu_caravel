@@ -96,6 +96,9 @@ module boot_embed_tb;
 		//$dumpvars(2, boot_embed_tb.uut.chip_core.mprj);
 		// wait for gpio init
 		//$dumpvars(0, boot_embed_tb);
+`ifdef RTL
+		$dumpvars(0, boot_embed_tb.uut.chip_core.mprj);
+`endif
 		#10 @(posedge cw_rst);
 `ifdef GL
 		#10 @(posedge cw_rst);
@@ -103,16 +106,17 @@ module boot_embed_tb;
 `endif
 		wait(~cw_rst);
 		//$dumpvars(2, boot_embed_tb.uut);
+`ifdef GL		
 		$dumpvars(2, boot_embed_tb.uut.chip_core.mprj);
-
+`endif
 		$display("cw_rst: start spi load");
 		gpio_release <= 1'b1;
 
 		// init cycles
-		spi_clk <= 1'b1; @(posedge clock); @(posedge clock); spi_clk <= 1'b0; @(posedge clock); @(posedge clock);
-		spi_clk <= 1'b1; @(posedge clock); @(posedge clock); spi_clk <= 1'b0; @(posedge clock); @(posedge clock);
-		spi_clk <= 1'b1;
-		#100;
+	//	spi_clk <= 1'b1; @(posedge clock); @(posedge clock); spi_clk <= 1'b0; @(posedge clock); @(posedge clock);
+	//	spi_clk <= 1'b1; @(posedge clock); @(posedge clock); spi_clk <= 1'b0; @(posedge clock); @(posedge clock);
+		//spi_clk <= 1'b1;
+		//#100;
 		// load program from test.s file
 		// explained there
 		spi_tx(24'h800000, 16'h000e);
@@ -163,15 +167,15 @@ module boot_embed_tb;
 
 		spi_tx(24'h800032, 16'h0201);
 		spi_tx(24'h800033, 16'h0000);
-		spi_tx(24'h800034, 16'h0488);
-		spi_tx(24'h800035, 16'h0011);
+		spi_tx(24'h800034, 16'h0888);
+		spi_tx(24'h800035, 16'h0001);
 		spi_tx(24'h800036, 16'h0004);
 		spi_tx(24'h800037, 16'h0003);
 		spi_tx(24'h800038, 16'h0011);
 		spi_tx(24'h800039, 16'h0001);
-		spi_tx(24'h80003a, 16'h0405);
+		spi_tx(24'h80003a, 16'h0805);
 		spi_tx(24'h80003b, 16'h0022);
-		spi_tx(24'h80003c, 16'h1001);
+		spi_tx(24'h80003c, 16'h2001);
 		spi_tx(24'h80003d, 16'h0000);
 		spi_tx(24'h80003e, 16'h001e);
 		spi_tx(24'h80003f, 16'h0000);
