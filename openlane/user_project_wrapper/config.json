@@ -20,7 +20,8 @@
         "dir::../../verilog/gl/interconnect_outer.v",
         "dir::../../verilog/gl/dcache.v",
         "dir::../../verilog/gl/icache.v",
-        "dir::../../verilog/gl/int_ram.v"
+        "dir::../../verilog/gl/int_ram.v",
+        "dir::../../verilog/gl/logo.v"
     ],
     "EXTRA_LEFS": [
         "dir::../../lef/core0.lef",
@@ -29,7 +30,8 @@
         "dir::../../lef/icache.lef",
         "dir::../../lef/interconnect_inner.lef",
         "dir::../../lef/interconnect_outer.lef",
-        "dir::../../lef/int_ram.lef"
+        "dir::../../lef/int_ram.lef",
+        "dir::../../lef/logo-stub.lef"
     ], 
     "EXTRA_GDS_FILES": [
         "dir::../../gds/core0.gds",
@@ -38,7 +40,8 @@
         "dir::../../gds/icache.gds",
         "dir::../../gds/interconnect_inner.gds",
         "dir::../../gds/interconnect_outer.gds",
-        "dir::../../gds/int_ram.gds"
+        "dir::../../gds/int_ram.gds",
+        "dir::../../gds/logo.gds"
     ],
     "EXTRA_LIBS": [
         "dir::../../lib/core0.lib",

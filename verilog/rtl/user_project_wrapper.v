@@ -106,6 +106,8 @@ top mprj (
     .user_clock2(user_clock2)
 );
 
+(* keep *) logo logo();
+
 endmodule	// user_project_wrapper
 
 `default_nettype wire

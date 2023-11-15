@@ -7,4 +7,5 @@
 -v $(USER_PROJECT_VERILOG)/gl/interconnect_outer.v
 -v $(USER_PROJECT_VERILOG)/gl/user_project_wrapper.v
 -v $(USER_PROJECT_VERILOG)/gl/int_ram.v
+-v $(USER_PROJECT_VERILOG)/gl/logo.v
 -v $(USER_PROJECT_VERILOG)/rtl/user_defines.v

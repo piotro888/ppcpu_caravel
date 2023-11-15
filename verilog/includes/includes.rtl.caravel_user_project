@@ -2,6 +2,7 @@
 -v $(USER_PROJECT_VERILOG)/rtl/user_project_wrapper.v
 +incdir+$(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/
 -v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/top.v
+-v $(USER_PROJECT_VERILOG)/rtl/logo.v
 -v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/core/core.v
 -v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/core/alu_mul_div.v
 -v $(USER_PROJECT_VERILOG)/rtl/ppcpu/rtl/core/alu.v

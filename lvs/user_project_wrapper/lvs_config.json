@@ -16,7 +16,7 @@
         ""
     ],
     "LVS_IGNORE": [
-        ""
+        "logo"
     ],
     "LVS_SPICE_FILES": [
         "$PDK_ROOT/$PDK/libs.ref/gf180mcu_fd_sc_mcu7t5v0/spice/gf180mcu_fd_sc_mcu7t5v0.spice"
