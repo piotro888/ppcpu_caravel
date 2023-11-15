@@ -89,7 +89,7 @@ wire [`REGNO-1:0] dec_rf_ie;
 wire [`JUMP_CODE_W-1:0] dec_jump_cond_code;
 wire dec_mem_access, dec_mem_we, dec_mem_width;
 wire [1:0] dec_used_operands;
-wire dec_sreg_load, dec_sreg_store, dec_sreg_jal_over, dec_sreg_irt, dec_sys, dec_mem_long;
+wire dec_sreg_load, dec_sreg_store, dec_sreg_jal_over, dec_sreg_irt, dec_sys, dec_mem_long, dec_wfi;
 
 // Pipeline stage 1 - DECODE
 decode decode (
@@ -97,13 +97,13 @@ decode decode (
     .vccd1(vccd1), .vssd1(vssd1),
 `endif
     .i_clk(i_clk), .i_rst(i_rst), .o_ready(fetch_decode_next_ready), .o_submit(decode_execute_submit),
-    .i_next_ready(decode_execute_next_ready), .i_instr_l(fetch_decode_d_instr[15:0]), .i_imm_pass(fetch_decode_d_instr[`I_SIZE-1:16]),
+    .i_next_ready(decode_execute_next_ready), .i_instr_l(fetch_decode_d_instr[19:0]), .i_imm_pass(fetch_decode_d_instr[`I_SIZE-1:16]),
     .o_imm_pass(de_imm_pass), .oc_pc_inc(dec_pc_inc), .oc_pc_ie(dec_pc_ie), .oc_r_bus_imm(dec_r_bus_imm), .oc_alu_mode(dec_alu_mode),
     .oc_alu_flags_ie(dec_alu_flags_ie), .oc_alu_carry_en(dec_alu_carry_en), .oc_l_reg_sel(dec_l_reg_sel), .oc_r_reg_sel(dec_r_reg_sel),
     .oc_rf_ie(dec_rf_ie), .i_submit(fetch_decode_submit), .oc_jump_cond_code(dec_jump_cond_code), .i_jmp_pred_pass(fetch_decode_jmp_pred),
     .o_jmp_pred_pass(de_jmp_pred), .i_flush(fde_pipeline_flush), .oc_mem_access(dec_mem_access), .oc_mem_we(dec_mem_we),
     .oc_used_operands(dec_used_operands), .oc_sreg_load(dec_sreg_load), .oc_sreg_store(dec_sreg_store), .oc_sreg_jal_over(dec_sreg_jal_over),
-    .oc_sreg_irt(dec_sreg_irt), .oc_sys(dec_sys), .oc_mem_width(dec_mem_width), .oc_mem_long(dec_mem_long));
+    .oc_sreg_irt(dec_sreg_irt), .oc_sys(dec_sys), .oc_mem_width(dec_mem_width), .oc_mem_long(dec_mem_long), .oc_wfi(dec_wfi));
 
 wire [`RW-1:0] ew_data;
 wire [`RW-1:0] ew_addr;
@@ -132,7 +132,7 @@ execute #(.CORENO(CORENO), .INT_VEC(INT_VEC)) execute(
     .sr_bus_addr(sr_bus_addr), .sr_bus_data_o(sr_bus_data_o), .sr_bus_we(sr_bus_we), .o_icache_flush(o_icache_flush), .c_sys(dec_sys), .c_mem_width(dec_mem_width),
     .o_mem_width(ew_mem_width), .o_c_data_page(o_c_data_page), .i_mem_exception(i_mem_exception),
     .i_core_int(i_mc_core_int), .i_core_int_sreg(i_core_int_sreg), .o_c_instr_long_mode(o_c_instr_long), .o_instr_addr_high(o_instr_long_addr), .c_mem_long(dec_mem_long),
-    .o_mem_long_mode(ew_long_mode), .o_mem_addr_high(ew_addr_high));
+    .o_mem_long_mode(ew_long_mode), .o_mem_addr_high(ew_addr_high), .c_wfi(dec_wfi));
 
 // Pipeline stage 3 - MEM&WB
 memwb memwb(

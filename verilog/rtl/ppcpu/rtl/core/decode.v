@@ -24,7 +24,7 @@ module decode (
     input wire i_clk,
     input wire i_rst,
 
-    input [15:0] i_instr_l,
+    input [19:0] i_instr_l,
     input [`I_SIZE-17:0] i_imm_pass,
     output reg [`I_SIZE-17:0] o_imm_pass,
     input i_jmp_pred_pass,
@@ -47,7 +47,7 @@ module decode (
     output reg oc_mem_access, oc_mem_we, oc_mem_width,
     output reg [1:0] oc_used_operands,
     output reg oc_sreg_load, oc_sreg_store, oc_sreg_jal_over, oc_sreg_irt, oc_sys,
-    output reg oc_mem_long,
+    output reg oc_mem_long, oc_wfi,
 
     output dbg_out
 );
@@ -82,7 +82,7 @@ module decode (
 `define OPC_SHL 7'h19
 `define OPC_SHR 7'h1a
 `define OPC_CAI 7'h1b
-`define OPC_MUL 7'h1c // Temporary instructions (MUL,DIV) to be removed after compiler patch
+`define OPC_MUL 7'h1c
 `define OPC_DIV 7'h1d
 `define OPC_IRT 7'h1e
 `define OPC_LD8 7'h1f
@@ -99,12 +99,13 @@ module decode (
 `define OPC_LL8 7'h2a
 `define OPC_SL8 7'h2b
 `define OPC_MOD 7'h2c
+`define OPC_WFI 7'h2d
 // sreg imm??
 
 wire [6:0] opcode = i_instr_l[6:0];
-wire [2:0] reg_dst = i_instr_l[9:7];
-wire [2:0] reg_st = i_instr_l[12:10];
-wire [2:0] reg_nd = i_instr_l[15:13];
+wire [3:0] reg_dst = i_instr_l[10:7];
+wire [3:0] reg_st = i_instr_l[14:11];
+wire [3:0] reg_nd = i_instr_l[19:16];
 
 // Comb output signals
 reg c_pc_inc, c_pc_ie;
@@ -116,13 +117,13 @@ reg [`REGNO-1:0] c_rf_ie;
 reg [`JUMP_CODE_W-1:0] c_jump_cond_code;
 reg c_mem_access, c_mem_we, c_mem_width;
 reg [1:0] c_used_operands;
-reg c_sreg_load, c_sreg_store, c_sreg_jal_over, c_sreg_irt, c_sys, c_mem_long;
+reg c_sreg_load, c_sreg_store, c_sreg_jal_over, c_sreg_irt, c_sys, c_mem_long, c_wfi;
 
 always @(*) begin
     // defaults
     c_pc_inc = 1'b1;
     {c_pc_ie, c_r_bus_imm, c_alu_carry_en, c_alu_flags_ie, c_mem_access,
-        c_mem_we, c_sreg_load, c_sreg_store, c_sreg_jal_over, c_sreg_irt, c_sys, c_mem_width, c_mem_long} = 13'b0;
+        c_mem_we, c_sreg_load, c_sreg_store, c_sreg_jal_over, c_sreg_irt, c_sys, c_mem_width, c_mem_long, c_wfi} = 14'b0;
     c_rf_ie = `REGNO'b0;
     c_alu_mode = `ALU_MODE_W'b0;
     c_l_reg_sel = `REGNO_LOG'b0;
@@ -167,7 +168,7 @@ always @(*) begin
             c_used_operands = 2'b10;
         end
         `OPC_STO: begin
-            c_l_reg_sel = reg_nd;
+            c_l_reg_sel = reg_dst;
             c_r_bus_imm = 1'b1;
             c_alu_mode = `ALU_MODE_ADD;
             c_r_reg_sel = reg_st;
@@ -379,7 +380,7 @@ always @(*) begin
             c_mem_width = 1'b1;
         end
         `OPC_SO8: begin
-            c_l_reg_sel = reg_nd;
+            c_l_reg_sel = reg_dst;
             c_r_bus_imm = 1'b1;
             c_alu_mode = `ALU_MODE_ADD;
             c_r_reg_sel = reg_st;
@@ -437,7 +438,7 @@ always @(*) begin
             c_used_operands = 2'b01;
         end
         `OPC_SLO: begin
-            c_l_reg_sel = reg_nd;
+            c_l_reg_sel = reg_dst;
             c_r_bus_imm = 1'b1;
             c_alu_mode = `ALU_MODE_ADD;
             c_r_reg_sel = reg_st;
@@ -457,7 +458,7 @@ always @(*) begin
             c_mem_width = 1'b1;
         end
         `OPC_SL8: begin
-            c_l_reg_sel = reg_nd;
+            c_l_reg_sel = reg_dst;
             c_r_bus_imm = 1'b1;
             c_alu_mode = `ALU_MODE_ADD;
             c_r_reg_sel = reg_st;
@@ -473,6 +474,10 @@ always @(*) begin
             c_r_reg_sel = reg_nd;
             c_rf_ie[reg_dst] = 1'b1;
             c_used_operands = 2'b11;
+        end
+        `OPC_WFI: begin
+            c_pc_inc = 1'b0;
+            c_wfi = 1'b1;
         end
         default: begin
         end
@@ -494,7 +499,7 @@ always @(posedge i_clk) begin
         // default values for control signals at reset not zzz. Later delete it and catch bugs with load of zzz without exec_submit at gl tests
         oc_pc_inc <= 1'b0;
         {oc_pc_ie, oc_r_bus_imm, oc_alu_carry_en, oc_alu_flags_ie, oc_mem_access,
-            oc_mem_we, oc_sreg_load, oc_sreg_store, oc_sreg_jal_over, oc_sreg_irt, oc_sys, oc_mem_width, oc_mem_long} <= 13'b0;
+            oc_mem_we, oc_sreg_load, oc_sreg_store, oc_sreg_jal_over, oc_sreg_irt, oc_sys, oc_mem_width, oc_mem_long, oc_wfi} <= 14'b0;
         oc_rf_ie <= `REGNO'b0;
         oc_alu_mode <= `ALU_MODE_W'b0;
         oc_l_reg_sel <= `REGNO_LOG'b0;
@@ -532,6 +537,7 @@ always @(posedge i_clk) begin
             oc_sreg_irt <= c_sreg_irt;
             oc_sys <= c_sys;
             oc_mem_long <= c_mem_long;
+            oc_wfi <= c_wfi;
         end
 
         if (i_submit & ~i_next_ready & ~i_flush) begin
