@@ -21,6 +21,10 @@
 `define WB_SEL_BITS 2
 
 module interconnect_outer (
+`ifdef USE_POWER_PINS
+    inout vccd1,
+    inout vssd1,
+`endif 
     // IOs
     input  [`MPRJ_IO_PADS-1:0] m_io_in,
     output [`MPRJ_IO_PADS-1:0] m_io_out,
@@ -40,7 +44,7 @@ module interconnect_outer (
 
     // Logic Analyzer Signals
     input  [63:0] la_data_in,
-    output [63:0] la_data_out,
+    output [31:0] la_data_out,
     input  [63:0] la_oenb,
 
     // IRQ
@@ -513,7 +517,7 @@ always @(posedge core_clock) begin
     embed_s_ff[1] <= embed_s_ff[0]; 
 end
 
-assign la_data_out[63:0] = 64'b0;
+assign la_data_out[31:0] = 32'b0;
 assign mgt_wb_dat_o[31:0] = 32'b0;
 assign mgt_wb_ack_o = 1'b0;
 

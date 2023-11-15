@@ -64,6 +64,9 @@ module top (
  */
 wire inner_clock, inner_reset;
 interconnect_outer interconnect_outer (
+`ifdef USE_POWER_PINS
+    .vccd1(vccd1), .vssd1(vssd1),
+`endif
     .m_io_in(m_io_in),
     .m_io_out(m_io_out),
     .m_io_oeb(m_io_oeb),
@@ -78,7 +81,7 @@ interconnect_outer interconnect_outer (
     .mgt_wb_ack_o(mgt_wb_ack_o),
     .mgt_wb_dat_o(mgt_wb_dat_o),
     .la_data_in(la_data_in),
-    .la_data_out(la_data_out),
+    .la_data_out({la_data_out[63:48],la_data_out[15:0]}),
     .la_oenb(la_oenb),
     .irq(irq),
     .user_clock2(user_clock2),
@@ -128,6 +131,9 @@ wire inner_disable;
  */
 
 interconnect_inner interconnect_inner (
+`ifdef USE_POWER_PINS
+    .vccd1(vccd1), .vssd1(vssd1),
+`endif
     .core_clock(inner_clock),
     .core_reset(inner_reset),
     .inner_wb_cyc(inner_wb_cyc), // why some compilers don't support .* ???
@@ -150,8 +156,8 @@ interconnect_inner interconnect_inner (
     .c0_o_req_ppl_submit(c0_o_req_ppl_submit),
     .c0_i_req_data(c0_i_req_data),
     .c0_i_req_data_valid(c0_i_req_data_valid),
-    .c0_dbg_r0(c0_dbg_r0), 
-    .c0_dbg_pc(c0_dbg_pc),
+    //.c0_dbg_r0(c0_dbg_r0), 
+    //.c0_dbg_pc(c0_dbg_pc),
     .c0_o_mem_addr(c0_o_mem_addr),
     .c0_o_mem_data(c0_o_mem_data),
     .c0_i_mem_data(c0_i_mem_data),
@@ -283,7 +289,7 @@ core0 core0 (
 `endif
     .i_clk(c0_clk), .i_rst(c0_rst), .o_req_addr(c0_o_req_addr), .o_req_active(c0_o_req_active), .i_req_data(c0_i_req_data), .i_req_data_valid(c0_i_req_data_valid), .o_req_ppl_submit(c0_o_req_ppl_submit),
     .o_mem_addr(c0_o_mem_addr), .o_mem_data(c0_o_mem_data), .i_mem_data(c0_i_mem_data), .o_mem_req(c0_o_mem_req), .o_mem_we(c0_o_mem_we), .i_mem_ack(c0_i_mem_ack),
-    .dbg_r0(c0_dbg_r0), .dbg_pc(c0_dbg_pc), .i_irq(c0_i_irq), .o_c_instr_page(c0_o_c_instr_page), .sr_bus_addr(c0_sr_bus_addr),
+    .dbg_r0(la_data_out[31:16]), .dbg_pc(la_data_out[47:32]), .i_irq(c0_i_irq), .o_c_instr_page(c0_o_c_instr_page), .sr_bus_addr(c0_sr_bus_addr),
     .sr_bus_data_o(c0_sr_bus_data_o), .sr_bus_we(c0_sr_bus_we), .o_icache_flush(c0_o_icache_flush), .o_mem_sel(c0_o_mem_sel), .o_c_data_page(c0_o_c_data_page),
     .i_mem_exception(c0_i_mem_exception), .i_disable(c0_disable), .i_mc_core_int(c0_i_mc_core_int), .i_core_int_sreg(c0_i_core_int_sreg),
     .o_c_instr_long(c0_o_c_instr_long), .o_instr_long_addr(c0_o_instr_long_addr), .o_mem_long(c0_o_mem_long), .o_mem_addr_high(c0_o_mem_addr_high)

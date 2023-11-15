@@ -51,7 +51,7 @@ module interconnect_inner (
     input c0_o_req_active, c0_o_req_ppl_submit,
     output [`I_SIZE-1:0] c0_i_req_data,
     output c0_i_req_data_valid,
-    input [`RW-1:0] c0_dbg_r0, c0_dbg_pc,
+//    input [`RW-1:0] c0_dbg_r0, c0_dbg_pc,
     input [`RW-1:0] c0_o_mem_addr, c0_o_mem_data,
     output [`RW-1:0] c0_i_mem_data,
     input c0_o_mem_req, c0_o_mem_we,
