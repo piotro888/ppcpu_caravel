@@ -16,9 +16,6 @@
 /*
 	EMBED MODE BOOT TEST
 */
-// NOTE: this test is failing on GL (RTL variant passes), probably because of some bug in Caravel testing.
-// At fixed time regerdles of timing of start of any operations in testbench, caravel turns many of
-// its signals to X, including reset, that breaks everything.
 
 `default_nettype none
 

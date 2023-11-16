@@ -1,0 +1,15 @@
+diff --git a/verilog/dv/vip/spiflash.v b/verilog/dv/vip/spiflash.v
+index 1bf0ea1..8a25419 100644
+--- a/verilog/dv/vip/spiflash.v
++++ b/verilog/dv/vip/spiflash.v
+@@ -106,7 +106,10 @@ module spiflash #(
+ 	// 16 MB (128Mb) Flash
+ 	reg [7:0] memory [0:16*1024*1024-1];
+ 
++	integer i;
+ 	initial begin
++		for (i=0; i < 16*1024*1024; i=i+1)
++                    memory[i] = 0;
+ 		$display("Reading %s",  FILENAME);
+ 		$readmemh(FILENAME, memory);
+ 		//$display("Memory 5 bytes = 0x%02x 0x%02x 0x%02x 0x%02x 0x%02x",

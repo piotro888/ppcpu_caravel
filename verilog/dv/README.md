@@ -18,6 +18,8 @@
 
 # PPCPU DV
 
+`Important! For tests to run successfully, applying patches from patches/ directory is needed (to caravel and mgmt_soc)`
+
 Testbenches description
 
 ### boot_cw
