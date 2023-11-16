@@ -100,8 +100,9 @@ wire soc_clock = user_clock2;
 wire soc_reset = mgt_wb_rst_i;
 
 wire core_clock = soc_clock;
+wire io_rst = m_io_in[28];
 wire soft_reset = (~la_oenb[0]) & la_data_in[0]; // in future & embed mode
-wire core_reset_us = soc_reset | soft_reset;
+wire core_reset_us = soc_reset | soft_reset | io_rst;
 wire core_reset; // synced
 
 assign inner_clock = core_clock;
@@ -150,7 +151,7 @@ assign m_io_oeb[7:0] = gpio_dir;
 assign m_io_oeb[9:8] = 2'b0;
 assign m_io_oeb[25:10] = {16{cw_dir}};
 assign m_io_oeb[27:26] = 2'b11;
-assign m_io_oeb[29:28] = 2'b00;
+assign m_io_oeb[29:28] = 2'b01;
 assign m_io_oeb[33:30] = 4'b1111;
 assign m_io_oeb[35:34] = 2'b11;
 assign m_io_oeb[36] = 1'b0;
