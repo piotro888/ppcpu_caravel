@@ -1,6 +1,6 @@
 ###############################################################################
 # Created by write_sdc
-# Sun Nov 12 16:32:17 2023
+# Thu Nov 16 00:57:27 2023
 ###############################################################################
 current_design user_project_wrapper
 ###############################################################################
@@ -641,134 +641,6 @@ set_output_delay 7.9000 -clock [get_clocks {clk}] -min -add_delay [get_ports {io
 set_output_delay 13.1200 -clock [get_clocks {clk}] -max -add_delay [get_ports {io_out[8]}]
 set_output_delay 7.9000 -clock [get_clocks {clk}] -min -add_delay [get_ports {io_out[9]}]
 set_output_delay 13.1200 -clock [get_clocks {clk}] -max -add_delay [get_ports {io_out[9]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[0]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[0]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[10]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[10]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[11]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[11]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[12]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[12]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[13]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[13]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[14]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[14]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[15]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[15]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[16]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[16]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[17]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[17]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[18]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[18]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[19]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[19]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[1]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[1]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[20]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[20]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[21]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[21]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[22]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[22]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[23]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[23]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[24]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[24]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[25]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[25]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[26]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[26]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[27]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[27]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[28]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[28]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[29]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[29]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[2]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[2]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[30]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[30]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[31]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[31]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[32]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[32]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[33]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[33]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[34]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[34]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[35]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[35]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[36]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[36]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[37]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[37]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[38]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[38]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[39]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[39]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[3]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[3]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[40]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[40]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[41]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[41]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[42]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[42]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[43]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[43]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[44]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[44]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[45]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[45]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[46]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[46]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[47]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[47]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[48]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[48]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[49]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[49]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[4]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[4]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[50]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[50]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[51]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[51]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[52]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[52]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[53]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[53]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[54]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[54]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[55]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[55]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[56]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[56]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[57]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[57]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[58]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[58]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[59]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[59]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[5]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[5]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[60]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[60]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[61]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[61]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[62]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[62]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[63]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[63]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[6]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[6]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[7]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[7]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[8]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[8]}]
-set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {la_data_out[9]}]
-set_output_delay 1.0000 -clock [get_clocks {clk}] -max -add_delay [get_ports {la_data_out[9]}]
 set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {user_irq[0]}]
 set_output_delay 0.7000 -clock [get_clocks {clk}] -max -add_delay [get_ports {user_irq[0]}]
 set_output_delay 0.0000 -clock [get_clocks {clk}] -min -add_delay [get_ports {user_irq[1]}]
@@ -849,6 +721,71 @@ set_multicycle_path -setup\
     -through [list [get_ports {wbs_ack_o}]\
            [get_ports {wbs_cyc_i}]\
            [get_ports {wbs_stb_i}]] 2
+set_false_path\
+    -to [list [get_ports {la_data_out[0]}]\
+           [get_ports {la_data_out[10]}]\
+           [get_ports {la_data_out[11]}]\
+           [get_ports {la_data_out[12]}]\
+           [get_ports {la_data_out[13]}]\
+           [get_ports {la_data_out[14]}]\
+           [get_ports {la_data_out[15]}]\
+           [get_ports {la_data_out[16]}]\
+           [get_ports {la_data_out[17]}]\
+           [get_ports {la_data_out[18]}]\
+           [get_ports {la_data_out[19]}]\
+           [get_ports {la_data_out[1]}]\
+           [get_ports {la_data_out[20]}]\
+           [get_ports {la_data_out[21]}]\
+           [get_ports {la_data_out[22]}]\
+           [get_ports {la_data_out[23]}]\
+           [get_ports {la_data_out[24]}]\
+           [get_ports {la_data_out[25]}]\
+           [get_ports {la_data_out[26]}]\
+           [get_ports {la_data_out[27]}]\
+           [get_ports {la_data_out[28]}]\
+           [get_ports {la_data_out[29]}]\
+           [get_ports {la_data_out[2]}]\
+           [get_ports {la_data_out[30]}]\
+           [get_ports {la_data_out[31]}]\
+           [get_ports {la_data_out[32]}]\
+           [get_ports {la_data_out[33]}]\
+           [get_ports {la_data_out[34]}]\
+           [get_ports {la_data_out[35]}]\
+           [get_ports {la_data_out[36]}]\
+           [get_ports {la_data_out[37]}]\
+           [get_ports {la_data_out[38]}]\
+           [get_ports {la_data_out[39]}]\
+           [get_ports {la_data_out[3]}]\
+           [get_ports {la_data_out[40]}]\
+           [get_ports {la_data_out[41]}]\
+           [get_ports {la_data_out[42]}]\
+           [get_ports {la_data_out[43]}]\
+           [get_ports {la_data_out[44]}]\
+           [get_ports {la_data_out[45]}]\
+           [get_ports {la_data_out[46]}]\
+           [get_ports {la_data_out[47]}]\
+           [get_ports {la_data_out[48]}]\
+           [get_ports {la_data_out[49]}]\
+           [get_ports {la_data_out[4]}]\
+           [get_ports {la_data_out[50]}]\
+           [get_ports {la_data_out[51]}]\
+           [get_ports {la_data_out[52]}]\
+           [get_ports {la_data_out[53]}]\
+           [get_ports {la_data_out[54]}]\
+           [get_ports {la_data_out[55]}]\
+           [get_ports {la_data_out[56]}]\
+           [get_ports {la_data_out[57]}]\
+           [get_ports {la_data_out[58]}]\
+           [get_ports {la_data_out[59]}]\
+           [get_ports {la_data_out[5]}]\
+           [get_ports {la_data_out[60]}]\
+           [get_ports {la_data_out[61]}]\
+           [get_ports {la_data_out[62]}]\
+           [get_ports {la_data_out[63]}]\
+           [get_ports {la_data_out[6]}]\
+           [get_ports {la_data_out[7]}]\
+           [get_ports {la_data_out[8]}]\
+           [get_ports {la_data_out[9]}]]
 set_false_path\
     -through [list [get_ports {la_data_in[0]}]\
            [get_ports {la_oenb[0]}]]

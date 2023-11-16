@@ -40,38 +40,6 @@ module user_project_wrapper (user_clock2,
  input [3:0] wbs_sel_i;
 
  wire \mprj/c0_clk ;
- wire \mprj/c0_dbg_pc[0] ;
- wire \mprj/c0_dbg_pc[10] ;
- wire \mprj/c0_dbg_pc[11] ;
- wire \mprj/c0_dbg_pc[12] ;
- wire \mprj/c0_dbg_pc[13] ;
- wire \mprj/c0_dbg_pc[14] ;
- wire \mprj/c0_dbg_pc[15] ;
- wire \mprj/c0_dbg_pc[1] ;
- wire \mprj/c0_dbg_pc[2] ;
- wire \mprj/c0_dbg_pc[3] ;
- wire \mprj/c0_dbg_pc[4] ;
- wire \mprj/c0_dbg_pc[5] ;
- wire \mprj/c0_dbg_pc[6] ;
- wire \mprj/c0_dbg_pc[7] ;
- wire \mprj/c0_dbg_pc[8] ;
- wire \mprj/c0_dbg_pc[9] ;
- wire \mprj/c0_dbg_r0[0] ;
- wire \mprj/c0_dbg_r0[10] ;
- wire \mprj/c0_dbg_r0[11] ;
- wire \mprj/c0_dbg_r0[12] ;
- wire \mprj/c0_dbg_r0[13] ;
- wire \mprj/c0_dbg_r0[14] ;
- wire \mprj/c0_dbg_r0[15] ;
- wire \mprj/c0_dbg_r0[1] ;
- wire \mprj/c0_dbg_r0[2] ;
- wire \mprj/c0_dbg_r0[3] ;
- wire \mprj/c0_dbg_r0[4] ;
- wire \mprj/c0_dbg_r0[5] ;
- wire \mprj/c0_dbg_r0[6] ;
- wire \mprj/c0_dbg_r0[7] ;
- wire \mprj/c0_dbg_r0[8] ;
- wire \mprj/c0_dbg_r0[9] ;
  wire \mprj/c0_disable ;
  wire \mprj/c0_i_core_int_sreg[0] ;
  wire \mprj/c0_i_core_int_sreg[10] ;
@@ -889,6 +857,7 @@ module user_project_wrapper (user_clock2,
  wire \mprj/iram_o_data[9] ;
  wire \mprj/iram_we ;
 
+ logo logo ();
  core0 \mprj/core0  (.i_clk(\mprj/c0_clk ),
     .i_disable(\mprj/c0_disable ),
     .i_irq(\mprj/c0_i_irq ),
@@ -909,38 +878,38 @@ module user_project_wrapper (user_clock2,
     .sr_bus_we(\mprj/c0_sr_bus_we ),
     .vccd1(vdd),
     .vssd1(vss),
-    .dbg_pc({\mprj/c0_dbg_pc[15] ,
-    \mprj/c0_dbg_pc[14] ,
-    \mprj/c0_dbg_pc[13] ,
-    \mprj/c0_dbg_pc[12] ,
-    \mprj/c0_dbg_pc[11] ,
-    \mprj/c0_dbg_pc[10] ,
-    \mprj/c0_dbg_pc[9] ,
-    \mprj/c0_dbg_pc[8] ,
-    \mprj/c0_dbg_pc[7] ,
-    \mprj/c0_dbg_pc[6] ,
-    \mprj/c0_dbg_pc[5] ,
-    \mprj/c0_dbg_pc[4] ,
-    \mprj/c0_dbg_pc[3] ,
-    \mprj/c0_dbg_pc[2] ,
-    \mprj/c0_dbg_pc[1] ,
-    \mprj/c0_dbg_pc[0] }),
-    .dbg_r0({\mprj/c0_dbg_r0[15] ,
-    \mprj/c0_dbg_r0[14] ,
-    \mprj/c0_dbg_r0[13] ,
-    \mprj/c0_dbg_r0[12] ,
-    \mprj/c0_dbg_r0[11] ,
-    \mprj/c0_dbg_r0[10] ,
-    \mprj/c0_dbg_r0[9] ,
-    \mprj/c0_dbg_r0[8] ,
-    \mprj/c0_dbg_r0[7] ,
-    \mprj/c0_dbg_r0[6] ,
-    \mprj/c0_dbg_r0[5] ,
-    \mprj/c0_dbg_r0[4] ,
-    \mprj/c0_dbg_r0[3] ,
-    \mprj/c0_dbg_r0[2] ,
-    \mprj/c0_dbg_r0[1] ,
-    \mprj/c0_dbg_r0[0] }),
+    .dbg_pc({la_data_out[47],
+    la_data_out[46],
+    la_data_out[45],
+    la_data_out[44],
+    la_data_out[43],
+    la_data_out[42],
+    la_data_out[41],
+    la_data_out[40],
+    la_data_out[39],
+    la_data_out[38],
+    la_data_out[37],
+    la_data_out[36],
+    la_data_out[35],
+    la_data_out[34],
+    la_data_out[33],
+    la_data_out[32]}),
+    .dbg_r0({la_data_out[31],
+    la_data_out[30],
+    la_data_out[29],
+    la_data_out[28],
+    la_data_out[27],
+    la_data_out[26],
+    la_data_out[25],
+    la_data_out[24],
+    la_data_out[23],
+    la_data_out[22],
+    la_data_out[21],
+    la_data_out[20],
+    la_data_out[19],
+    la_data_out[18],
+    la_data_out[17],
+    la_data_out[16]}),
     .i_core_int_sreg({\mprj/c0_i_core_int_sreg[15] ,
     \mprj/c0_i_core_int_sreg[14] ,
     \mprj/c0_i_core_int_sreg[13] ,
@@ -1760,38 +1729,6 @@ module user_project_wrapper (user_clock2,
     .inner_wb_we(\mprj/inner_wb_we ),
     .vccd1(vdd),
     .vssd1(vss),
-    .c0_dbg_pc({\mprj/c0_dbg_pc[15] ,
-    \mprj/c0_dbg_pc[14] ,
-    \mprj/c0_dbg_pc[13] ,
-    \mprj/c0_dbg_pc[12] ,
-    \mprj/c0_dbg_pc[11] ,
-    \mprj/c0_dbg_pc[10] ,
-    \mprj/c0_dbg_pc[9] ,
-    \mprj/c0_dbg_pc[8] ,
-    \mprj/c0_dbg_pc[7] ,
-    \mprj/c0_dbg_pc[6] ,
-    \mprj/c0_dbg_pc[5] ,
-    \mprj/c0_dbg_pc[4] ,
-    \mprj/c0_dbg_pc[3] ,
-    \mprj/c0_dbg_pc[2] ,
-    \mprj/c0_dbg_pc[1] ,
-    \mprj/c0_dbg_pc[0] }),
-    .c0_dbg_r0({\mprj/c0_dbg_r0[15] ,
-    \mprj/c0_dbg_r0[14] ,
-    \mprj/c0_dbg_r0[13] ,
-    \mprj/c0_dbg_r0[12] ,
-    \mprj/c0_dbg_r0[11] ,
-    \mprj/c0_dbg_r0[10] ,
-    \mprj/c0_dbg_r0[9] ,
-    \mprj/c0_dbg_r0[8] ,
-    \mprj/c0_dbg_r0[7] ,
-    \mprj/c0_dbg_r0[6] ,
-    \mprj/c0_dbg_r0[5] ,
-    \mprj/c0_dbg_r0[4] ,
-    \mprj/c0_dbg_r0[3] ,
-    \mprj/c0_dbg_r0[2] ,
-    \mprj/c0_dbg_r0[1] ,
-    \mprj/c0_dbg_r0[0] }),
     .c0_i_core_int_sreg({\mprj/c0_i_core_int_sreg[15] ,
     \mprj/c0_i_core_int_sreg[14] ,
     \mprj/c0_i_core_int_sreg[13] ,
@@ -2693,38 +2630,6 @@ module user_project_wrapper (user_clock2,
     la_data_out[50],
     la_data_out[49],
     la_data_out[48],
-    la_data_out[47],
-    la_data_out[46],
-    la_data_out[45],
-    la_data_out[44],
-    la_data_out[43],
-    la_data_out[42],
-    la_data_out[41],
-    la_data_out[40],
-    la_data_out[39],
-    la_data_out[38],
-    la_data_out[37],
-    la_data_out[36],
-    la_data_out[35],
-    la_data_out[34],
-    la_data_out[33],
-    la_data_out[32],
-    la_data_out[31],
-    la_data_out[30],
-    la_data_out[29],
-    la_data_out[28],
-    la_data_out[27],
-    la_data_out[26],
-    la_data_out[25],
-    la_data_out[24],
-    la_data_out[23],
-    la_data_out[22],
-    la_data_out[21],
-    la_data_out[20],
-    la_data_out[19],
-    la_data_out[18],
-    la_data_out[17],
-    la_data_out[16],
     la_data_out[15],
     la_data_out[14],
     la_data_out[13],

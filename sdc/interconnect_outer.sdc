@@ -1,6 +1,6 @@
 ###############################################################################
 # Created by write_sdc
-# Sun Nov 12 15:17:47 2023
+# Wed Nov 15 23:58:00 2023
 ###############################################################################
 current_design interconnect_outer
 ###############################################################################
@@ -339,41 +339,9 @@ set_false_path\
            [get_ports {la_data_out[2]}]\
            [get_ports {la_data_out[30]}]\
            [get_ports {la_data_out[31]}]\
-           [get_ports {la_data_out[32]}]\
-           [get_ports {la_data_out[33]}]\
-           [get_ports {la_data_out[34]}]\
-           [get_ports {la_data_out[35]}]\
-           [get_ports {la_data_out[36]}]\
-           [get_ports {la_data_out[37]}]\
-           [get_ports {la_data_out[38]}]\
-           [get_ports {la_data_out[39]}]\
            [get_ports {la_data_out[3]}]\
-           [get_ports {la_data_out[40]}]\
-           [get_ports {la_data_out[41]}]\
-           [get_ports {la_data_out[42]}]\
-           [get_ports {la_data_out[43]}]\
-           [get_ports {la_data_out[44]}]\
-           [get_ports {la_data_out[45]}]\
-           [get_ports {la_data_out[46]}]\
-           [get_ports {la_data_out[47]}]\
-           [get_ports {la_data_out[48]}]\
-           [get_ports {la_data_out[49]}]\
            [get_ports {la_data_out[4]}]\
-           [get_ports {la_data_out[50]}]\
-           [get_ports {la_data_out[51]}]\
-           [get_ports {la_data_out[52]}]\
-           [get_ports {la_data_out[53]}]\
-           [get_ports {la_data_out[54]}]\
-           [get_ports {la_data_out[55]}]\
-           [get_ports {la_data_out[56]}]\
-           [get_ports {la_data_out[57]}]\
-           [get_ports {la_data_out[58]}]\
-           [get_ports {la_data_out[59]}]\
            [get_ports {la_data_out[5]}]\
-           [get_ports {la_data_out[60]}]\
-           [get_ports {la_data_out[61]}]\
-           [get_ports {la_data_out[62]}]\
-           [get_ports {la_data_out[63]}]\
            [get_ports {la_data_out[6]}]\
            [get_ports {la_data_out[7]}]\
            [get_ports {la_data_out[8]}]\
@@ -623,38 +591,6 @@ set_load -pin_load 0.0729 [get_ports {iram_o_data[0]}]
 set_load -pin_load 0.0729 [get_ports {irq[2]}]
 set_load -pin_load 0.0729 [get_ports {irq[1]}]
 set_load -pin_load 0.0729 [get_ports {irq[0]}]
-set_load -pin_load 0.0729 [get_ports {la_data_out[63]}]
-set_load -pin_load 0.0729 [get_ports {la_data_out[62]}]
-set_load -pin_load 0.0729 [get_ports {la_data_out[61]}]
-set_load -pin_load 0.0729 [get_ports {la_data_out[60]}]
-set_load -pin_load 0.0729 [get_ports {la_data_out[59]}]
-set_load -pin_load 0.0729 [get_ports {la_data_out[58]}]
-set_load -pin_load 0.0729 [get_ports {la_data_out[57]}]
-set_load -pin_load 0.0729 [get_ports {la_data_out[56]}]
-set_load -pin_load 0.0729 [get_ports {la_data_out[55]}]
-set_load -pin_load 0.0729 [get_ports {la_data_out[54]}]
-set_load -pin_load 0.0729 [get_ports {la_data_out[53]}]
-set_load -pin_load 0.0729 [get_ports {la_data_out[52]}]
-set_load -pin_load 0.0729 [get_ports {la_data_out[51]}]
-set_load -pin_load 0.0729 [get_ports {la_data_out[50]}]
-set_load -pin_load 0.0729 [get_ports {la_data_out[49]}]
-set_load -pin_load 0.0729 [get_ports {la_data_out[48]}]
-set_load -pin_load 0.0729 [get_ports {la_data_out[47]}]
-set_load -pin_load 0.0729 [get_ports {la_data_out[46]}]
-set_load -pin_load 0.0729 [get_ports {la_data_out[45]}]
-set_load -pin_load 0.0729 [get_ports {la_data_out[44]}]
-set_load -pin_load 0.0729 [get_ports {la_data_out[43]}]
-set_load -pin_load 0.0729 [get_ports {la_data_out[42]}]
-set_load -pin_load 0.0729 [get_ports {la_data_out[41]}]
-set_load -pin_load 0.0729 [get_ports {la_data_out[40]}]
-set_load -pin_load 0.0729 [get_ports {la_data_out[39]}]
-set_load -pin_load 0.0729 [get_ports {la_data_out[38]}]
-set_load -pin_load 0.0729 [get_ports {la_data_out[37]}]
-set_load -pin_load 0.0729 [get_ports {la_data_out[36]}]
-set_load -pin_load 0.0729 [get_ports {la_data_out[35]}]
-set_load -pin_load 0.0729 [get_ports {la_data_out[34]}]
-set_load -pin_load 0.0729 [get_ports {la_data_out[33]}]
-set_load -pin_load 0.0729 [get_ports {la_data_out[32]}]
 set_load -pin_load 0.0729 [get_ports {la_data_out[31]}]
 set_load -pin_load 0.0729 [get_ports {la_data_out[30]}]
 set_load -pin_load 0.0729 [get_ports {la_data_out[29]}]

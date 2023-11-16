@@ -79,7 +79,7 @@ See [dv README](verilog/dv/README.md) for details about dv tests in this reposit
 
 ISA and core documentation is available in main PPCPU repository.
 
-`cpuid` for this tapeout: `1110(silicon)_0011_0011(arch3.3)_0000(si/to0)`
+`cpuid` for this tapeout: `1110(silicon)_0011_0100(arch3.4)_0001(si/to1)`
 
 ## Author
 

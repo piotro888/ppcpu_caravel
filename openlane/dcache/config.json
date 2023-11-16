@@ -12,7 +12,7 @@
     "CLOCK_PORT": "i_clk",
     "CLOCK_NET": "i_clk",
     "FP_SIZING": "absolute",
-    "DIE_AREA": "0 0 2600 980",
+    "DIE_AREA": "0 0 2680 900",
     "RT_MAX_LAYER": "Metal4",
     "FP_PIN_ORDER_CFG": "dir::pin_order.cfg",
     "PL_BASIC_PLACEMENT": 0,
